@@ -1,6 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, argv) => {
@@ -135,21 +133,10 @@ module.exports = (env, argv) => {
       // filename: isProd(env) ? '[name].[chunkhash].js' : '[name].[hash].js',
       filename: isProd(env) ? '[name].[chunkhash].js' : '[name].js',
     },
-    // optimization: {
-    //   runtimeChunk: {
-    //     name: "manifest",
-    //   },
-    // },
-    // plugins: removeEmpty([
-    //   new MiniCssExtractPlugin({
-    //     filename: '[name].css'
-    //   }),
-    //   ifDev(new webpack.HotModuleReplacementPlugin({
-    //     multiStep: true,
-    //   })),
-    //   new CleanWebpackPlugin({
-    //     cleanOnceBeforeBuildPatterns: ['**/*', '!server/server.js']
-    //   }),
-    // ]),
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: '[name].css'
+      }),
+    ]
   }
 }

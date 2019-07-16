@@ -4,14 +4,10 @@ import ReactDOM from 'react-dom';
 const App = () => {
   return (
     <div>
-      hello app
+      hello app bryan huang
     </div>
   )
 }
-
-// console.log('ISOMORPHIC_WEBPACK', ISOMORPHIC_WEBPACK)
-// console.log('process', process)
-// console.log('!!!!~~~~', ISOMORPHIC_WEBPACK)
 
 const renderApp = () => (
   ReactDOM.render(

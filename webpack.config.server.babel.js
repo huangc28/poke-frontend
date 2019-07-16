@@ -1,4 +1,3 @@
-import path from 'path'
 import { server } from 'universal-webpack/config'
 
 import settings from './universal-webpack-settings'

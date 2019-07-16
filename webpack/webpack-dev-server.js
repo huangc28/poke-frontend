@@ -7,8 +7,6 @@ import webpackIsomorphicClientConfig from '../webpack.config.client.babel'
 
 const DEV_SERVER_PORT = process.env.DEV_SERVER_PORT || 3006;
 const app = express();
-// const webpackConfig = require('../webpack.config.js')({ development: true });
-console.log('BRYAN DEBUG webpackIsomorphicClientConfig', webpackIsomorphicClientConfig)
 const compiler = webpack(webpackIsomorphicClientConfig)
 
 app.use(webpackDevMiddleware(compiler, {
