@@ -1,0 +1,48 @@
+{
+  "name": "poke-frontend",
+  "version": "0.0.1",
+  "description": "Poke frontend",
+  "scripts": {
+    "build": "webpack",
+    "build:server:dev": "NODE_ENV=development npm run build -- --watch --config ./webpack.config.server.babel.js --colors --display-error-details",
+    "build:prod": "NODE_ENV=production npm run build -- --env production",
+    "watch:client": "NODE_ENV=development node -r dotenv/config bin/webpack-dev-server.js",
+    "start": "concurrently --kill-others \"npm run watch:client\" \"npm run build:server:dev\" \"nodemon -r dotenv/config bin/server.js\""
+  },
+  "author": "Bryan Huang <huangchiheng@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.1",
+    "concurrently": "^4.1.0",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "image-webpack-loader": "^4.6.0",
+    "mini-css-extract-plugin": "^0.6.0",
+    "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
+    "style-loader": "^0.23.1",
+    "universal-webpack": "^0.6.11",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-middleware": "^3.6.2",
+    "webpack-hot-middleware": "^2.24.3"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/polyfill": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.0",
+    "@babel/runtime": "^7.4.3",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0",
+    "webpack-isomorphic-tools": "^3.0.6"
+  }
+}
