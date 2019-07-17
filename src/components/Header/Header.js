@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import SvgIcon from '@material-ui/core/SvgIcon'
+import { Link } from 'react-router-dom'
+
+import SearchBar from '../SearchBar'
 
 const HeaderRegion = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
-  height: 64px;
+  height: 4rem;
   background-color: #f2f2f2;
   box-shadow: 0 4px 1px -2px  rgba(0,0,0,0.30);;
   align-items: center;
@@ -26,15 +29,16 @@ const HeadLeft = styled.div`
   flex: 1;
 `
 
-const Navigation = styled.div`
+const Navigation = styled.ul`
   display: flex;
   flex-direction: inline-flex;
+  list-style: none;
+  padding: 0;
 `
 
-const NavElem = styled.div`
+const NavElem = styled.li`
   border-right: solid 1px #8f8f8f;
   padding: 0 0.625rem;
-  color:  #8f8f8f;
   cursor: pointer;
 
   &:last-child {
@@ -45,6 +49,10 @@ const NavElem = styled.div`
     color: #f08cb0;
   }
 
+  & > a {
+    text-decoration: none;
+    color:  #8f8f8f;
+  }
 `
 
 const HeadRight = styled.div`
@@ -57,7 +65,7 @@ const HeadRight = styled.div`
   flex: 1;
 `
 
-const AccountIcon = (...props) => (
+const AccountIcon = props => (
   <SvgIcon {...props}>
     <path fill="#000000" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
   </SvgIcon>
@@ -96,7 +104,9 @@ const Header = () => {
           {
             navElms.map(elm => (
               <NavElem>
-                {elm.title}
+                <Link to={elm.link}>
+                  {elm.title}
+                </Link>
               </NavElem>
             ))
           }
@@ -105,9 +115,13 @@ const Header = () => {
 
       <HeadRight>
         {/* Icon */}
-        <AccountIcon />
+        <AccountIcon
+          fontSize='small'
+        />
 
-        {/* Search bar */}
+        Login
+        
+        <SearchBar />
       </HeadRight>
     </HeaderRegion>
   )
