@@ -1,0 +1,7 @@
+
+{
+  "name": "HomeSecOne",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./HomeSecOne.js"
+}
