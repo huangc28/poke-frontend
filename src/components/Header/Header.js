@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import SvgIcon from '@material-ui/core/SvgIcon'
 import { Link } from 'react-router-dom'
+import { Account as AccIcon } from '../Icons'
 
 import SearchBar from '../SearchBar'
 
@@ -65,12 +65,6 @@ const HeadRight = styled.div`
   flex: 1;
 `
 
-const AccountIcon = props => (
-  <SvgIcon {...props}>
-    <path fill="#000000" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
-  </SvgIcon>
-)
-
 const navElms = [
   {
     title: '小百科',
@@ -115,12 +109,12 @@ const Header = () => {
 
       <HeadRight>
         {/* Icon */}
-        <AccountIcon
+        <AccIcon
           fontSize='small'
         />
 
         Login
-        
+
         <SearchBar />
       </HeadRight>
     </HeaderRegion>
