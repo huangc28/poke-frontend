@@ -5,9 +5,12 @@
   "scripts": {
     "build": "webpack",
     "build:server:dev": "NODE_ENV=development npm run build -- --watch --config ./webpack.config.server.babel.js --colors --display-error-details",
+    "build:server:prod": "NODE_ENV=production npm run build -- --env production --config ./webpack.config.server.babel.js --colors --display-error-details",
     "build:prod": "NODE_ENV=production npm run build -- --env production",
     "watch:client": "NODE_ENV=development node -r dotenv/config bin/webpack-dev-server.js",
-    "start": "concurrently --kill-others \"npm run watch:client\" \"npm run build:server:dev\" \"nodemon -r dotenv/config bin/server.js\""
+    "start": "concurrently --kill-others \"npm run watch:client\" \"npm run build:server:dev\" \"nodemon -r dotenv/config bin/server.js\"",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "Bryan Huang <huangchiheng@gmail.com>",
   "license": "ISC",
@@ -15,6 +18,10 @@
     "@babel/core": "^7.4.3",
     "@babel/plugin-transform-runtime": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
+    "@storybook/addon-actions": "^5.1.9",
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/addons": "^5.1.9",
+    "@storybook/react": "^5.1.9",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.1",
     "concurrently": "^4.1.0",
@@ -38,6 +45,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.0",
     "@babel/runtime": "^7.4.3",
+    "@material-ui/core": "^4.2.0",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "react": "^16.8.6",

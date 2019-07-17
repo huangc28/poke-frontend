@@ -1,13 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 
-const App = () => {
-  return (
-    <div>
-      hello app bryan huang
-    </div>
-  )
-}
+import App from './containers/App'
 
 const renderApp = () => (
   ReactDOM.render(
