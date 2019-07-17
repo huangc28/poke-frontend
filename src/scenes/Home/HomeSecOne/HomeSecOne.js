@@ -7,6 +7,7 @@ import BGImg from './images/06.png'
 import Moscot from './images/03.png'
 
 const Section = styled.section`
+  position: relative;
   padding-top: 9.75rem;
   display: flex;
   flex-direction: row;
@@ -14,8 +15,9 @@ const Section = styled.section`
   background-size: cover;
   background-color: #f5f2f4;
   width: 100%;
-  height: 29rem;
+  height: 29.25rem;
   box-sizing: border-box;
+  overflow: hidden;
 `
 
 const ImgContainerOne = styled.div`
@@ -30,22 +32,32 @@ const StuffOne = styled.div`
 `
 
 const StuffTwo = styled.div`
-  flex-grow: 1;
+  flex-grow: 0.5;
 `
 
 const ImgContainerTwo = styled.div`
   flex-grow: 2;
   display: inline-flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 `
 
 const ImgContainerThree = styled.div`
-  flex-grow: 2;
-  display: flex;
-  justify-content: flex-start;
+  flex-grow: 1;
+  display: inline-flex;
+  justify-content: flex-end;
   align-items: flex-end;
-  padding-bottom: 2.125rem;
+  padding-bottom: 2.2rem;
+`
+
+const Slogen = styled.p`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 2.9375rem;
 `
 
 const HomeSecOne = () => {
@@ -55,17 +67,17 @@ const HomeSecOne = () => {
         <img src={Moscot} />
       </ImgContainerOne>
 
-      <StuffOne />
-
       <ImgContainerTwo>
         <img src={Deer} />
       </ImgContainerTwo>
 
-      <StuffTwo />
-  
       <ImgContainerThree>
         <img src={BearChild} />
       </ImgContainerThree>
+
+      <Slogen>
+        懂他，選擇最適合的愛給他
+      </Slogen>
     </Section>
   )
 }
