@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Account as AccIcon } from '../Icons'
 
 import SearchBar from '../SearchBar'
+import { Account as AccIcon } from '../Icons'
 
 const HeaderRegion = styled.div`
   display: flex;
@@ -53,6 +53,22 @@ const NavElem = styled.li`
     text-decoration: none;
     color:  #8f8f8f;
   }
+`
+
+const LoginContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 0.75rem;
+
+  & > a {
+    text-decoration: none;
+    color:  #8f8f8f;
+  }
+`
+
+const IconContainer = styled.div`
+  display: flex;
+  margin-right: 0.25rem;
 `
 
 const HeadRight = styled.div`
@@ -108,13 +124,18 @@ const Header = () => {
       </HeadLeft>
 
       <HeadRight>
-        {/* Icon */}
-        <AccIcon
-          fontSize='small'
-        />
+        <LoginContainer>
+          {/* Icon */}
+          <IconContainer>
+            <AccIcon
+              fontSize='small'
+            />
+          </IconContainer>
 
-        Login
-
+          <Link to=''>
+            Login
+          </Link>
+        </LoginContainer>
         <SearchBar />
       </HeadRight>
     </HeaderRegion>

@@ -28,11 +28,7 @@ const ImgContainerOne = styled.div`
 `
 
 const StuffOne = styled.div`
-  flex-grow: 1;
-`
-
-const StuffTwo = styled.div`
-  flex-grow: 0.5;
+  flex-grow: 0.1;
 `
 
 const ImgContainerTwo = styled.div`
@@ -47,7 +43,7 @@ const ImgContainerThree = styled.div`
   display: inline-flex;
   justify-content: flex-end;
   align-items: flex-end;
-  padding-bottom: 2.2rem;
+  padding-bottom: 4rem;
 `
 
 const Slogen = styled.p`
@@ -74,6 +70,8 @@ const HomeSecOne = () => {
       <ImgContainerThree>
         <img src={BearChild} />
       </ImgContainerThree>
+
+      <StuffOne />
 
       <Slogen>
         懂他，選擇最適合的愛給他
