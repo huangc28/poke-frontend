@@ -14,7 +14,7 @@ import FoodThree from './images/40.png'
 
 const Section = styled.section`
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 5fr 1fr;
   grid-template-rows: 4.1875rem 1fr 1fr 4.1875rem;
   background: url(${BGImg}) no-repeat center center fixed;
   background-size: cover;
@@ -115,8 +115,14 @@ const LowerRight = styled.div`
 const FoodText = styled.div`
   line-height: 1.375rem;
 
+  & > h3 {
+    border-bottom: solid 1px;
+    max-width: 18.125rem;
+  }
+
   & > p {
     font-size: 0.875rem;
+    margin: 0
   }
 `
 
