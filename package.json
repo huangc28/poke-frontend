@@ -51,6 +51,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
+    "react-slick": "^0.24.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^4.2.0",
     "webpack-isomorphic-tools": "^3.0.6"
   }

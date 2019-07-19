@@ -1,0 +1,6 @@
+{
+  "name": "ArticleSlider",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ArticleSlider.js"
+}

@@ -14,7 +14,7 @@ import FoodThree from './images/40.png'
 
 const Section = styled.section`
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 4.1875rem 1fr 1fr 4.1875rem;
   background: url(${BGImg}) no-repeat center center fixed;
   background-size: cover;
@@ -32,7 +32,7 @@ const IntroUpper = styled.div`
 `
 const UpperLeft = styled.div`
   display: flex;
-  flex-grow: 2;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
