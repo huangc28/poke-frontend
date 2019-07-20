@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import leftArrowImg from './images/17.png'
 import rightArrowImg from './images/18.png'
+import LoveImg from './images/19.png'
+import ReadImg from './images/20.png'
 
 const LeftArrow = props => {
   const { className, onClick } = props;
@@ -47,6 +49,10 @@ const SliderContainer = styled.div`
     top: 35%;
   }
 
+  & > .slick-slider > .slick-prev {
+    left: -65px;
+  }
+
   & > .slick-slider > .slick-prev:before {
     content: none;
   }
@@ -55,6 +61,83 @@ const SliderContainer = styled.div`
     content: none;
   }
 `
+
+const ArticleContainer = styled.div`
+  width: 11.3125rem;
+  height: 9.0625rem;
+  display: flex;
+  flex-direction: column;
+`
+
+const ArticleStatusBar = styled.div`
+  width: 100%;
+  height: 1.375rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+`
+
+const LikeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 0.25rem;
+
+  & > img {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-right: 0.25rem;
+  }
+
+  & > span {
+    font-size: 0.75em;
+  }
+`
+
+const ReadContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & > img {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-right: 0.25rem;
+  }
+
+  & > span {
+    font-size: 0.75em;
+  }
+`
+
+const articles = [
+  {
+    link: 'https://via.placeholder.com/181x123.png',
+    likes: 817,
+    read: 999,
+  },
+  {
+    link: 'https://via.placeholder.com/181x123.png',
+    likes: 817,
+    read: 999,
+  },
+  {
+    link: 'https://via.placeholder.com/181x123.png',
+    likes: 817,
+    read: 999,
+  },
+  {
+    link: 'https://via.placeholder.com/181x123.png',
+    likes: 817,
+    read: 999,
+  },
+  {
+    link: 'https://via.placeholder.com/181x123.png',
+    likes: 817,
+    read: 999,
+  },
+]
 
 const ArticleSlider = ({ width }) => {
   const settings = {
@@ -72,24 +155,35 @@ const ArticleSlider = ({ width }) => {
       width={width}
     >
       <Slider {...settings}>
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
+        {
+          articles.map(article => (
+            <div>
+              <ArticleContainer>
+                <img src={article.link} />
+                <ArticleStatusBar>
+                  <LikeContainer>
+                    <img
+                      src={LoveImg}
+                      style={{ width: 12, height: 12 }}
+                    />
+                    <span>
+                      {article.likes}
+                    </span>
+                  </LikeContainer>
+                  <ReadContainer>
+                    <img
+                      src={ReadImg}
+                      style={{ width: 12, height: 12 }}
+                    />
+                    <span>
+                      {article.read}
+                    </span>
+                  </ReadContainer>
+                </ArticleStatusBar>
+              </ArticleContainer>
+            </div>
+          ))
+        }
       </Slider>
     </SliderContainer>
   )
@@ -101,7 +195,7 @@ ArticleSlider.propTypes = {
 }
 
 ArticleSlider.defaultProps = {
-  width: 600,
+  width: 862,
 }
 
 export default ArticleSlider
