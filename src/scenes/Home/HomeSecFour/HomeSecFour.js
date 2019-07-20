@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import ArticleCarousel from './components/ArticleSlider'
 import Moscot from './images/10.png'
 import ConfusedMan from './images/11.png'
+import StepFlagImg from './images/31.png'
 
 const Section = styled.section`
   padding-top: 2.125rem;
@@ -12,18 +14,26 @@ const Section = styled.section`
   height: 38.25rem;
   align-items: center;
 `
+
 const PokePediaContainer = styled.div`
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  position: relative;
+`
+
+const StepFlag = styled.img`
+  position: absolute;
+  top: 0%;
+  right: 4%;
 `
 
 const MoscotContainer = styled.div`
-  display: inline-block;
   margin-right: 5.625rem;
 `
 
 const TextContainer = styled.div`
-  display: inline-block;
   vertical-align: center;
   & > h3 {
     margin: 0 0 0.25rem 0;
@@ -70,15 +80,21 @@ const ArticlesContainer = styled.div`
   height: 14.375rem;
   width: 100%;
   background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & > h3 {
+    font-weight: bold;
+    margin: 0 0 1.4375rem 0;
+  }
 `
-
-const articles = [
-
-]
-
 const HomeSecFour = () => {
   return (
     <Section>
+      <StepFlag src={StepFlagImg} />
+
       <PokePediaContainer>
         {/* Poke moscot */}
         <MoscotContainer>
@@ -112,8 +128,13 @@ const HomeSecFour = () => {
           </PokePediaDescContainer>
         </TextContainer>
       </PokePediaContainer>
+
       <ArticlesContainer>
-        some articles
+        <h3>
+          精選熱門文章
+        </h3>
+
+        <ArticleCarousel />
       </ArticlesContainer>
     </Section>
   )

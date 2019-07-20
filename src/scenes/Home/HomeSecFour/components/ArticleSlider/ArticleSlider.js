@@ -111,6 +111,7 @@ const ReadContainer = styled.div`
   }
 `
 
+// @todo Data should be passed from outside
 const articles = [
   {
     link: 'https://via.placeholder.com/181x123.png',
@@ -162,19 +163,13 @@ const ArticleSlider = ({ width }) => {
                 <img src={article.link} />
                 <ArticleStatusBar>
                   <LikeContainer>
-                    <img
-                      src={LoveImg}
-                      style={{ width: 12, height: 12 }}
-                    />
+                    <img src={LoveImg} />
                     <span>
                       {article.likes}
                     </span>
                   </LikeContainer>
                   <ReadContainer>
-                    <img
-                      src={ReadImg}
-                      style={{ width: 12, height: 12 }}
-                    />
+                    <img src={ReadImg} />
                     <span>
                       {article.read}
                     </span>
