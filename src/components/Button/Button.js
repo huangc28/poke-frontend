@@ -11,10 +11,10 @@ const StyledButton = styled.button`
   border: 0;
   line-height: normal;
   overflow: hidden;
-  padding: 0 1rem 0 1rem;
+  padding: 0 1rem;
   cursor: pointer;
   transition: background-color 0.5s ease, color 0.5s ease;
-  &.focus {
+  &:focus {
     outline: none;
   }
 `
@@ -35,7 +35,11 @@ const Text = styled.span`
   align-items: center;
 `
 
-const Button = ({ onClick, children, text }) => {
+const Button = ({
+  onClick,
+  children,
+  text,
+}) => {
   return (
     <StyledButton
       onClick={onClick}

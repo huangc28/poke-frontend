@@ -5,7 +5,7 @@ import Button from './Button'
 import FunnelImg from './images/48.png'
 
 storiesOf('Button', module)
-  .add('Normal State', () => (
+  .add('Normal size button', () => (
     <Button
       text='篩選 GO'
     >
@@ -14,5 +14,10 @@ storiesOf('Button', module)
         height={56}
         src={FunnelImg}
       />
+    </Button>
+  ))
+  .add('Small size button', () => (
+    <Button>
+
     </Button>
   ))
