@@ -11,7 +11,6 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 38.25rem;
   align-items: center;
 `
 
@@ -34,7 +33,6 @@ const MoscotContainer = styled.div`
 `
 
 const TextContainer = styled.div`
-  vertical-align: center;
   & > h3 {
     margin: 0 0 0.25rem 0;
     border-bottom: solid 1px;
