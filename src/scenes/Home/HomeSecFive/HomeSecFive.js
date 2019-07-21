@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 import StepFlagImg from './images/32.png'
 import Mascot from './images/12.png'
+import FunnelImg from './images/48.png'
 import CaptionText from '../../../components/CaptionText'
+import Button from '../../../components/Button'
 
 const StepFlag = styled.img`
   position: absolute;
@@ -29,12 +31,18 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 5.5rem;
-  justify-content: center;
+  justify-content: space-between;
 `
 
-const Right = styled.div`
-
+const LeftBottom = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 `
+
+const CaptionContainer = styled.div``
+
+const Right = styled.div``
 
 const P = styled.p`
   margin-top: 0;
@@ -48,21 +56,37 @@ const HomeSecFive = () => {
       <Container>
         {/* Left part */}
         <Left>
-          <CaptionText
-            title='剝殼篩選器'
-            highLights={[
-              '整合雜亂的寵物食品資訊',
-              '建立快速方便的篩選工具',
-            ]}
-          >
-            <P>
-              還在為挑選產品而煩惱？ <br />
-              對特定品牌有不好的回憶？ <br />
-              抑或是心中有鍾愛的品牌想支持呢？ <br />
-              POKE篩選器 讓你在 <br />
-              最短的時間！找到最適合！
-            </P>
-          </CaptionText>
+          <CaptionContainer>
+            <CaptionText
+              title='剝殼篩選器'
+              highLights={[
+                '整合雜亂的寵物食品資訊',
+                '建立快速方便的篩選工具',
+              ]}
+            >
+              <P>
+                還在為挑選產品而煩惱？ <br />
+                對特定品牌有不好的回憶？ <br />
+                抑或是心中有鍾愛的品牌想支持呢？ <br />
+                POKE篩選器 讓你在 <br />
+                最短的時間！找到最適合！
+              </P>
+            </CaptionText>
+          </CaptionContainer>
+
+          <LeftBottom>
+            <div>
+              <Button
+                text='篩選 GO'
+              >
+                <img
+                  width={40}
+                  height={56}
+                  src={FunnelImg}
+                />
+              </Button>
+            </div>
+          </LeftBottom>
         </Left>
 
         {/* Right part */}
