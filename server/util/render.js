@@ -15,7 +15,7 @@ const render = (html = '') => {
       </head>
 
       <body>
-        <div id='app'>${html}</div>
+        <div id="app">${html}</div>
 
         <script
           type="application/javascript"

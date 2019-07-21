@@ -22,8 +22,6 @@ const handleRender = function (req, res, next) {
     </StaticRouter>
   )
 
-  console.log('BRYAN DEBUG 1 html', html)
-
   if (context.status === 404) {
     res.status(404)
   }
@@ -34,7 +32,7 @@ const handleRender = function (req, res, next) {
     res.redirect(status, url)
   }
 
-  res.send(renderFullPage(''))
+  res.send(renderFullPage(html))
 }
 
 app
