@@ -1,6 +1,6 @@
 {
-  "name": "App",
+  "name": "Home",
   "version": "0.0.0",
   "private": true,
-  "main": "./App.js"
+  "main": "./Home.js"
 }

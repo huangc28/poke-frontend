@@ -1,13 +1,39 @@
 import path from 'path'
+import React from 'react'
 import express from 'express'
-import { rendertoString } from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 import renderFullPage from '../util/render'
-// import { myapp } from '../../src/index'
+import routes from '../../src/routes'
 
 const app = express()
 
 const handleRender = function (req, res, next) {
+  const context = {}
+  let html = ''
+  html = renderToStaticMarkup(
+    <StaticRouter
+      location={req.url}
+      context={context}
+    >
+      { renderRoutes(routes) }
+    </StaticRouter>
+  )
+
+  console.log('BRYAN DEBUG 1 html', html)
+
+  if (context.status === 404) {
+    res.status(404)
+  }
+
+  if (context.status === 302) {
+    const { status, url } = context
+
+    res.redirect(status, url)
+  }
+
   res.send(renderFullPage(''))
 }
 

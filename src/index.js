@@ -1,11 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 
-import App from './containers/App'
+import routes from './routes'
+
+import App from './App'
 
 const renderApp = () => (
   ReactDOM.render(
-    <App />,
+    <BrowserRouter>
+      {
+        renderRoutes(routes)
+      }
+    </BrowserRouter>,
     document.getElementById('app')
   )
 )
