@@ -25,7 +25,7 @@ const PokePediaContainer = styled.div`
 const StepFlag = styled.img`
   position: absolute;
   top: 0%;
-  right: 4%;
+  right: 0%;
 `
 
 const MoscotContainer = styled.div`
