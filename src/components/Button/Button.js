@@ -10,11 +10,11 @@ const StyledButton = styled.button`
   background: #ff7aa8;
   border: 0;
   line-height: normal;
-  overflow: visible;
+  overflow: hidden;
   padding: 0 1rem 0 1rem;
   cursor: pointer;
   transition: background-color 0.5s ease, color 0.5s ease;
-  &:focus {
+  &.focus {
     outline: none;
   }
 `

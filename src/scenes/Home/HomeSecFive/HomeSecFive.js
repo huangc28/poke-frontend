@@ -20,7 +20,7 @@ const Section = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 3rem;
+  padding: 3rem 0 2.5rem 0;
 `
 
 const Container = styled.div`
