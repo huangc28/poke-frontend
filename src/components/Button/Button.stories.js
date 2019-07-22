@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 
 import Button from './Button'
 import FunnelImg from './images/48.png'
+import PlusImg from './images/49.png'
 
 storiesOf('Button', module)
   .add('Normal size button', () => (
@@ -16,8 +17,16 @@ storiesOf('Button', module)
       />
     </Button>
   ))
-  .add('Small size button', () => (
-    <Button>
-
+  .add('Small size button with black theme', () => (
+    <Button
+      text='看更多'
+      size='small'
+      theme='black'
+    >
+      <img
+        width={12}
+        height={12}
+        src={PlusImg}
+      />
     </Button>
   ))

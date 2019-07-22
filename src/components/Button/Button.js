@@ -2,12 +2,30 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+const sizeMap = {
+  height: {
+    normal: 3.4375,
+    small: 1.6875,
+  },
+}
+
+const themes = {
+  black: {
+    backgroundColor: '#000',
+    color: '#fff',
+  },
+  pink: {
+    backgroundColor: '#ff7aa8',
+    color: '#fff',
+  }
+}
+
 const StyledButton = styled.button`
   color: white;
   width: auto;
-  height: 3.4375rem;
+  height: ${props => props.height}rem;
   border-radius: 1rem;
-  background: #ff7aa8;
+  background: ${props => props.backgroundColor};
   border: 0;
   line-height: normal;
   overflow: hidden;
@@ -26,6 +44,8 @@ const Content = styled.div`
 
 const Icon = styled.div`
   margin-right: 0.625rem;
+  display: flex;
+  align-items: center;
 `
 
 const Text = styled.span`
@@ -33,16 +53,23 @@ const Text = styled.span`
   font-size: 1.25rem;
   display: flex;
   align-items: center;
+  color: ${props => props.color};
 `
-
 const Button = ({
   onClick,
   children,
   text,
+  size,
+  theme,
 }) => {
+  const buttonHeight = sizeMap.height[size] || sizeMap.height['normal']
+  const stheme = themes[theme] || themes['pink']
+
   return (
     <StyledButton
       onClick={onClick}
+      height={buttonHeight}
+      backgroundColor={stheme.backgroundColor}
     >
       <Content>
         {
@@ -52,8 +79,9 @@ const Button = ({
             </Icon>
           )
         }
-
-        <Text>
+        <Text
+          color={stheme.color}
+        >
           {text}
         </Text>
       </Content>
@@ -65,12 +93,16 @@ Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.element,
   text: PropTypes.string,
+  size: PropTypes.string,
+  theme: PropTypes.string,
 }
 
 Button.defaultProps = {
   onClick: () => {},
   children: null,
   Text: '',
+  size: 'normal',
+  theme: 'pink',
 }
 
 export default Button
