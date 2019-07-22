@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import StepFlagImg from './images/32.png'
 import Mascot from './images/12.png'
 import FunnelImg from './images/48.png'
+
 import CaptionText from '../../../components/CaptionText'
 import Button from '../../../components/Button'
 
@@ -42,7 +43,10 @@ const LeftBottom = styled.div`
 
 const CaptionContainer = styled.div``
 
-const Right = styled.div``
+const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const P = styled.p`
   margin-top: 0;

@@ -2,7 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 import StepFlagImg from './images/33.png'
+import PlusImg from './images/49.png'
+
 import CaptionText from '../../../components/CaptionText'
+import Button from '../../../components/Button'
 
 const Section = styled.section`
   position: relative;
@@ -34,7 +37,17 @@ const P = styled.p`
   line-height: 1.57;
 `
 
-const Right = styled.div``
+const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`
 
 const HomeSecSix = () => {
   return (
@@ -65,6 +78,19 @@ const HomeSecSix = () => {
               影片影片影片
             </P>
           </CaptionText>
+          <ButtonContainer>
+            <Button
+              text='看更多'
+              size='small'
+              theme='black'
+            >
+              <img
+                height={12}
+                width={12}
+                src={PlusImg}
+              />
+            </Button>
+          </ButtonContainer>
         </Right>
       </Container>
     </Section>
