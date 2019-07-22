@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   position: relative;
-  background: #fef9f9;
+  background-color: #fef9f9;
   border-radius: 0 0.4rem 0.4rem 0.4rem;
   width: 8.75rem;
   height: 8.75rem;
@@ -17,12 +17,12 @@ const Container = styled.div`
     left: 8.6%;
     width: 0;
     height: 0;
-    border: 24px solid transparent;
+    border: 1.5rem solid transparent;
     border-bottom-color: #fef9f9;
     border-top: 0;
     border-left: 0;
-    margin-left: -12px;
-    margin-top: -24px;
+    margin-left: -0.75rem;
+    margin-top: -1.5rem;
   }
 `
 
