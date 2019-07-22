@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import ArticleCarousel from './components/ArticleSlider'
 import Moscot from './images/10.png'
 import ConfusedMan from './images/11.png'
 import StepFlagImg from './images/31.png'
+
+import ArticleCarousel from './components/ArticleSlider'
 
 const Section = styled.section`
   padding-top: 2.125rem;

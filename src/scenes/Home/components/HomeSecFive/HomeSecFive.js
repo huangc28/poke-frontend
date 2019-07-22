@@ -5,8 +5,8 @@ import StepFlagImg from './images/32.png'
 import Mascot from './images/12.png'
 import FunnelImg from './images/48.png'
 
-import CaptionText from '../../../components/CaptionText'
-import Button from '../../../components/Button'
+import CaptionText from '@poke/components/CaptionText'
+import Button from '@poke/components/Button'
 
 const StepFlag = styled.img`
   position: absolute;

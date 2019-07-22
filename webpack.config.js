@@ -123,6 +123,7 @@ module.exports = (env, argv) => {
     },
     resolve: {
       extensions: ['*', '.js', '.jsx'],
+      '@poke/components': path.resolve(__dirname, '../poke-frontend/src/components'),
     },
     output: {
       path: path.resolve(__dirname, 'dist'),

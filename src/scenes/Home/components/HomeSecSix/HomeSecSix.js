@@ -3,9 +3,10 @@ import styled from 'styled-components'
 
 import StepFlagImg from './images/33.png'
 import PlusImg from './images/49.png'
+import MoscotImg from './images/14.png'
 
-import CaptionText from '../../../components/CaptionText'
-import Button from '../../../components/Button'
+import CaptionText from '@poke/components/CaptionText'
+import Button from '@poke/components/Button'
 
 const Section = styled.section`
   position: relative;
@@ -14,7 +15,7 @@ const Section = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3.3125rem 0 3.875rem 0;
+  padding: 3.3125rem 0 3.75rem 0;
 `
 
 const StepFlag = styled.img`
@@ -49,6 +50,12 @@ const ButtonContainer = styled.div`
   justify-content: flex-end;
 `
 
+const Moscot = styled.img`
+  position: absolute;
+  left: 52%;
+  top: -52%;
+`
+
 const HomeSecSix = () => {
   return (
     <Section>
@@ -72,6 +79,7 @@ const HomeSecSix = () => {
               '整合雜亂的寵物食品資訊',
               '建立快速方便的篩選工具',
             ]}
+            img={<Moscot src={MoscotImg} />}
           >
             <P>
               影片影片影片影片影片影片 <br/>
