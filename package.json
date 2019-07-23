@@ -4,11 +4,12 @@
   "description": "Poke frontend",
   "scripts": {
     "build": "webpack",
-    "build:server:dev": "NODE_ENV=development npm run build -- --watch --config ./webpack.config.server.babel.js --colors --display-error-details",
+    "build:server:dev": "NODE_ENV=development npm run build -- --env development --watch --config ./webpack.config.server.babel.js --colors --display-error-details",
     "build:server:prod": "NODE_ENV=production npm run build -- --env production --config ./webpack.config.server.babel.js --colors --display-error-details",
     "build:prod": "NODE_ENV=production npm run build -- --env production",
     "watch:client": "NODE_ENV=development node -r dotenv/config bin/webpack-dev-server.js",
-    "start": "concurrently --kill-others \"npm run watch:client\" \"npm run build:server:dev\" \"nodemon -r dotenv/config bin/server.js\"",
+    "dev": "concurrently --kill-others \"npm run watch:client\" \"npm run build:server:dev\" \"nodemon -r dotenv/config bin/server.js\"",
+    "start": "npm run build:server:prod && npm run build:prod && NODE_ENV=production node bin/server.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -23,6 +24,7 @@
     "@storybook/addons": "^5.1.9",
     "@storybook/react": "^5.1.9",
     "babel-loader": "^8.0.5",
+    "babel-plugin-styled-components": "^1.10.6",
     "clean-webpack-plugin": "^2.0.1",
     "concurrently": "^4.1.0",
     "css-loader": "^2.1.1",

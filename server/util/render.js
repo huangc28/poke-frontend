@@ -1,7 +1,13 @@
 // @todo
 //  production origin: /manifest.js
 //  development origin: /main.js
-const render = (html = '') => {
+const render = ({
+  html = '',
+  styleTags = '',
+  bundleInfo = {},
+}) => {
+  const chunks = bundleInfo.chunks()
+
   return `
     <!DOCTYPE html>
       <html>
@@ -25,6 +31,8 @@ const render = (html = '') => {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
+
+        ${styleTags}
       </head>
 
       <body>
@@ -32,13 +40,13 @@ const render = (html = '') => {
 
         <script
           type="application/javascript"
-          src="http://localhost:3006/manifest.js"
+          src="${chunks.javascript.manifest}"
         >
         </script>
 
         <script
           type="application/javascript"
-          src="http://localhost:3006/main.js"
+          src="${chunks.javascript.main}"
         >
         </script>
       </body>

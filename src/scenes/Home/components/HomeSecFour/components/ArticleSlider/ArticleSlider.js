@@ -155,8 +155,8 @@ const ArticleSlider = ({ width }) => {
     >
       <Slider {...settings}>
         {
-          articles.map(article => (
-            <div>
+          articles.map((article, index) => (
+            <div key={index}>
               <ArticleContainer>
                 <img src={article.link} />
                 <ArticleStatusBar>

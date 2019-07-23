@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
 
   const removeEmpty = plugins => (plugins.filter(i => !!i))
 
-  const PUBLIC_PATH = isDev ? `http://localhost:${process.env.DEV_SERVER_PORT}/` : '/';
+  const PUBLIC_PATH = isDev(env) ? `http://localhost:${process.env.DEV_SERVER_PORT}/` : '/';
 
   return {
     mode: isProd(env) ? 'production' : 'development',

@@ -1,13 +1,27 @@
 module.exports = function (api) {
   api.cache(true)
+  const env = {
+    'development': {
+      'plugins': [
+        [
+            'babel-plugin-styled-components',
+            { 'ssr': true, 'displayName': true, 'preprocess': false },
+        ],
+      ],
+    },
+    'production': {
+      'plugins': [
+        [
+            'babel-plugin-styled-components',
+            { 'ssr': true, 'displayName': true, 'preprocess': false },
+        ],
+      ],
+    },
+  }
 
   const presets = [
-
     [
       "@babel/preset-env"
-      //{
-        //"modules": false
-      //}
     ],
     "@babel/preset-react"
   ]
@@ -22,6 +36,7 @@ module.exports = function (api) {
   ]
 
   return {
+    env,
     presets,
     plugins,
   }
