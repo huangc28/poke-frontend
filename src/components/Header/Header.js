@@ -19,6 +19,7 @@ const HeaderRegion = styled.div`
   align-items: center;
 `
 const LogoContainer = styled.div`
+  cursor: pointer;
   margin-right: 2.125rem;
 `
 
@@ -62,6 +63,7 @@ const MenuContainer = styled.div`
   position: absolute;
   top: 0.5rem;
   padding-top: 2.5rem;
+  z-index: 20;
 `
 
 const NavContent = styled.div`

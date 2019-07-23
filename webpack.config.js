@@ -39,6 +39,7 @@ module.exports = (env, argv) => {
                 modules: true, // enable css module
                 importLoaders: 2,
                 localIdentName: '[name]__[local]__[hash:base64:5]',
+                exportOnlyLocals: true,
               },
             },
             'postcss-loader',
@@ -122,8 +123,10 @@ module.exports = (env, argv) => {
       ])
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx'],
-      '@poke/components': path.resolve(__dirname, '../poke-frontend/src/components'),
+      extensions: ['.js', '.jsx', '.scss'],
+      alias: {
+        '@poke/components': path.resolve(__dirname, './src/components'),
+      },
     },
     output: {
       path: path.resolve(__dirname, 'dist'),

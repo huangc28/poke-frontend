@@ -8,6 +8,7 @@ import StepFlagImg from './images/31.png'
 import ArticleCarousel from './components/ArticleSlider'
 
 const Section = styled.section`
+  position: relative;
   padding-top: 2.125rem;
   display: flex;
   flex-direction: column;

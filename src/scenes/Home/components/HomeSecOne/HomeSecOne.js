@@ -11,7 +11,7 @@ const Section = styled.section`
   padding-top: 9.75rem;
   display: flex;
   flex-direction: row;
-  background: url(${BGImg}) no-repeat center center fixed;
+  background: url(${BGImg}) no-repeat right top;
   background-size: cover;
   background-color: #f5f2f4;
   width: 100%;

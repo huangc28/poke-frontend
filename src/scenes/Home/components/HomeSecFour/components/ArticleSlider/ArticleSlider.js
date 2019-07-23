@@ -2,8 +2,6 @@ import React from 'react'
 import Slider from 'react-slick'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import leftArrowImg from './images/17.png'
 import rightArrowImg from './images/18.png'

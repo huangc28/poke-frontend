@@ -1,13 +1,13 @@
 import React from 'react'
 import { renderRoutes } from 'react-router-config'
+import { Reset } from 'styled-reset'
 
 const App = ({ route }) => {
   return (
-    <div>
+    <React.Fragment>
+      <Reset />
       { renderRoutes(route.routes) }
-
-      <div id='modal-body'></div>
-    </div>
+    </React.Fragment>
   )
 }
 

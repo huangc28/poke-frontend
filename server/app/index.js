@@ -13,14 +13,14 @@ const app = express()
 const handleRender = function (req, res, next) {
   const context = {}
   let html = ''
-  html = renderToStaticMarkup(
-    <StaticRouter
-      location={req.url}
-      context={context}
-    >
-      { renderRoutes(routes) }
-    </StaticRouter>
-  )
+  // html = renderToStaticMarkup(
+  //   <StaticRouter
+  //     location={req.url}
+  //     context={context}
+  //   >
+  //     { renderRoutes(routes) }
+  //   </StaticRouter>
+  // )
 
   if (context.status === 404) {
     res.status(404)
