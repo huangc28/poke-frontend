@@ -52,7 +52,7 @@ const HRContainer = styled.div`
   }
 `
 
-const Title = styled.h2`
+const Title = styled.h1`
   margin: 0;
   color: #05cab6;
   margin-right: 1.125rem;

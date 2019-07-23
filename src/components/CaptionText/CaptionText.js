@@ -7,6 +7,7 @@ const Container = styled.div`
     margin: 0 0 0.25rem 0;
     border-bottom: solid 1px;
     width: 18.125rem;
+    padding-bottom: 0.3125rem;
   }
 
   & > ul {

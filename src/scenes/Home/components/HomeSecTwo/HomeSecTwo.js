@@ -113,6 +113,7 @@ const FoodText = styled.div`
   & > h3 {
     border-bottom: solid 1px;
     max-width: 18.125rem;
+    padding-bottom: 0.3125rem;
   }
 
   & > p {
@@ -121,6 +122,7 @@ const FoodText = styled.div`
     margin: 0;
     line-height: 1.57;
     min-width: 16.6875rem;
+    margin-top: 0.5rem;
   }
 `
 

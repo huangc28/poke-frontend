@@ -1,11 +1,35 @@
 import React from 'react'
+import { createGlobalStyle } from 'styled-components'
 import { renderRoutes } from 'react-router-config'
-import { Reset } from 'styled-reset'
+import reset from 'styled-reset'
+
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1.3em;
+  }
+  h4 {
+    font-size: 1em;
+  }
+  h5 {
+    font-size: 0.8em;
+  }
+  h6 {
+    font-size: 0.7em;
+  }
+`
 
 const App = ({ route }) => {
   return (
     <React.Fragment>
-      <Reset />
+      <GlobalStyle />
       { renderRoutes(route.routes) }
     </React.Fragment>
   )
