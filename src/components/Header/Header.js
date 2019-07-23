@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+import HeaderMenu from '@poke/components/HeaderMenu'
+
+import Navbar, { NavElem } from './components/Navbar'
 import SearchBar from '../SearchBar'
 import { Account as AccIcon } from '../Icons'
 
@@ -27,32 +30,6 @@ const HeadLeft = styled.div`
   padding: 0.375rem 0 0.375rem 1.875rem;
   box-sizing: border-box;
   flex: 1;
-`
-
-const Navigation = styled.ul`
-  display: flex;
-  flex-direction: inline-flex;
-  list-style: none;
-  padding: 0;
-`
-
-const NavElem = styled.li`
-  border-right: solid 1px #8f8f8f;
-  padding: 0 0.625rem;
-  cursor: pointer;
-
-  &:last-child {
-    border-right: none;
-  }
-
-  :hover {
-    color: #f08cb0;
-  }
-
-  & > a {
-    text-decoration: none;
-    color:  #8f8f8f;
-  }
 `
 
 const LoginContainer = styled.div`
@@ -81,20 +58,20 @@ const HeadRight = styled.div`
   flex: 1;
 `
 
-const navElms = [
-  {
-    title: '小百科',
-    link: '',
-  },
-  {
-    title: '篩選器',
-    link: '',
-  },
-  {
-    title: '理念',
-    link: '',
-  },
-]
+const MenuContainer = styled.div`
+  visibility: hidden;
+  position: absolute;
+  top: 0.5rem;
+  padding-top: 2.5rem;
+`
+
+const NavContent = styled.div`
+  position: relative;
+
+  &:hover > ${MenuContainer} {
+    visibility: visible;
+  }
+`
 
 const Header = () => {
   return (
@@ -110,17 +87,30 @@ const Header = () => {
         </LogoContainer>
 
         {/* Navigation */}
-        <Navigation>
-          {
-            navElms.map(elm => (
-              <NavElem>
-                <Link to={elm.link}>
-                  {elm.title}
-                </Link>
-              </NavElem>
-            ))
-          }
-        </Navigation>
+        <Navbar>
+          <NavElem>
+            <NavContent>
+              <a onClick={evt => evt.preventDefault()}>
+                小百科
+              </a>
+              <MenuContainer>
+                <HeaderMenu />
+              </MenuContainer>
+            </NavContent>
+          </NavElem>
+
+          <NavElem>
+            <Link to=''>
+              篩選器
+            </Link>
+          </NavElem>
+
+          <NavElem>
+            <Link to=''>
+              理念
+            </Link>
+          </NavElem>
+        </Navbar>
       </HeadLeft>
 
       <HeadRight>

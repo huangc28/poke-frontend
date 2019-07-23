@@ -5,8 +5,10 @@ import { storiesOf } from '@storybook/react'
 import Header from './Header'
 
 storiesOf('Header', module)
-  .add('Page Header', () => (
-    <Router>
-      <Header />
-    </Router>
-  ))
+  .add('Page Header', () => {
+    return (
+      <Router>
+        <Header />
+      </Router>
+    )
+  })

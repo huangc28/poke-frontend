@@ -5,6 +5,8 @@ const App = ({ route }) => {
   return (
     <div>
       { renderRoutes(route.routes) }
+
+      <div id='modal-body'></div>
     </div>
   )
 }
