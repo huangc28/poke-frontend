@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import colors from '@poke/styles/colors'
+
 const Container = styled.div`
   & > h3 {
     margin: 0 0 0.25rem 0;
@@ -17,7 +19,7 @@ const Container = styled.div`
   }
 
   & > ul > li {
-    color: #ff85b1;
+    color: ${colors.tickleMePink};
     font-weight: bold;
     font-size: 0.875rem;
   }

@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import colors from '@poke/styles/colors'
+
 const Container = styled.div`
   position: relative;
-  background-color: #fef9f9;
+  background-color: ${colors.linen};
   border-radius: 0 0.4rem 0.4rem 0.4rem;
   width: 8.75rem;
   height: 8.75rem;
@@ -18,7 +20,7 @@ const Container = styled.div`
     width: 0;
     height: 0;
     border: 1.5rem solid transparent;
-    border-bottom-color: #fef9f9;
+    border-bottom-color: ${colors.linen};
     border-top: 0;
     border-left: 0;
     margin-left: -0.75rem;
@@ -41,7 +43,7 @@ const Content = styled.ul`
     cursor: pointer;
 
     &:hover {
-      background-color: #ffbbda;
+      background-color: ${colors.cottonCandy};
       color: black;
     }
 

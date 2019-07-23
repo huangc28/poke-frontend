@@ -5,12 +5,13 @@ import StepFlagImg from './images/33.png'
 import PlusImg from './images/49.png'
 import MoscotImg from './images/14.png'
 
+import colors from '@poke/styles/colors'
 import CaptionText from '@poke/components/CaptionText'
 import Button from '@poke/components/Button'
 
 const Section = styled.section`
   position: relative;
-  background-color: #e8e8e9;
+  background-color: ${colors.irons};
   display: flex;
   flex-direction: column;
   justify-content: center;

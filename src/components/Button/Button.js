@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import colors from '@poke/styles/colors'
+
 const sizeMap = {
   height: {
     normal: 3.4375,
@@ -11,12 +13,12 @@ const sizeMap = {
 
 const themes = {
   black: {
-    backgroundColor: '#000',
-    color: '#fff',
+    backgroundColor: colors.black,
+    color: colors.white,
   },
   pink: {
-    backgroundColor: '#ff7aa8',
-    color: '#fff',
+    backgroundColor: colors.tickleMePink,
+    color: colors.white,
   }
 }
 

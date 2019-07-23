@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import colors from '@poke/styles/colors'
+
 import Moscot from './images/10.png'
 import ConfusedMan from './images/11.png'
 import StepFlagImg from './images/31.png'
@@ -48,7 +50,7 @@ const TextContainer = styled.div`
   }
 
   & > ul > li {
-    color: #ff85b1;
+    color: ${colors.tickleMePink};
     font-weight: bold;
     font-size: 0.875rem;
   }
@@ -79,7 +81,7 @@ const PokePediaDesc = styled.p`
 const ArticlesContainer = styled.div`
   height: 14.375rem;
   width: 100%;
-  background-color: #f2f2f2;
+  background-color: ${colors.concrete};
   display: flex;
   flex-direction: column;
   justify-content: center;

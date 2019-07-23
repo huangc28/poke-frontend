@@ -126,6 +126,7 @@ module.exports = (env, argv) => {
       extensions: ['.js', '.jsx', '.scss'],
       alias: {
         '@poke/components': path.resolve(__dirname, './src/components'),
+        '@poke/styles': path.resolve(__dirname, './src/styles'),
       },
     },
     output: {

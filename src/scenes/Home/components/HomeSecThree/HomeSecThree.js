@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import colors from '@poke/styles/colors'
+
 import BGImg from './images/15.png'
 
 const Section = styled.section`
@@ -15,7 +17,7 @@ const Section = styled.section`
 `
 
 const Text = styled.p`
-  color: #fff;
+  color: ${colors.white};
   font-size: 1.125rem;
   font-weight: bold;
   line-height: 1.5;

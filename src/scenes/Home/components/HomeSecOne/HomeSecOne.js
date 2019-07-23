@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import colors from '@poke/styles/colors'
+
 import Deer from './images/04.png'
 import BearChild from './images/05.png'
 import BGImg from './images/06.png'
@@ -13,7 +15,7 @@ const Section = styled.section`
   flex-direction: row;
   background: url(${BGImg}) no-repeat right top;
   background-size: cover;
-  background-color: #f5f2f4;
+  background-color: ${colors.hintOfRed};
   width: 100%;
   height: 29.25rem;
   box-sizing: border-box;

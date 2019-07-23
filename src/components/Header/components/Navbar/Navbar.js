@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import colors from '@poke/styles/colors'
+
 const Navigation = styled.ul`
   display: flex;
   flex-direction: inline-flex;
@@ -9,7 +11,7 @@ const Navigation = styled.ul`
   padding: 0;
 `
 const NavElem = styled.li`
-  border-right: solid 1px #8f8f8f;
+  border-right: solid 1px ${colors.gray};
   padding: 0 0.625rem;
   cursor: pointer;
 
@@ -18,12 +20,12 @@ const NavElem = styled.li`
   }
 
   :hover {
-    color: #f08cb0;
+    color: ${colors.mauvelous};
   }
 
   & > a {
     text-decoration: none;
-    color:  #8f8f8f;
+    color: ${colors.gray};
   }
 `
 

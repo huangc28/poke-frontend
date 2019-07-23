@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import colors from '@poke/styles/colors'
+
 import YoutubeIcon from './images/23.png'
 import GooglePlusIcon from './images/24.png'
 import FacebookIcon from './images/25.png'
@@ -15,8 +17,8 @@ const FooterContainer = styled.footer`
 
 const Upper = styled.div`
   width:100%;
-  background-color: #3f4e69;
-  color: #9c9d9e;
+  background-color: ${colors.fiord};
+  color: ${colors.osloGray};
   display: flex;
   justify-content: center;
   padding: 1.625rem 0 1rem 0;
@@ -30,8 +32,8 @@ const Bottom = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: #232c48;
-  color: #00d9c4;
+  background-color: ${colors.cloudBurst};
+  color: ${colors.robinsEggBlue};
   padding: 1.375rem 0 1.125rem 0;
 
   & > p {
@@ -54,7 +56,7 @@ const HRContainer = styled.div`
 
 const Title = styled.h1`
   margin: 0;
-  color: #05cab6;
+  color: ${colors.robinsEggBlue};
   margin-right: 1.125rem;
   white-space: nowrap;
 `

@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+import colors from '@poke/styles/colors'
+
 import Logo from './images/50.png'
 import Navbar, { NavElem } from './components/Navbar'
 import HeaderMenu from './components/HeaderMenu'
@@ -14,7 +16,7 @@ const HeaderRegion = styled.div`
   justify-content: space-evenly;
   width: 100%;
   height: 4rem;
-  background-color: #f2f2f2;
+  background-color: ${colors.concrete};
   box-shadow: 0 4px 1px -2px  rgba(0,0,0,0.30);
   align-items: center;
 `
@@ -39,7 +41,7 @@ const LoginContainer = styled.div`
 
   & > a {
     text-decoration: none;
-    color:  #8f8f8f;
+    color: ${colors.gray};
   }
 `
 
@@ -68,7 +70,7 @@ const MenuContainer = styled.div`
 
 const NavContent = styled.div`
   position: relative;
-  color: #8f8f8f;
+  color: ${colors.gray};
 
   &:hover > ${MenuContainer} {
     visibility: visible;
@@ -76,7 +78,7 @@ const NavContent = styled.div`
 
   &:hover > a {
     text-decoration: none;
-    color:  #8f8f8f;
+    color: ${colors.gray};
   }
 `
 

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { MagnifyIcon } from '../Icons'
+
+import colors from '@poke/styles/colors'
+import { MagnifyIcon } from '@poke/components/Icons'
 
 const SearchBarContainer = styled.span`
   display: flex;
@@ -15,11 +17,11 @@ const SearchBarInput = styled.input`
   border-bottom-right-radius: 0.5rem;
   outline: none;
   border: none;
-  background-color: #c5c6c7;
-  color: #fff;
-  caret-color: #000;
+  background-color: ${colors.silverSand};
+  color: ${colors.white};
+  caret-color: ${colors.black};
   ::placeholder {
-    color: #fff;
+    color: ${colors.white};
   }
 `
 
@@ -28,7 +30,7 @@ const IconContainer = styled.span`
   align-items: center;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
-  background-color: #c5c6c7;
+  background-color: ${colors.silverSand};
   padding-left: 0.125rem;
 `
 
