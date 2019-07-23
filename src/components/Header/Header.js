@@ -2,10 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import HeaderMenu from '@poke/components/HeaderMenu'
-
 import Logo from './images/50.png'
 import Navbar, { NavElem } from './components/Navbar'
+import HeaderMenu from './components/HeaderMenu'
 import SearchBar from '../SearchBar'
 import { Account as AccIcon } from '../Icons'
 
@@ -16,9 +15,8 @@ const HeaderRegion = styled.div`
   width: 100%;
   height: 4rem;
   background-color: #f2f2f2;
-  box-shadow: 0 4px 1px -2px  rgba(0,0,0,0.30);;
+  box-shadow: 0 4px 1px -2px  rgba(0,0,0,0.30);
   align-items: center;
-;
 `
 const LogoContainer = styled.div`
   margin-right: 2.125rem;
