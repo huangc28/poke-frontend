@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import HeaderMenu from '@poke/components/HeaderMenu'
 
+import Logo from './images/50.png'
 import Navbar, { NavElem } from './components/Navbar'
 import SearchBar from '../SearchBar'
 import { Account as AccIcon } from '../Icons'
@@ -67,9 +68,15 @@ const MenuContainer = styled.div`
 
 const NavContent = styled.div`
   position: relative;
+  color: #8f8f8f;
 
   &:hover > ${MenuContainer} {
     visibility: visible;
+  }
+
+  &:hover > a {
+    text-decoration: none;
+    color:  #8f8f8f;
   }
 `
 
@@ -82,7 +89,7 @@ const Header = () => {
           <img
             height={44}
             width={132}
-            src='http://via.placeholder.com/132x44?text=Logo+text'
+            src={Logo}
           />
         </LogoContainer>
 

@@ -42,6 +42,7 @@ const Content = styled.ul`
 
     &:hover {
       background-color: #ffbbda;
+      color: black;
     }
 
     & > div {
