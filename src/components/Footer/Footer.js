@@ -42,6 +42,7 @@ const Bottom = styled.div`
 const TitleContainer = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 1.25rem;
 `
 
 const HRContainer = styled.div`
@@ -80,6 +81,7 @@ const SocialMedia = styled.div`
 
 const SocialMediaIcons = styled.div`
   display: flex;
+  margin-top: 0.75rem;
 
   & > img {
     margin-right: 0.25rem;

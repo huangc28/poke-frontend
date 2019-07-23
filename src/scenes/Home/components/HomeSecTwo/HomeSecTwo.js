@@ -13,20 +13,17 @@ import FoodTwo from './images/39.png'
 import FoodThree from './images/40.png'
 
 const Section = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: 4.1875rem 1fr 1fr 4.1875rem;
+  display: flex;
+  flex-direction: column;
   background: url(${BGImg}) no-repeat center center fixed;
   background-size: cover;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 33.125rem;
+  padding: 4.125rem 0;
 `
 
 const IntroUpper = styled.div`
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
   display: flex;
   flex-direction: row;
 `
@@ -37,6 +34,7 @@ const UpperLeft = styled.div`
   justify-content: flex-start;
   width: 100%;
   box-sizing: border-box;
+  margin-right: 2rem;
 
   & > h3 {
     max-width: 290px;
@@ -50,13 +48,13 @@ const UpperLeft = styled.div`
     font-size: 0.875rem;
     white-space: nowarp;
     margin-top: 0.5rem;
+    line-height: 1.57;
     margin-bottom: 0;
   }
 `
 
 const UpperRight = styled.div`
   display: flex;
-  flex-grow: 3;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
@@ -73,19 +71,16 @@ const UpperRight = styled.div`
 `
 
 const IntroLower = styled.div`
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4;
-
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
 `
 
 const LowerLeft = styled.div`
-  flex-grow: 3;
   display: flex;
   flex-direction: column;
+  margin-right: 2.625rem;
 `
 
 const FoodDecideImg = styled.img`
@@ -122,7 +117,10 @@ const FoodText = styled.div`
 
   & > p {
     font-size: 0.875rem;
-    margin: 0
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.57;
+    min-width: 16.6875rem;
   }
 `
 
