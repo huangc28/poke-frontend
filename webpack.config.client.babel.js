@@ -26,7 +26,8 @@ const plugins = removeEmpty([
   ifDev(new webpack.NoEmitOnErrorsPlugin()),
 
   new CleanWebpackPlugin({
-    cleanOnceBeforeBuildPatterns: ['**/*', '!server/server.js']
+    verbose: true,
+    cleanOnceBeforeBuildPatterns: ['dist', '!server*']
   }),
 ])
 

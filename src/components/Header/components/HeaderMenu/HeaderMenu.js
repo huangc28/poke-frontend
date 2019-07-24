@@ -30,51 +30,49 @@ const Container = styled.div`
   }
 `
 
-const Li = compose(size12)(styled.li``)
+const Li = compose(size12)(styled.li`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 1rem;
+  height: 2.8125rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${colors.cottonCandy};
+    color: black;
+  }
+
+  & > div {
+    background-color: black;
+    border-radius: 0.5rem;
+    width: 0.3125rem;
+    height: 0.5rem;
+    margin-right: 0.25rem;
+  }
+`)
 
 const Content = styled.ul`
   margin: 0;
   padding: 0;
-
-  & > ${Li} {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 1rem;
-    height: 2.8125rem;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${colors.cottonCandy};
-      color: black;
-    }
-
-    & > div {
-      background-color: black;
-      border-radius: 0.5rem;
-      width: 0.3125rem;
-      height: 0.5rem;
-      margin-right: 0.25rem;
-    }
-  }
 `
 
 const HeaderMenu = () => {
   return (
     <Container>
       <Content>
-        <li>
+        <Li>
           <div />
           營養小百科
-        </li>
-        <li>
+        </Li>
+        <Li>
           <div />
           寵物觀察日記
-        </li>
-        <li>
+        </Li>
+        <Li>
           <div />
           飯飯學問大
-        </li>
+        </Li>
       </Content>
     </Container>
   )
