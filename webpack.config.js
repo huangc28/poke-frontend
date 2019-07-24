@@ -127,6 +127,7 @@ module.exports = (env, argv) => {
       alias: {
         '@poke/components': path.resolve(__dirname, './src/components'),
         '@poke/styles': path.resolve(__dirname, './src/styles'),
+        '@poke/util': path.resolve(__dirname, './src/util'),
       },
     },
     output: {

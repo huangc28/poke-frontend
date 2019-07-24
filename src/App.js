@@ -3,6 +3,8 @@ import { createGlobalStyle } from 'styled-components'
 import { renderRoutes } from 'react-router-config'
 import reset from 'styled-reset'
 
+console.log('App.js', reset)
+
 const GlobalStyle = createGlobalStyle`
   ${reset}
 

@@ -2,14 +2,16 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import styled from 'styled-components'
 
+import compose from '@poke/util/compose'
+import { size14 } from '@poke/styles/font'
+
 import CaptionText from './CaptionText'
 import MascotImg from './images/11.png'
 
-const P = styled.p`
+const P = compose(size14)(styled.p`
   margin-top: 0;
-  font-size: 0.875rem;
   line-height: 1.57;
-`
+`)
 
 const Mascot = styled.img`
   position: absolute;

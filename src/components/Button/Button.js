@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import compose from '@poke/util/compose'
 import colors from '@poke/styles/colors'
+import { size20 } from '@poke/styles/font'
 
 const sizeMap = {
   height: {
@@ -50,13 +52,12 @@ const Icon = styled.div`
   align-items: center;
 `
 
-const Text = styled.span`
-  font-size: 20px;
-  font-size: 1.25rem;
+const Text = compose(size20)(styled.span`
   display: flex;
   align-items: center;
   color: ${props => props.color};
-`
+`)
+
 const Button = ({
   onClick,
   children,
