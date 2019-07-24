@@ -3,6 +3,8 @@ import Slider from 'react-slick'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import { size12 } from '@poke/styles/font'
+
 import leftArrowImg from './images/17.png'
 import rightArrowImg from './images/18.png'
 import LoveImg from './images/19.png'
@@ -76,6 +78,8 @@ const ArticleStatusBar = styled.div`
   align-items: center;
 `
 
+const Span = size12(styled.span``)
+
 const LikeContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -86,10 +90,6 @@ const LikeContainer = styled.div`
     width: 0.75rem;
     height: 0.75rem;
     margin-right: 0.25rem;
-  }
-
-  & > span {
-    font-size: 0.75em;
   }
 `
 
@@ -102,10 +102,6 @@ const ReadContainer = styled.div`
     width: 0.75rem;
     height: 0.75rem;
     margin-right: 0.25rem;
-  }
-
-  & > span {
-    font-size: 0.75em;
   }
 `
 
@@ -162,15 +158,15 @@ const ArticleSlider = ({ width }) => {
                 <ArticleStatusBar>
                   <LikeContainer>
                     <img src={LoveImg} />
-                    <span>
+                    <Span>
                       {article.likes}
-                    </span>
+                    </Span>
                   </LikeContainer>
                   <ReadContainer>
                     <img src={ReadImg} />
-                    <span>
+                    <Span>
                       {article.read}
-                    </span>
+                    </Span>
                   </ReadContainer>
                 </ArticleStatusBar>
               </ArticleContainer>

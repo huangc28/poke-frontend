@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import compose from '@poke/util/compose'
 import colors from '@poke/styles/colors'
+import { bold, size14 } from '@poke/styles/font'
 
 import Moscot from './images/10.png'
 import ConfusedMan from './images/11.png'
@@ -36,6 +38,11 @@ const MoscotContainer = styled.div`
   margin-right: 5.625rem;
 `
 
+
+const Li = compose(size14, bold)(styled.li`
+  color: ${colors.tickleMePink};
+`)
+
 const TextContainer = styled.div`
   & > h3 {
     margin: 0 0 0.25rem 0;
@@ -47,12 +54,6 @@ const TextContainer = styled.div`
     padding-left: 1.125rem;
     margin: 0.5rem 0 0.625rem 0;
     list-style-type: square;
-  }
-
-  & > ul > li {
-    color: ${colors.tickleMePink};
-    font-weight: bold;
-    font-size: 0.875rem;
   }
 
   & > ul > li > span {
@@ -108,12 +109,12 @@ const HomeSecFour = () => {
             剝殼小百科
           </h3>
           <ul>
-            <li>
+            <Li>
               <span> 專業科學的背景 </span>
-            </li>
-            <li>
+            </Li>
+            <Li>
               <span> 提供優質易懂的 『寵物飲食文章』</span>
-            </li>
+            </Li>
           </ul>
           <PokePediaDescContainer>
             <PokePediaDesc>

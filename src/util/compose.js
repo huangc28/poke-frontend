@@ -11,5 +11,7 @@ export default function compose(...funcs) {
     return funcs[0]
   }
 
-  return funcs.reduceRight((args, fn) => fn(args), args)
+  return arg => {
+    return funcs.reduceRight((arg, fn) => fn(arg), arg)
+  }
 }

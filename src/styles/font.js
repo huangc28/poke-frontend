@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-export const Bold = component => styled(component)`
+export const bold = component => styled(component)`
   font-weight: 700;
 `
 
-export const Normal = component => styled(component)`
+export const normal = component => styled(component)`
   font-weight: 400;
 `
 
