@@ -12,9 +12,7 @@ module.exports = (env, argv) => {
 
   const PUBLIC_PATH = isDev ? `http://localhost:${process.env.DEV_SERVER_PORT}/` : '/';
 
-  console.log('BRYAN DEBUG PUBLIC_PATH', PUBLIC_PATH)
-
-  const config = {
+  return {
     mode: isProd ? 'production' : 'development',
     devtool: isProd ? 'source-map': 'eval',
     context: path.resolve(__dirname, 'src'),
@@ -147,8 +145,4 @@ module.exports = (env, argv) => {
       }),
     ]
   }
-
-  console.log('BRYAN DEBUG SPOT 2 webpack config', config)
-
-  return config
 }

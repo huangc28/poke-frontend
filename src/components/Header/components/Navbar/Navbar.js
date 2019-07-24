@@ -40,11 +40,11 @@ const Navbar = ({ children }) => {
 }
 
 Navbar.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.elementType),
+  children: PropTypes.array,
 }
 
 Navbar.defaultProps = {
-  children: [],
+  children: [null],
 }
 
 export { NavElem }

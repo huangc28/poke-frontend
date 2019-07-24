@@ -1,5 +1,5 @@
 // Color name is reference based on http://chir.ag/projects/name-that-color
-const colors = {
+export default {
   black: '#000',
   white: '#fff',
 
@@ -16,6 +16,5 @@ const colors = {
   silverSand: '#c5c6c7',
   hintOfRed: '#f5f2f4',
   iron: '#e8e8e9',
+  athensGray: '#ebebec',
 }
-
-export default colors

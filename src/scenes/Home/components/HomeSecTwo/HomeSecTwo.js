@@ -163,7 +163,10 @@ const HomeSecTwo = () => {
 
         <UpperRight>
           {
-            prodImages.map(imgSrc => <img src={imgSrc} />)
+            prodImages
+              .map((imgSrc, index) =>
+                <img key={index} src={imgSrc} />
+              )
           }
         </UpperRight>
       </IntroUpper>
@@ -174,7 +177,13 @@ const HomeSecTwo = () => {
 
           <FoodImgContainer>
             {
-              foodImages.map(imgSrc => <img src={imgSrc} />)
+              foodImages
+                .map((imgSrc, index) =>
+                  <img
+                    src={imgSrc}
+                    key={index}
+                  />
+                )
             }
           </FoodImgContainer>
         </LowerLeft>

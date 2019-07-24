@@ -11,7 +11,7 @@ import Button from '@poke/components/Button'
 
 const Section = styled.section`
   position: relative;
-  background-color: ${colors.irons};
+  background-color: ${colors.athensGray};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,9 +67,9 @@ const HomeSecSix = () => {
             width='429'
             height='226'
             src='https://www.youtube.com/embed/iPW75ZO4pIA'
-            frameborder='0'
+            frameBorder='0'
             allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </Left>
 

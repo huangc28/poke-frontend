@@ -152,7 +152,12 @@ const Footer = () => {
 
           <SocialMediaIcons>
             {
-              icons.map(icon => <img src={icon}/>)
+              icons.map((icon, index) =>
+                <img
+                  key={index}
+                  src={icon}
+                />
+              )
             }
           </SocialMediaIcons>
         </SocialMedia>
