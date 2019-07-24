@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import compose from '@poke/util/compose'
+import { size12 } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 
 const Container = styled.div`
@@ -28,18 +30,18 @@ const Container = styled.div`
   }
 `
 
+const Li = compose(size12)(styled.li``)
+
 const Content = styled.ul`
   margin: 0;
   padding: 0;
 
-  & > li {
+  & > ${Li} {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding-left: 1rem;
     height: 2.8125rem;
-    font-size: 12px;
-    font-size: 0.75rem;
     cursor: pointer;
 
     &:hover {

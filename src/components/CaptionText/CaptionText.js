@@ -2,7 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import compose from '@poke/util/compose'
+import { size14 } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
+
+const Li = compose(size14)(styled.li`
+  color: ${colors.tickleMePink};
+`)
 
 const Container = styled.div`
   & > h3 {
@@ -16,12 +22,6 @@ const Container = styled.div`
     padding-left: 1.125rem;
     margin: 0.5rem 0 0.625rem 0;
     list-style-type: square;
-  }
-
-  & > ul > li {
-    color: ${colors.tickleMePink};
-    font-weight: bold;
-    font-size: 0.875rem;
   }
 
   & > ul > li > span {
@@ -46,9 +46,9 @@ const CaptionText = ({ title, highLights, img, children }) => {
           <ul>
             {
               highLights.map((elem, index) => (
-                <li key={index}>
+                <Li key={index}>
                   <span> {elem} </span>
-                </li>
+                </Li>
               ))
             }
           </ul>

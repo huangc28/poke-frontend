@@ -5,6 +5,7 @@ import StepFlagImg from './images/32.png'
 import Mascot from './images/12.png'
 import FunnelImg from './images/48.png'
 
+import { size14 } from '@poke/styles/font'
 import CaptionText from '@poke/components/CaptionText'
 import Button from '@poke/components/Button'
 
@@ -48,11 +49,11 @@ const Right = styled.div`
   flex-direction: column;
 `
 
-const P = styled.p`
+const P = size14(styled.p`
   margin-top: 0;
-  font-size: 0.875rem;
   line-height: 1.57;
-`
+`)
+
 const HomeSecFive = () => {
   return (
     <Section>
