@@ -47,7 +47,7 @@ const UpperLeft = styled.div`
 
   & > p {
     font-size: 0.875rem;
-    white-space: nowarp;
+    white-space: nowrap;
     margin-top: 0.5rem;
     line-height: 1.57;
     margin-bottom: 0;
