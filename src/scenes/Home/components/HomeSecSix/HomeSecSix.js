@@ -17,6 +17,7 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   padding: 3.3125rem 0 3.75rem 0;
+  box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
 `
 
 const StepFlag = styled.img`

@@ -21,6 +21,7 @@ const Section = styled.section`
   align-items: center;
   width: 100%;
   padding: 4.125rem 0;
+  box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
 `
 
 const IntroUpper = styled.div`

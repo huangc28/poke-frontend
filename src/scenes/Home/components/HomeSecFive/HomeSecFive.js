@@ -23,6 +23,7 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   padding: 3rem 0 2.5rem 0;
+  box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
 `
 
 const Container = styled.div`

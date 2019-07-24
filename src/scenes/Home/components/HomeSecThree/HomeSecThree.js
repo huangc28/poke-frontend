@@ -14,6 +14,7 @@ const Section = styled.section`
   background-size: cover;
   width: 100%;
   height: 7.3125rem;
+  box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
 `
 
 const Text = styled.p`
