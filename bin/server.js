@@ -6,12 +6,7 @@ const startServer = require('universal-webpack/server')
 const settings = require('../universal-webpack-settings.json')
 const webpackConfFunc = require('../webpack.config')
 
-
-const webpackEnv = process.env.NODE_ENV === 'development'
-  ? { development: true }
-  : { production: true }
-
-const webpackConf = webpackConfFunc(webpackEnv)
+const webpackConf = webpackConfFunc()
 
 webpackConf.context = path.resolve(__dirname, '../')
 

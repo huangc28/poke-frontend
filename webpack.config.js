@@ -2,19 +2,21 @@ const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, argv) => {
-  const isProd = env => !!env.production
-  const isDev = env => !isProd(env)
+  const isProd = process.env.NODE_ENV === 'production'
+  const isDev = process.env.NODE_ENV === 'development'
 
-  const ifDev = plugin => isDev(env) && plugin || null
-  const ifProd = plugin => isProd(env) && plugin || null
+  const ifDev = plugin => isDev && plugin || null
+  const ifProd = plugin => isProd && plugin || null
 
   const removeEmpty = plugins => (plugins.filter(i => !!i))
 
-  const PUBLIC_PATH = isDev(env) ? `http://localhost:${process.env.DEV_SERVER_PORT}/` : '/';
+  const PUBLIC_PATH = isDev ? `http://localhost:${process.env.DEV_SERVER_PORT}/` : '/';
 
-  return {
-    mode: isProd(env) ? 'production' : 'development',
-    devtool: isProd(env) ? 'source-map': 'eval',
+  console.log('BRYAN DEBUG PUBLIC_PATH', PUBLIC_PATH)
+
+  const config = {
+    mode: isProd ? 'production' : 'development',
+    devtool: isProd ? 'source-map': 'eval',
     context: path.resolve(__dirname, 'src'),
     entry: removeEmpty([
       path.resolve(__dirname, 'src/index.js'),
@@ -132,11 +134,12 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       publicPath: PUBLIC_PATH, // @todo publicPath might change due to webpackHotReplacement
+      // publicPath: '/',
       // @todo If we use webpack isomorphic tool, then we can enable this. We need to
       // let node to know which bundle to load. We can achieve this only by using webpack
       // isomorphic-tool
       // filename: isProd(env) ? '[name].[chunkhash].js' : '[name].[hash].js',
-      filename: isProd(env) ? '[name].[chunkhash].js' : '[name].js',
+      filename: isProd ? '[name].[chunkhash].js' : '[name].js',
     },
     plugins: [
       new MiniCssExtractPlugin({
@@ -144,4 +147,8 @@ module.exports = (env, argv) => {
       }),
     ]
   }
+
+  console.log('BRYAN DEBUG SPOT 2 webpack config', config)
+
+  return config
 }

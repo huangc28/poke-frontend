@@ -1,12 +1,11 @@
-// @todo
-//  production origin: /manifest.js
-//  development origin: /main.js
 const render = ({
   html = '',
   styleTags = '',
   bundleInfo = {},
 }) => {
   const chunks = bundleInfo.chunks()
+
+  console.log('BRYAN DEBUG render chunk info', chunks)
 
   return `
     <!DOCTYPE html>

@@ -3,11 +3,7 @@ import { server } from 'universal-webpack/config'
 import settings from './universal-webpack-settings'
 import webpackConfigFunc from './webpack.config'
 
-const webpackEnv = process.env.NODE_ENV === 'development'
-  ? { development: true }
-  : { production: true }
-
-const webpackConfig = webpackConfigFunc(webpackEnv)
+const webpackConfig = webpackConfigFunc()
 
 // The context of "webpack.config.js" is set to "kikibuy-frontend/src".
 // However, server/index.js can not be found in that context for server

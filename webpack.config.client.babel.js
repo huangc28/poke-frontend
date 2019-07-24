@@ -10,11 +10,7 @@ const ifDev = plugin => isDev && plugin || null
 
 const removeEmpty = plugins => plugins.filter(p => !!p)
 
-const webpackEnv = process.env.NODE_ENV === 'development'
-  ? { development: true }
-  : { production: true }
-
-const webpackConfig = webpackConfigFunc(webpackEnv)
+const webpackConfig = webpackConfigFunc()
 
 const optimization = {
   runtimeChunk: {
