@@ -6,6 +6,15 @@ import reset from 'styled-reset'
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
+  @font-face {
+    font-family: 'PokeFont';
+    src: url('static/font/msjh_0.woff2') format('woff2');
+  }
+
+  body {
+    font-family: 'PokeFont', Fallback, sans-serif;
+  }
+
   h1 {
     font-size: 2em;
   }
