@@ -5,8 +5,6 @@ const render = ({
 }) => {
   const chunks = bundleInfo.chunks()
 
-  console.log('BRYAN DEBUG render chunk info', chunks)
-
   return `
     <!DOCTYPE html>
       <html>
@@ -37,9 +35,16 @@ const render = ({
       <body>
         <div id="app">${html}</div>
 
+
         <script
           type="application/javascript"
           src="${chunks.javascript.manifest}"
+        >
+        </script>
+
+        <script
+          type='application/javascript'
+          src='${chunks.javascript['vendor~main']}'
         >
         </script>
 

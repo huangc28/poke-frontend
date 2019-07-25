@@ -1,5 +1,5 @@
 const path = require('path')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = (env, argv) => {
   const isProd = process.env.NODE_ENV === 'production'
@@ -144,6 +144,6 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin({
         filename: '[name].css'
       }),
-    ]
+    ],
   }
 }
