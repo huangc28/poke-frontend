@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import TerserPlugin from 'terser-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import { client } from 'universal-webpack/config'
 
@@ -44,6 +45,12 @@ const plugins = removeEmpty([
   }),
 
   new BundleAnalyzerPlugin(),
+
+  new TerserPlugin({
+    terserOptions: {
+      warnings: true,
+    }
+  }),
 ])
 
 webpackConfig.optimization = optimization
