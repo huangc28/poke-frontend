@@ -1,5 +1,8 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const dotenv = require('dotenv').config({
+  path: path.resolve(__dirname, './.env')
+})
 
 module.exports = (env, argv) => {
   const isProd = process.env.NODE_ENV === 'production'
@@ -10,7 +13,7 @@ module.exports = (env, argv) => {
 
   const removeEmpty = plugins => (plugins.filter(i => !!i))
 
-  const PUBLIC_PATH = isDev ? `http://localhost:${process.env.DEV_SERVER_PORT}/` : '/';
+  const PUBLIC_PATH = isDev ? `http://localhost:${dotenv.parsed.DEV_SERVER_PORT}/` : '/';
 
   return {
     mode: isProd ? 'production' : 'development',
@@ -18,7 +21,7 @@ module.exports = (env, argv) => {
     context: path.resolve(__dirname, 'src'),
     entry: removeEmpty([
       path.resolve(__dirname, 'src/index.js'),
-      ifDev(`webpack-hot-middleware/client?path=http://localhost:${process.env.DEV_SERVER_PORT}/__webpack_hmr&timeout=20000`),
+      ifDev(`webpack-hot-middleware/client?path=http://localhost:${dotenv.parsed.DEV_SERVER_PORT}/__webpack_hmr&timeout=20000`),
     ]),
     module: {
       rules: removeEmpty([
@@ -101,23 +104,24 @@ module.exports = (env, argv) => {
           options: {
             limit: 50000,
             mimetype: 'application/font-woff',
-            name: './font/[hash].[ext]',
+            name: '[hash].[ext]',
           },
         },
         {
           test: /\.woff2(\?\.*)?$/,
-          loader: 'url-loader',
+          loader: 'file-loader',
           options: {
             limit: 50000,
             mimetype: 'application/font-woff2',
-            name: './font/[hash].[ext]',
+            name: '[hash].[ext]',
+            publicPath: PUBLIC_PATH,
           },
         },
         {
           test: /\.ttf$|\.eot$/,
           loader: 'file-loader',
           options: {
-            name: 'font/[hash].[ext]',
+            name: '[hash].[ext]',
           },
         },
       ])
@@ -133,11 +137,9 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       publicPath: PUBLIC_PATH, // @todo publicPath might change due to webpackHotReplacement
-      // publicPath: '/',
       // @todo If we use webpack isomorphic tool, then we can enable this. We need to
       // let node to know which bundle to load. We can achieve this only by using webpack
       // isomorphic-tool
-      // filename: isProd(env) ? '[name].[chunkhash].js' : '[name].[hash].js',
       filename: isProd ? '[name].[chunkhash].js' : '[name].js',
     },
     plugins: [

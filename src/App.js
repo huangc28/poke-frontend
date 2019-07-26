@@ -3,12 +3,14 @@ import { createGlobalStyle } from 'styled-components'
 import { renderRoutes } from 'react-router-config'
 import reset from 'styled-reset'
 
+import MSJH from '@poke/styles/font-themes/msjh_0.woff2'
+
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
   @font-face {
     font-family: 'PokeFont';
-    src: url('static/font/msjh_0.woff2') format('woff2');
+    src: url(${MSJH}) format('woff2');
   }
 
   body {
