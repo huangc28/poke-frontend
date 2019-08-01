@@ -1,0 +1,6 @@
+{
+  "name": "Knowledge",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Knowledge.js"
+}

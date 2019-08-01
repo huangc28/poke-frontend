@@ -1,0 +1,6 @@
+{
+  "name": "NormalIntro",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./NormalIntro.js"
+}

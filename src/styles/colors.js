@@ -17,4 +17,5 @@ export default {
   hintOfRed: '#f5f2f4',
   iron: '#e8e8e9',
   athensGray: '#ebebec',
+  pickledBluewood: '#354560'
 }

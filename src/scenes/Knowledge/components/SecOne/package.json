@@ -1,0 +1,6 @@
+{
+  "name": "SecOne",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./SecOne.js"
+}
