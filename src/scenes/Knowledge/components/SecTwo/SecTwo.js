@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { size12Mixin, size14Mixin, size20Mixin, size26Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
@@ -73,6 +74,13 @@ const Stat = styled.div`
     ${size12Mixin}
     margin: 0 0 0 0.25rem;
     color: ${colors.white}
+  }
+
+  & > a {
+    ${size12Mixin}
+    text-decoration: none;
+    margin: 0 0 0 0.25rem;
+    color: ${colors.white};
   }
 `
 
@@ -152,11 +160,11 @@ const SecTwo = () => {
               <AccIcon
                 fontSize='small'
               />
-              <p>
-                more
-              </p>
-          </Stat>
 
+              <Link to=''>
+                more
+              </Link>
+            </Stat>
           </More>
         </SummaryContent>
       </Right>
