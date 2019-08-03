@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { size12Mixin } from '@poke/styles/font'
@@ -13,31 +13,76 @@ const Stat = styled.div`
   & > p {
     ${size12Mixin}
     margin: 0 0 0 0.25rem;
-    color: ${colors.white}
+    color: ${props => props.theme.fontColor}
+  }
+
+  & > a {
+    ${size12Mixin}
+    text-decoration: none;
+    margin: 0 0 0 0.25rem;
+    color: ${props => props.theme.fontColor};
   }
 `
-const IconStat = ({ onClick, icon, text }) => {
-  return (
-    <Stat>
-      { icon }
 
-      <p>
-        2days
-      </p>
-    </Stat>
+const defaultTheme = {
+  fontColor: colors.white,
+}
+
+export const blackTheme = {
+  fontColor: colors.black,
+}
+
+const IconStat = ({
+  onClick,
+  icon,
+  text,
+  theme,
+}) => {
+  const handleClick = evt => {
+    evt.preventDefault()
+    onClick(evt)
+  }
+
+  console.log('text', text)
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Stat>
+        { icon }
+
+        {
+          onClick
+            ? (
+              <p>
+                { text }
+              </p>
+            )
+            : (
+              <a onClick={handleClick}>
+                { text }
+              </a>
+            )
+        }
+      </Stat>
+    </ThemeProvider>
   )
 }
 
 IconStat.propTypes = {
-  onClick: PropTypes.function,
+  onClick: PropTypes.oneOf([
+    PropTypes.func,
+    null,
+  ]),
   icon: PropTypes.element,
   text: '',
+  theme: PropTypes.object,
 }
 
 IconStat.defaultProps = {
-  onClick: () => {},
+  onClick: null,
   icon: null,
   text: '',
+  theme: defaultTheme,
 }
 
 export default IconStat
