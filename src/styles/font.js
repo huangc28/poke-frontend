@@ -34,6 +34,16 @@ export const size26Mixin = css`
   font-size: 1.625rem;
 `
 
+export const size38Mixin = css`
+  font-size: 38px;
+  font-size: 2.375rem;
+`
+
+export const size48Mixin = css`
+  font-size: 48px;
+  font-size: 3rem;
+`
+
 export const bold = component => styled(component)`
   ${boldMixin}
 `
