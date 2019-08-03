@@ -9,14 +9,14 @@ import IconStat, { blackTheme } from './IconStat'
 const darkThemeStyles = {
   height: 200,
   display: 'flex',
-  'justify-content': 'center',
-  'align-items': 'center',
-  'background-color': colors.pickledBluewood,
+  'justifyContent': 'center',
+  'alignItems': 'center',
+  'backgroundColor': colors.pickledBluewood,
 }
 
 const brightThemeStyles = {
   ...darkThemeStyles,
-  'background-color': colors.white,
+  'backgroundColor': colors.white,
 }
 
 const IconStatDarkDecorator = storyFn => <div style={darkThemeStyles}>{storyFn()}</div>
