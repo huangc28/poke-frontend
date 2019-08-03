@@ -9,6 +9,7 @@ const Stat = styled.div`
   display: flex;
   align-items: center;
   margin-right: 0.75rem;
+  cursor: pointer;
 
   & > p {
     ${size12Mixin}
@@ -40,27 +41,28 @@ const IconStat = ({
 }) => {
   const handleClick = evt => {
     evt.preventDefault()
-    onClick(evt)
-  }
 
-  console.log('text', text)
+    if (onClick) {
+      onClick(evt)
+    }
+  }
 
   return (
     <ThemeProvider theme={theme}>
-      <Stat>
+      <Stat onClick={handleClick}>
         { icon }
 
         {
           onClick
             ? (
+              <a>
+                { text }
+              </a>
+            )
+            : (
               <p>
                 { text }
               </p>
-            )
-            : (
-              <a onClick={handleClick}>
-                { text }
-              </a>
             )
         }
       </Stat>
@@ -74,7 +76,7 @@ IconStat.propTypes = {
     null,
   ]),
   icon: PropTypes.element,
-  text: '',
+  text: PropTypes.string,
   theme: PropTypes.object,
 }
 

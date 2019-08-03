@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
-import { size12Mixin, size14Mixin, size20Mixin, size26Mixin } from '@poke/styles/font'
+import IconStat from '../IconStat'
+
+import { size14Mixin, size20Mixin, size26Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 import { Account as AccIcon, MagnifyIcon } from '@poke/components/Icons'
 
@@ -64,26 +65,6 @@ const ArticleStat = styled.div`
   display: flex;
   margin-top: 1.5rem;
 `
-
-const Stat = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 0.75rem;
-
-  & > p {
-    ${size12Mixin}
-    margin: 0 0 0 0.25rem;
-    color: ${colors.white}
-  }
-
-  & > a {
-    ${size12Mixin}
-    text-decoration: none;
-    margin: 0 0 0 0.25rem;
-    color: ${colors.white};
-  }
-`
-
 const SummaryContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -127,23 +108,23 @@ const SecTwo = () => {
         </Title>
 
         <ArticleStat>
-          <Stat>
-            <AccIcon
-              fontSize='small'
-            />
-            <p>
-              2days
-            </p>
-          </Stat>
+          <IconStat
+            icon={
+              <AccIcon
+                fontSize='small'
+              />
+            }
+            text='2 days'
+          />
 
-          <Stat>
-            <MagnifyIcon
-              fontSize='small'
-            />
-            <p>
-              999
-            </p>
-          </Stat>
+          <IconStat
+            icon={
+              <MagnifyIcon
+                fontSize='small'
+              />
+            }
+            text='999'
+          />
         </ArticleStat>
 
         <SummaryContent>
@@ -156,15 +137,17 @@ const SecTwo = () => {
           </Summary>
 
           <More>
-            <Stat>
-              <AccIcon
-                fontSize='small'
-              />
-
-              <Link to=''>
-                more
-              </Link>
-            </Stat>
+            <IconStat
+              icon={
+                <AccIcon
+                  fontSize='small'
+                />
+              }
+              text='more'
+              onClick={evt => {
+                console.log('trigger more')
+              }}
+            />
           </More>
         </SummaryContent>
       </Right>

@@ -19,8 +19,8 @@ const brightThemeStyles = {
   'background-color': colors.white,
 }
 
-const IconStatDarkDecorator = storyFn => <div style={darkThemeStyles}>{storyFn()}></div>
-const IconStatBrightDecorator = storyFn => <div style={brightThemeStyles}>{storyFn()}></div>
+const IconStatDarkDecorator = storyFn => <div style={darkThemeStyles}>{storyFn()}</div>
+const IconStatBrightDecorator = storyFn => <div style={brightThemeStyles}>{storyFn()}</div>
 
 storiesOf('Knowledge/IconStat', module)
   .addDecorator(IconStatDarkDecorator)
