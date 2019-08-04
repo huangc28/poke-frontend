@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import HeaderMenu from './HeaderMenu'
+import HeaderMenu, { MenuItem } from './HeaderMenu'
 
 const styles = {
   height: 200,
@@ -14,5 +14,19 @@ const HeaderMenuDecorator = storyFn => <div style={styles}>{storyFn()}></div>
 storiesOf('Header Menu', module)
   .addDecorator(HeaderMenuDecorator)
   .add('Header Menu', () => (
-    <HeaderMenu />
+    <HeaderMenu>
+      <MenuItem
+        onClick={evt => {
+          console.log('DEBUG TRIGGER')
+        }}
+      >
+        營養小百科
+      </MenuItem>
+      <MenuItem>
+        寵物觀察日記
+      </MenuItem>
+      <MenuItem>
+        飯飯學問大
+      </MenuItem>
+    </HeaderMenu>
   ))

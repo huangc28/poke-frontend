@@ -10,7 +10,7 @@ import colors from '@poke/styles/colors'
 
 import Logo from './images/50.png'
 import Navbar, { NavElem } from './components/Navbar'
-import HeaderMenu from './components/HeaderMenu'
+import HeaderMenu, { MenuItem } from './components/HeaderMenu'
 import SearchBar from '../SearchBar'
 
 const HeaderRegion = styled.div`
@@ -114,13 +114,28 @@ const Header = ({ history }) => {
                 小百科
               </a>
               <MenuContainer>
-                <HeaderMenu />
+                <HeaderMenu>
+                  <MenuItem
+                    onClick={evt => {
+                      evt.preventDefault()
+                      history.push('/knowledge')
+                    }}
+                  >
+                    營養小百科
+                  </MenuItem>
+                  <MenuItem>
+                    寵物觀察日記
+                  </MenuItem>
+                  <MenuItem>
+                    飯飯學問大
+                  </MenuItem>
+                </HeaderMenu>
               </MenuContainer>
             </NavContent>
           </NavElem>
 
           <NavElem>
-            <Link to=''>
+            <Link to='/knowledge'>
               篩選器
             </Link>
           </NavElem>

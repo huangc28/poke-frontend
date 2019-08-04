@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import compose from '@poke/util/compose'
@@ -43,6 +44,8 @@ const Li = compose(size12)(styled.li`
     color: black;
   }
 
+  &:before {}
+
   & > div {
     background-color: black;
     border-radius: 0.5rem;
@@ -57,25 +60,30 @@ const Content = styled.ul`
   padding: 0;
 `
 
-const HeaderMenu = () => {
+const MenuItem = ({ children, ...props }) => (
+  <Li {...props}>
+    <div />
+    { children }
+  </Li>
+)
+
+MenuItem.propTypes = {
+  children: PropTypes.node,
+}
+
+const HeaderMenu = ({ children }) => {
   return (
     <Container>
       <Content>
-        <Li>
-          <div />
-          營養小百科
-        </Li>
-        <Li>
-          <div />
-          寵物觀察日記
-        </Li>
-        <Li>
-          <div />
-          飯飯學問大
-        </Li>
+        { children }
       </Content>
     </Container>
   )
 }
 
+HeaderMenu.propTypes = {
+  children: PropTypes.node,
+}
+
+export { MenuItem }
 export default HeaderMenu

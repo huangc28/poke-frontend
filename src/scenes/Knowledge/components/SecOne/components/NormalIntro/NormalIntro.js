@@ -21,6 +21,7 @@ const BottomBanner = size14(styled.div`
   padding: 0.4375rem 1.125rem 0.4375rem 0.9375rem;
   box-sizing: border-box;
   letter-spacing: 0.175rem;
+  line-height: 1.29;
 `)
 
 const NormalIntro = ({ children, bannerText }) => {
