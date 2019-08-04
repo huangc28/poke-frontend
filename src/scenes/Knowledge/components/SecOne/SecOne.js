@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { insetShadow } from '@poke/styles/shadow'
+
 import LargeIntro from './components/LargeIntro'
 import NormalIntro from './components/NormalIntro'
 import BGImg from './images/07.png'
@@ -13,6 +15,7 @@ const Section = styled.section`
   background: url(${BGImg}) no-repeat center center fixed;
   background-size: cover;
   padding: 3.5rem 0;
+  ${insetShadow}
 `
 
 const Content = styled.div`

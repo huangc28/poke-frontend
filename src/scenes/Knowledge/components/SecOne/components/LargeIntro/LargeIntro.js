@@ -37,7 +37,7 @@ const LargeIntro = ({ bannerText, img }) => {
   )
 }
 
-LargeIntro.PropTypes = {
+LargeIntro.propTypes = {
   bannerText: PropTypes.string,
   img: PropTypes.element,
 }

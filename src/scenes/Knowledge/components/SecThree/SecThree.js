@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import colors from '@poke/styles/colors'
+import { insetShadow } from '@poke/styles/shadow'
 
 import ArticleGrid from './components/ArticleGrid'
 import ContactColumn from './components/ContactColumn'
@@ -10,6 +11,7 @@ const Section = styled.section`
   display: grid;
   grid-template-columns: 72.5% 27.5%;
   background-color: ${colors.white};
+  ${insetShadow}
 `
 
 const Left = styled.div`

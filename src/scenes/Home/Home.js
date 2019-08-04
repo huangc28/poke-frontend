@@ -1,7 +1,6 @@
 import React from 'react'
 
-import Header from '@poke/components/Header'
-import Footer from '@poke/components/Footer'
+import Main from '@poke/layouts/Main'
 
 import HomeSecOne from './components/HomeSecOne'
 import HomeSecTwo from './components/HomeSecTwo'
@@ -12,9 +11,7 @@ import HomeSecSix from './components/HomeSecSix'
 
 const Home = () => {
   return (
-    <React.Fragment>
-      <Header />
-
+    <Main>
       <HomeSecOne />
 
       <HomeSecTwo />
@@ -26,9 +23,7 @@ const Home = () => {
       <HomeSecFive />
 
       <HomeSecSix />
-
-      <Footer />
-    </React.Fragment>
+    </Main>
   )
 }
 

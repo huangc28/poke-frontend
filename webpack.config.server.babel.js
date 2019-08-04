@@ -1,3 +1,4 @@
+import webpack from 'webpack'
 import { server } from 'universal-webpack/config'
 
 import settings from './universal-webpack-settings'
@@ -13,6 +14,15 @@ const webpackConfig = webpackConfigFunc()
 // to find server side entry point via "poke-frontend/server/index.js"
 // but not "poke-frontend/src/server/index.js".
 webpackConfig.context = __dirname
+
+const plugins = [
+  new webpack.DefinePlugin({
+    __CLIENT__: false,
+    __SERVER__: true
+  })
+]
+
+webpackConfig.plugins = webpackConfig.plugins.concat(plugins)
 
 // Create server-side Webpack config.
 export default server(webpackConfig, settings)

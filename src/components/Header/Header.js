@@ -1,5 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import AccIcon from '@material-ui/icons/Person'
 import Magnifier from '@material-ui/icons/Search'
@@ -64,7 +66,7 @@ const HeadRight = styled.div`
 const MenuContainer = styled.div`
   visibility: hidden;
   position: absolute;
-  top: 0.5rem;
+  top: 1rem;
   padding-top: 2.5rem;
   z-index: 20;
 `
@@ -83,12 +85,17 @@ const NavContent = styled.div`
   }
 `
 
-const Header = () => {
+const Header = ({ history }) => {
   return (
     <HeaderRegion>
       <HeadLeft>
         {/* Logo */}
-        <LogoContainer>
+        <LogoContainer
+          onClick={evt => {
+            evt.preventDefault()
+            history.push('/')
+          }}
+        >
           <img
             height={44}
             width={132}
@@ -100,7 +107,10 @@ const Header = () => {
         <Navbar>
           <NavElem>
             <NavContent>
-              <a onClick={evt => evt.preventDefault()}>
+              <a onClick={evt => {
+                evt.preventDefault()
+                history.push('/knowledge')
+              }}>
                 小百科
               </a>
               <MenuContainer>
@@ -138,11 +148,19 @@ const Header = () => {
         </LoginContainer>
         <SearchBar
           placeholder='SEARCH'
-          icon={<Magnifier />}
+          icon={<Magnifier
+            style={{
+              fontSize: 16,
+            }}
+          />}
         />
       </HeadRight>
     </HeaderRegion>
   )
 }
 
-export default Header
+Header.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+}
+
+export default withRouter(Header)

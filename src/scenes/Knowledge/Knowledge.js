@@ -1,12 +1,18 @@
 import React from 'react'
-// import styled from 'styled-components'
 
 import Main from '../../layouts/Main'
+import SecOne from './components/SecOne'
+import SecTwo from './components/SecTwo'
+import SecThree from './components/SecThree'
 
 const Knowledge = () => {
   return (
     <Main>
-      knowledge
+      <SecOne />
+
+      <SecTwo />
+
+      <SecThree />
     </Main>
   )
 }

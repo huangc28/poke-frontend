@@ -71,7 +71,7 @@ const IconStat = ({
 }
 
 IconStat.propTypes = {
-  onClick: PropTypes.oneOf([
+  onClick: PropTypes.oneOfType([
     PropTypes.func,
     null,
   ]),

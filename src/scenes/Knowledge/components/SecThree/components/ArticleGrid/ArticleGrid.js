@@ -53,6 +53,8 @@ const Title = styled.div`
 
 const Summary = styled.p`
   margin: 0;
+  line-height: 1.57;
+  letter-spacing: 0.175rem;
 `
 
 const StatBar = styled.div`

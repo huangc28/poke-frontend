@@ -53,6 +53,7 @@ const Title = styled.p`
   ${size26Mixin}
   color: ${colors.white};
   margin: 0;
+  letter-spacing: 0.8125rem;
 `
 
 const Right = styled.div`
@@ -75,6 +76,8 @@ const Summary = styled.p`
   ${size14Mixin}
   color: ${colors.white};
   margin: 1.625rem 0 0 0;
+  line-height: 1.57;
+  letter-spacing: 0.175rem;
 `
 
 const More = styled.div`

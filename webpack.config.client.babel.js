@@ -51,6 +51,11 @@ const plugins = removeEmpty([
       warnings: true,
     }
   }),
+
+  new webpack.DefinePlugin({
+    __CLIENT__: true,
+    __SERVER__: false,
+  })
 ])
 
 webpackConfig.optimization = optimization

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Magnifier from '@material-ui/icons/Search'
 
 import colors from '@poke/styles/colors'
 
@@ -36,6 +35,7 @@ const IconContainer = styled.span`
   border-bottom-left-radius: 0.5rem;
   background-color: ${colors.silverSand};
   padding-left: 0.125rem;
+  color: ${colors.white};
 `
 
 const SearchBar = ({ icon, onKeyDown, ...props }) => {
@@ -46,7 +46,7 @@ const SearchBar = ({ icon, onKeyDown, ...props }) => {
       {
         icon && (
           <IconContainer>
-            <Magnifier />
+            { icon }
           </IconContainer>
         )
       }
