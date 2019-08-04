@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import Account from '@material-ui/icons/Person'
 
-import { Account } from '@poke/components/Icons'
 import colors from '@poke/styles/colors'
 
 import IconStat, { blackTheme } from './IconStat'

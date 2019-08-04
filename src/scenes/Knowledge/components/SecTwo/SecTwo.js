@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import AccIcon from '@material-ui/icons/Person'
+import Magnifier from '@material-ui/icons/Search'
 
 import IconStat from '../IconStat'
 
 import { size14Mixin, size20Mixin, size26Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
-import { Account as AccIcon, MagnifyIcon } from '@poke/components/Icons'
 
 const Section = styled.section`
   background-color: ${colors.pickledBluewood};
@@ -119,7 +120,7 @@ const SecTwo = () => {
 
           <IconStat
             icon={
-              <MagnifyIcon
+              <Magnifier
                 fontSize='small'
               />
             }

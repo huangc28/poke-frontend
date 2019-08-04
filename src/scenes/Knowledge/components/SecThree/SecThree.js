@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import colors from '@poke/styles/colors'
 
 import ArticleGrid from './components/ArticleGrid'
+import ContactColumn from './components/ContactColumn'
 
 const Section = styled.section`
   display: grid;
@@ -24,6 +25,17 @@ const Content = styled.div`
   }
 `
 
+const Right = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: ${colors.gallery};
+`
+
+const ContactContainer = styled.div`
+  width: 18.125rem;
+  padding-top: 8.6rem;
+`
+
 const SecThree = () => {
   return (
     <Section>
@@ -31,7 +43,7 @@ const SecThree = () => {
         <Content>
           <ArticleGrid
             tagNum={2}
-            title='必備胺基酸寵物必備胺基酸寵物必備胺基酸'
+            title='必備胺基酸寵物必備胺基酸'
             summary='必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸'
             timeAgo='2 days ago'
             numViewed={999}
@@ -63,9 +75,11 @@ const SecThree = () => {
           />
         </Content>
       </Left>
-      <div>
-        two
-      </div>
+      <Right>
+        <ContactContainer>
+          <ContactColumn />
+        </ContactContainer>
+      </Right>
     </Section>
   )
 }

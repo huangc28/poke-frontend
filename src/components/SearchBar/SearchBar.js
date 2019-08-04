@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Magnifier from '@material-ui/icons/Search'
 
 import colors from '@poke/styles/colors'
-import { MagnifyIcon } from '@poke/components/Icons'
 
 const SearchBarContainer = styled.span`
   display: flex;
@@ -14,9 +14,13 @@ const SearchBarContainer = styled.span`
 
 const SearchBarInput = styled.input`
   border-top-right-radius: 0.5rem;
+  border-top-left-radius: ${props => props.hasIcon ? 0 : '0.5rem' };
   border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: ${props => props.hasIcon ? 0 : '0.5rem' };
+  padding-left: ${props => props.hasIcon ? 0 : '0.875rem' };
   outline: none;
   border: none;
+  width: 100%;
   background-color: ${colors.silverSand};
   color: ${colors.white};
   caret-color: ${colors.black};
@@ -34,17 +38,22 @@ const IconContainer = styled.span`
   padding-left: 0.125rem;
 `
 
-const SearchBar = ({ onKeyDown }) => {
+const SearchBar = ({ icon, onKeyDown, ...props }) => {
   const [words, setText] = useState('')
 
   return (
     <SearchBarContainer>
-      <IconContainer>
-        <MagnifyIcon />
-      </IconContainer>
+      {
+        icon && (
+          <IconContainer>
+            <Magnifier />
+          </IconContainer>
+        )
+      }
       <SearchBarInput
+        {...props}
+        hasIcon={!!icon}
         type='text'
-        placeholder='SEARCH'
         onChange={evt => setText(evt.target.value)}
         onKeyDown={
           e => {
@@ -61,6 +70,7 @@ const SearchBar = ({ onKeyDown }) => {
 
 SearchBar.propTypes = {
   onKeyDown: PropTypes.func,
+  icon: PropTypes.element,
 }
 
 SearchBar.defaultProps = {

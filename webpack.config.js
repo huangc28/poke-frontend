@@ -132,6 +132,7 @@ module.exports = (env, argv) => {
         '@poke/components': path.resolve(__dirname, './src/components'),
         '@poke/styles': path.resolve(__dirname, './src/styles'),
         '@poke/util': path.resolve(__dirname, './src/util'),
+        '@poke/layouts': path.resolve(__dirname, './src/layouts'),
       },
     },
     output: {

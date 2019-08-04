@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import AccIcon from '@material-ui/icons/Person'
+import Magnifier from '@material-ui/icons/Search'
 
 import colors from '@poke/styles/colors'
 
@@ -8,7 +10,6 @@ import Logo from './images/50.png'
 import Navbar, { NavElem } from './components/Navbar'
 import HeaderMenu from './components/HeaderMenu'
 import SearchBar from '../SearchBar'
-import { Account as AccIcon } from '../Icons'
 
 const HeaderRegion = styled.div`
   display: flex;
@@ -135,7 +136,10 @@ const Header = () => {
             Login
           </Link>
         </LoginContainer>
-        <SearchBar />
+        <SearchBar
+          placeholder='SEARCH'
+          icon={<Magnifier />}
+        />
       </HeadRight>
     </HeaderRegion>
   )

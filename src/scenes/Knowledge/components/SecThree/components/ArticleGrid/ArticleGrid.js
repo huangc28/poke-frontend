@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Account from '@material-ui/icons/Person'
 
 import colors from '@poke/styles/colors'
 import { size26Mixin, size48Mixin } from '@poke/styles/font'
-import { Account } from '@poke/components/Icons'
 
 import IconStat, { blackTheme } from '../../../IconStat'
 

@@ -1,0 +1,6 @@
+{
+  "name": "TopicLayout",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./TopicLayout.js"
+}

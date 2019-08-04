@@ -1,16 +1,164 @@
-import React from 'react'
+/* global __SERVER__ */
 
-import SvgIcon from '@material-ui/core/SvgIcon'
+import React, { PureComponent } from 'react';
+import {
+  string,
+  number,
+} from 'prop-types';
 
-// @TODO extract svg path to independent .svg suffix file to code split
-export const Account = props => (
-  <SvgIcon {...props}>
-    <path fill="#000000" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
-  </SvgIcon>
-)
+const loadedSvgs = [];
 
-export const MagnifyIcon = props => (
-  <SvgIcon style={{ fontSize: 16 }} {...props}>
-    <path fill="#ffffff" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
-  </SvgIcon>
-)
+class Svg extends PureComponent {
+  componentDidMount() {
+    const { iconUrl } = this.props;
+    const self = this;
+    const xhr = new XMLHttpRequest();
+    const svgIndex = loadedSvgs.findIndex(obj => obj.iconUrl === iconUrl);
+    if (svgIndex === -1) {
+      xhr.onload = function () {
+        const svgDoc = new DOMParser().parseFromString(this.response, 'image/svg+xml');
+        const svgDom = svgDoc.querySelector('svg');
+        svgDom.style.cssText = 'width: 100%; height: 100%';
+        if (self._svg) {
+          self._svg.appendChild(svgDoc.documentElement);
+        }
+        loadedSvgs.push({
+          iconUrl,
+          svg: this.response,
+        });
+      };
+      xhr.open('get', iconUrl);
+      xhr.send();
+    } else {
+      const svgDoc = new DOMParser().parseFromString(loadedSvgs[svgIndex].svg, 'image/svg+xml');
+      const svgDom = svgDoc.querySelector('svg');
+      svgDom.style.cssText = 'width: 100%; height: 100%';
+      if (self._svg) {
+        self._svg.appendChild(svgDoc.documentElement);
+      }
+    }
+  }
+
+  render() {
+    const {
+      className = styles.root,
+      // This is a unused variable. Putting here just in order to use
+      // destructuring assignment to retrieve restProps
+      iconUrl, // eslint-disable-line no-unused-vars
+      width,
+      height,
+      ...restProps
+    } = this.props;
+
+    return (
+      <div
+        style={{
+          width: `${width}px`,
+          height: `${height}px`,
+        }}
+        {...restProps}
+        className={className}
+        ref={c => { this._svg = c; }}
+      />
+    );
+  }
+}
+
+Svg.defaultProps = {
+  className: '',
+  iconUrl: '',
+};
+
+Svg.propTypes = {
+  height: number.isRequired,
+  width: number.isRequired,
+  className: string,
+  iconUrl: string,
+};
+
+const Icon = filename => {
+  if (__SERVER__) {
+    const _ssrIcon = ({ width, height }) => {
+      // eslint-disable-next-line global-require
+      const imgUrl = require(`./images/${filename}`);
+
+      return (
+        <img
+          width={width}
+          height={height}
+          src={imgUrl}
+        />
+      );
+    };
+
+    _ssrIcon.propTypes = {
+      height: number,
+      width: number,
+    };
+
+    _ssrIcon.defaultProps = {
+      width: 32,
+      height: 32,
+    };
+
+    return _ssrIcon;
+  }
+
+  // eslint-disable-next-line global-require
+  const imageUrl = require(`!file-loader?[hash].[ext]!./images/${filename}`);
+  const isSVG = filename.split('.').pop() === 'svg';
+
+  const _Icon = props => {
+    const {
+      alt,
+      className,
+      width,
+      height,
+    } = props;
+
+    // don't use file-loader to pipe image assets as file-loader only exists in backend.
+    return (
+      <div>
+        {
+          isSVG
+            ? (<Svg
+              {...props}
+              iconUrl={imageUrl}
+              className={className}
+              alt={alt}
+              width={width}
+              height={height}
+            />)
+            : (<img
+              {...props}
+              src={imageUrl}
+              alt={alt}
+              width={width}
+              height={height}
+            />)
+        }
+      </div>
+    );
+  };
+
+  _Icon.propTypes = {
+    alt: string,
+    className: string,
+    height: number,
+    width: number,
+  };
+
+  _Icon.defaultProps = {
+    alt: '',
+    className: '',
+    height: 32,
+    width: 32,
+  };
+
+  return _Icon;
+};
+
+export default Icon;
+
+export const Facebook = Icon('facebook.svg')
+export const Instagram = Icon('instagram.svg')
