@@ -5,8 +5,7 @@ import Account from '@material-ui/icons/Person'
 
 import colors from '@poke/styles/colors'
 import { size26Mixin, size48Mixin } from '@poke/styles/font'
-
-import IconStat, { blackTheme } from '../../../IconStat'
+import IconStat, { blackTheme } from '@poke/components/IconStat'
 
 const Grid = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 {
-  "name": "SecOne",
+  "name": "Tabs",
   "version": "0.0.0",
   "private": true,
-  "main": "./SecOne.js"
+  "main": "./Tabs.js"
 }

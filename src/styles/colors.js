@@ -19,4 +19,5 @@ export default {
   athensGray: '#ebebec',
   pickledBluewood: '#354560',
   gallery: '#efefef',
+  silver: '#ccc',
 }

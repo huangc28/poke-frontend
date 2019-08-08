@@ -1,0 +1,6 @@
+{
+  "name": "TopArticle",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./TopArticle.js"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "FoodKnowledge",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./FoodKnowledge.js"
+}
