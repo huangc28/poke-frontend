@@ -126,7 +126,12 @@ const Header = ({ history }) => {
                   <MenuItem>
                     寵物觀察日記
                   </MenuItem>
-                  <MenuItem>
+                  <MenuItem
+                    onClick={evt => {
+                      evt.preventDefault()
+                      history.push('/food-knowledge')
+                    }}
+                  >
                     飯飯學問大
                   </MenuItem>
                 </HeaderMenu>
@@ -157,7 +162,11 @@ const Header = ({ history }) => {
             />
           </IconContainer>
 
-          <Link to=''>
+          {/* @ref how to disable react router link: https://github.com/ReactTraining/react-router/issues/1082 */}
+          <Link
+            to='/login'
+            onClick={evt => evt.preventDefault()}
+          >
             Login
           </Link>
         </LoginContainer>
