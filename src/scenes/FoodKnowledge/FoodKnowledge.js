@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import ReactPaginate from 'react-paginate';
 import AccIcon from '@material-ui/icons/Person'
 import Magnifier from '@material-ui/icons/Search'
 
@@ -10,13 +11,14 @@ import { size26Mixin, size14Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 import HotArticles from '@poke/components/HotArticles'
 import IconStat from '@poke/components/IconStat'
+import Paginator from '@poke/components/Paginator'
 
 import ArticleGrid from '@poke/components/ArticleGrid'
 
 import Tabs, { TabBar, Tab, TabPanel } from './components/Tabs'
 
 // @todo these articles should be pull from server side
-const articles = [
+const hotArticles = [
   {
     img: 'https://via.placeholder.com/600x420',
     bannerText: '必備胺基酸-寵物必備胺基酸寵物必備胺基酸',
@@ -36,6 +38,27 @@ const articles = [
   {
     img: 'https://via.placeholder.com/300x200',
     bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
+  }
+]
+
+const articleList = [
+  {
+    title: '必備胺基酸寵物必備胺基酸',
+    summary: '必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸',
+    timeAgo: '2 days ago',
+    numViewed: 999,
+    onClickMore() {
+      console.log('trigger article 1')
+    },
+  },
+  {
+    title: '必備胺基酸寵物必備胺基酸',
+    summary: '必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸',
+    timeAgo: '2 days ago',
+    numViewed: 999,
+    onClickMore() {
+      console.log('trigger article 2')
+    },
   }
 ]
 
@@ -73,11 +96,14 @@ const More = styled.div`
   align-items: flex-end;
   margin: 2.25rem 0 0 0;
 `
+
+const PaginatorContainer = styled.div``
+
 const FoodKnwledge = () => {
   return (
     <Main>
       <HotArticles
-        articles={articles}
+        articles={hotArticles}
       />
 
       <TopArticleLayout
@@ -185,27 +211,34 @@ const FoodKnwledge = () => {
       />
 
       <ContactLayout>
-        <ArticleGrid
-          tagNum={2}
-          title='必備胺基酸寵物必備胺基酸'
-          summary='必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸'
-          timeAgo='2 days ago'
-          numViewed={999}
-          onClickMore={() => {
-            console.log('trigger on click more')
-          }}
-        />
+        {
+          articleList.map((article, index) => (
+            <ArticleGrid
+              key={index}
+              tagNum={index + 1}
+              title={article.title}
+              summary={article.summary}
+              timeAgo={article.timeAgo}
+              numViewed={article.numViewed}
+              onClickMore={article.onClickMore}
+            />
+          ))
+        }
 
-        <ArticleGrid
-          tagNum={2}
-          title='必備胺基酸寵物必備胺基酸'
-          summary='必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸'
-          timeAgo='2 days ago'
-          numViewed={999}
-          onClickMore={() => {
-            console.log('trigger on click more')
-          }}
-        />
+        <PaginatorContainer>
+          <Paginator
+            breakLabel={'...'}
+            pageCount={15}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={() => {
+              console.log('trigger page change')
+            }}
+            containerClassName={'pagination'}
+            subContainerClassName={'pages pagination'}
+            activeClassName={'active'}
+          />
+        </PaginatorContainer>
       </ContactLayout>
     </Main>
   )

@@ -55,7 +55,7 @@ const ContactLayout = ({ children }) => {
   )
 }
 
-ContactLayout.PropTypes = {
+ContactLayout.propTypes = {
   children: PropTypes.node,
 }
 
