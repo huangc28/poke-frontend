@@ -11,10 +11,10 @@ const Section = styled.section`
   display: grid;
   grid-template-columns: 72.5% 27.5%;
   background-color: ${colors.white};
-  ${insetShadow}
 `
 
 const Left = styled.div`
+  ${insetShadow}
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,6 +22,7 @@ const Left = styled.div`
 `
 
 const Right = styled.div`
+  ${insetShadow}
   display: flex;
   justify-content: center;
   background-color: ${colors.gallery};

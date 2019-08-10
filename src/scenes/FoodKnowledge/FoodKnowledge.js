@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import ReactPaginate from 'react-paginate';
 import AccIcon from '@material-ui/icons/Person'
 import Magnifier from '@material-ui/icons/Search'
 
@@ -96,8 +95,6 @@ const More = styled.div`
   align-items: flex-end;
   margin: 2.25rem 0 0 0;
 `
-
-const PaginatorContainer = styled.div``
 
 const FoodKnwledge = () => {
   return (
@@ -225,7 +222,7 @@ const FoodKnwledge = () => {
           ))
         }
 
-        <PaginatorContainer>
+        <div>
           <Paginator
             breakLabel={'...'}
             pageCount={15}
@@ -234,11 +231,8 @@ const FoodKnwledge = () => {
             onPageChange={() => {
               console.log('trigger page change')
             }}
-            containerClassName={'pagination'}
-            subContainerClassName={'pages pagination'}
-            activeClassName={'active'}
           />
-        </PaginatorContainer>
+        </div>
       </ContactLayout>
     </Main>
   )

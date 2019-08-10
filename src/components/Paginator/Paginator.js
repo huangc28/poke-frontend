@@ -80,6 +80,9 @@ const Paginator = (props) => {
     <PaginatorContainer>
       <ReactPaginate
         {...props}
+        containerClassName={'pagination'}
+        subContainerClassName={'pages pagination'}
+        activeClassName={'active'}
         onPageChange={data => {
           if (activeArrow === PREVIOUS_PAGE_ARROW || activeArrow === NEXT_PAGE_ARROW) {
             setActiveArrow('')

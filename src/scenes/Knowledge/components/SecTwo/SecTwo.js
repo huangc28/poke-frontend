@@ -1,4 +1,5 @@
 import React from 'react'
+import T from 'prop-types'
 import styled from 'styled-components'
 import AccIcon from '@material-ui/icons/Person'
 import Magnifier from '@material-ui/icons/Search'
@@ -60,84 +61,91 @@ const More = styled.div`
   margin: 2.25rem 0 0 0;
 `
 
-const SecTwo = () => {
-  const Left = () => (
-    <React.Fragment>
-      <Topic>
-        <Pin/>
-        <p>
-          營養小百科
-        </p>
-      </Topic>
-
-      <IntroContainer>
-        <img
-          src='https://via.placeholder.com/920x480'
-        />
-      </IntroContainer>
-      <div style={{ clear: 'both' }} />
-    </React.Fragment>
-  )
-
-  const Right = () => (
-    <React.Fragment>
-      <Title>
-        必備胺基酸寵物必備胺基酸寵物必備胺基酸
-      </Title>
-
-      <ArticleStat>
-        <IconStat
-          icon={
-            <AccIcon
-              fontSize='small'
-            />
-          }
-          text='2 days'
-        />
-
-        <IconStat
-          icon={
-            <Magnifier
-              fontSize='small'
-            />
-          }
-          text='999'
-        />
-      </ArticleStat>
-
-      <SummaryContent>
-        <Summary>
-          必備胺基酸寵物必備胺基酸寵物必備寵
-          物必備胺基酸胺基酸寵物必備胺基酸寵
-          物必備胺基酸寵物必備胺基酸寵物必備
-          胺基酸寵物必備胺基酸寵物必備
-          胺基酸
-        </Summary>
-
-        <More>
-          <IconStat
-            icon={
-              <AccIcon
-                fontSize='small'
-              />
-            }
-            text='more'
-            onClick={evt => {
-              console.log('trigger more')
-            }}
-          />
-        </More>
-      </SummaryContent>
-    </React.Fragment>
-  )
-
+const SecTwo = ({ article }) => {
   return (
     <TopArticleLayout
-      left={<Left />}
+      left={
+        <React.Fragment>
+          <Topic>
+            <Pin/>
+            <p>
+              營養小百科
+            </p>
+          </Topic>
 
-      right={<Right />}
+          <IntroContainer>
+            <img
+              src={article.img}
+            />
+          </IntroContainer>
+          <div style={{ clear: 'both' }} />
+        </React.Fragment>
+      }
+
+      right={
+        <React.Fragment>
+          <Title>
+            { article.title }
+          </Title>
+
+          <ArticleStat>
+            <IconStat
+              icon={
+                <AccIcon
+                  fontSize='small'
+                />
+              }
+              text={article.updated_at}
+            />
+
+            <IconStat
+              icon={
+                <Magnifier
+                  fontSize='small'
+                />
+              }
+              text={article.visit}
+            />
+          </ArticleStat>
+
+          <SummaryContent>
+            <Summary>
+              必備胺基酸寵物必備胺基酸寵物必備寵
+              物必備胺基酸胺基酸寵物必備胺基酸寵
+              物必備胺基酸寵物必備胺基酸寵物必備
+              胺基酸寵物必備胺基酸寵物必備
+              胺基酸
+            </Summary>
+
+            <More>
+              <IconStat
+                icon={
+                  <AccIcon
+                    fontSize='small'
+                  />
+                }
+                text='more'
+                onClick={evt => {
+                  console.log('trigger more')
+                }}
+              />
+            </More>
+          </SummaryContent>
+        </React.Fragment>
+      }
     />
   )
+}
+
+SecTwo.propTypes = {
+  article: T.shape({
+    title: T.string,
+    img: T.string,
+  }),
+}
+
+SecTwo.defaultProps = {
+  article: {},
 }
 
 export default SecTwo

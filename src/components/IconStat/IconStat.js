@@ -76,7 +76,11 @@ IconStat.propTypes = {
     null,
   ]),
   icon: PropTypes.element,
-  text: PropTypes.string,
+  text: PropTypes.oneOfType([
+    null,
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   theme: PropTypes.object,
 }
 
