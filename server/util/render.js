@@ -1,5 +1,8 @@
+import serialize from 'serialize-javascript'
+
 const render = ({
   html = '',
+  preloadedState = {},
   styleTags = '',
   bundleInfo = {},
 }) => {
@@ -35,6 +38,10 @@ const render = ({
       <body>
         <div id="app">${html}</div>
 
+        <script>
+          window.__PRELOADED_STATE__ = ${serialize(preloadedState, { isJSON: true })}
+          window.__CLIENT__ = true
+        </script>
 
         <script
           type="application/javascript"

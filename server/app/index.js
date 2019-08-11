@@ -6,8 +6,11 @@ import { renderRoutes } from 'react-router-config'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 import { renderToStaticMarkup } from 'react-dom/server'
 
-import renderFullPage from '../util/render'
 import routes from '../../src/routes'
+import ProviderWithRouter from '../../src/ProviderWithRouter'
+import configureStore from '../../src/store/configureStore'
+import rootReducer from '../../src/services/redux'
+import renderFullPage from '../util/render'
 
 const app = express()
 const sheet = new ServerStyleSheet()
@@ -15,6 +18,9 @@ const sheet = new ServerStyleSheet()
 const getApp = bundleInfo => {
   const handleRender = (req, res, next) => {
     try {
+      const preloadedState = {}
+      const store = configureStore(rootReducer, preloadedState)
+
       const context = {}
       let html = ''
       html = renderToStaticMarkup(
@@ -23,24 +29,26 @@ const getApp = bundleInfo => {
             location={req.url}
             context={context}
           >
-            { renderRoutes(routes) }
+            <ProviderWithRouter store={store}>
+              { renderRoutes(routes) }
+            </ProviderWithRouter>
           </StaticRouter>
         </StyleSheetManager>
       )
 
       const styleTags = sheet.getStyleTags()
-      
+
       if (context.status === 404) {
         res.status(404)
       }
-    
+
       if (context.status === 302) {
         const { status, url } = context
-      
+
         res.redirect(status, url)
       }
-    
-      res.send(renderFullPage({ html, styleTags, bundleInfo }))
+
+    res.send(renderFullPage({ html, preloadedState, styleTags, bundleInfo }))
     } catch (err) {
       next(err)
     } finally {
