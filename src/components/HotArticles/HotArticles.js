@@ -68,7 +68,7 @@ const HotArticles = ({ articles }) => {
             rest.length > 0 && (
               rest.map((article, index) => (
                 <NormalIntro
-                  bannerText={article.bannerText}
+                  bannerText={article.descript}
                   key={index}
                 >
                   <Img
