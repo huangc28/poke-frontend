@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = function (api) {
   api.cache(true)
   const env = {
@@ -21,18 +23,27 @@ module.exports = function (api) {
 
   const presets = [
     [
-      "@babel/preset-env"
+      "@babel/preset-env",
     ],
     "@babel/preset-react"
   ]
 
   const plugins = [
     [
+      require.resolve('babel-plugin-module-resolver'),
+      {
+        root: [path.resolve(__dirname, './src')],
+        alias: {
+          '@poke': path.resolve(__dirname, './src'),
+        }
+      }
+    ],
+    [
       "@babel/transform-runtime",
       {
         "regenerator": true
       }
-    ]
+    ],
   ]
 
   return {

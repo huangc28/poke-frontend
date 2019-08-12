@@ -1,14 +1,9 @@
-import { all, takeLatest, put } from 'redux-saga/effects'
+import { all, call } from 'redux-saga/effects'
 
-import { types, sayHelloSuccess } from '../redux'
+import knowledge from '../../scenes/Knowledge/services/sagas'
 
-function * sayHelloFlow(action) {
-  console.log('trigger hello world saga')
-  yield put(sayHelloSuccess())
-}
-
-export default function * (context) {
+export default function * () {
   yield all([
-    takeLatest(types.SAY_HELLO, sayHelloFlow)
+    call(knowledge),
   ])
 }

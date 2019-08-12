@@ -128,12 +128,6 @@ module.exports = (env, argv) => {
     },
     resolve: {
       extensions: ['.js', '.jsx', '.scss'],
-      alias: {
-        '@poke/components': path.resolve(__dirname, './src/components'),
-        '@poke/styles': path.resolve(__dirname, './src/styles'),
-        '@poke/util': path.resolve(__dirname, './src/util'),
-        '@poke/layouts': path.resolve(__dirname, './src/layouts'),
-      },
     },
     output: {
       path: path.resolve(__dirname, 'dist'),

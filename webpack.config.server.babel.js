@@ -1,5 +1,6 @@
 import webpack from 'webpack'
 import { server } from 'universal-webpack/config'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
 
 import settings from './universal-webpack-settings'
 import webpackConfigFunc from './webpack.config'
@@ -19,7 +20,12 @@ const plugins = [
   new webpack.DefinePlugin({
     __CLIENT__: false,
     __SERVER__: true
-  })
+  }),
+
+  new CleanWebpackPlugin({
+    verbose: true,
+    cleanOnceBeforeBuildPatterns: ['dist/server']
+  }),
 ]
 
 webpackConfig.plugins = webpackConfig.plugins.concat(plugins)

@@ -1,5 +1,7 @@
 import serialize from 'serialize-javascript'
 
+import * as config from '../config'
+
 const render = ({
   html = '',
   preloadedState = {},
@@ -40,6 +42,7 @@ const render = ({
 
         <script>
           window.__PRELOADED_STATE__ = ${serialize(preloadedState, { isJSON: true })}
+          window.__CONFIG__ = ${serialize(config, { isJSON: true })}
           window.__CLIENT__ = true
         </script>
 

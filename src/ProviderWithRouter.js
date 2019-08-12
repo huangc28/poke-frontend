@@ -7,10 +7,13 @@ import configureStore from './store/configureStore'
 
 const ProviderWithRouter = ({ children, initialState, rootReducer, history, store }) => {
   if (!store) {
+    // console.log('trigger store creation', store)
     store = configureStore(rootReducer, initialState, {
       history, // On every invocation of saga
     })
   }
+
+  // console.log('after store creation', store)
 
   return (
     <Provider store={store}>

@@ -7,6 +7,7 @@ module.exports = async ({ config }) => {
     '@poke/util': path.resolve(__dirname, '../src/util'),
     '@poke/styles': path.resolve(__dirname, '../src/styles'),
     '@poke/layouts': path.resolve(__dirname, '../src/layouts'),
+    '@poke/constants': path.resolve(__dirname, '../src/constants'),
   }
 
   config.resolve.alias = Object.assign({}, config.resolve.alias, alias)
