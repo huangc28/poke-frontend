@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import Img from '@poke/components/Img'
 import { insetShadow } from '@poke/styles/shadow'
 
 import LargeIntro from './components/LargeIntro'
@@ -50,9 +51,11 @@ const HotArticles = ({ articles }) => {
           {
             top.length > 0 && (
               <LargeIntro
-                bannerText={top[0].bannerText}
+                bannerText={top[0].descript}
               >
-                <img
+                <Img
+                  fallbackImgWidth={600}
+                  fallbackImgHeight={420}
                   src={top[0].img}
                 />
               </LargeIntro>
@@ -68,7 +71,9 @@ const HotArticles = ({ articles }) => {
                   bannerText={article.bannerText}
                   key={index}
                 >
-                  <img
+                  <Img
+                    fallbackImgWidth={300}
+                    fallbackImgHeight={200}
                     src={article.img}
                   />
                 </NormalIntro>
@@ -85,7 +90,7 @@ HotArticles.propTypes = {
   articles: PropTypes.arrayOf(
     PropTypes.shape({
       img: PropTypes.string,
-      bannerText: PropTypes.string,
+      descript: PropTypes.string,
     })
   ),
 }

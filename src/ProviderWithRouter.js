@@ -1,25 +1,33 @@
-import React from 'react'
+import React, { Component } from 'react'
 import T from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import configureStore from './store/configureStore'
 
-const ProviderWithRouter = ({ children, initialState, rootReducer, history, store }) => {
-  if (!store) {
-    // console.log('trigger store creation', store)
-    store = configureStore(rootReducer, initialState, {
-      history, // On every invocation of saga
+class ProviderWithRouter extends Component {
+  constructor (props) {
+    super(props)
+
+    const {
+      initialState,
+      rootReducer,
+      history,
+      store,
+    } = props;
+
+    this.store = store || configureStore(rootReducer, initialState, {
+      history,
     })
   }
 
-  // console.log('after store creation', store)
-
-  return (
-    <Provider store={store}>
-      { children }
-    </Provider>
-  )
+  render () {
+    return (
+      <Provider store={this.store}>
+        { this.props.children }
+      </Provider>
+    )
+  }
 }
 
 ProviderWithRouter.propTypes = {

@@ -10,7 +10,7 @@ import Paginator from '@poke/components/Paginator'
 
 import Main from '../../layouts/Main'
 import SecTwo from './components/SecTwo'
-import { sayHello,fetchHotArticles, selectHotArticles } from './services/redux'
+import { fetchHotArticles, selectHotArticles } from './services/redux'
 
 // @todo these articles should be pull from server side
 // const articles = [
@@ -74,9 +74,7 @@ const foodArticles = [
   }
 ]
 
-const Knowledge = ({ fetchHotArticles, articles, sayHello }) => {
-  console.log('DEBUG articles !!!', articles)
-
+const Knowledge = ({ fetchHotArticles, articles }) => {
   const sliceArticles = compose(
     ([topArticle, restArticle]) => [topArticle[0] || null, restArticle],
     articles => [articles.slice(0, 1), articles.slice(1)]
@@ -86,10 +84,7 @@ const Knowledge = ({ fetchHotArticles, articles, sayHello }) => {
 
   useEffect(() => {
     fetchHotArticles()
-    // console.log('DEBUG@@@', fetchHotArticles())
-
-    sayHello()
-  }, [articles])
+  }, [])
 
   return (
     <Main>
@@ -139,15 +134,10 @@ Knowledge.propTypes = {
   article: T.array,
 }
 
-const mapStateToProps = state => {
-  console.log('mapStateToProps', state)
-
-  return {
-    articles: state.knowledge.hotArticles,
-  }
-}
+const mapStateToProps = state => ({
+  articles: selectHotArticles(state),
+})
 
 export default connect(mapStateToProps, {
-  sayHello,
   fetchHotArticles,
 })(Knowledge)

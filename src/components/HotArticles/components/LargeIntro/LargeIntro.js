@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import T from 'prop-types'
 
 import colors from '@poke/styles/colors'
 import compose from '@poke/util/compose'
@@ -24,10 +24,10 @@ const Banner = compose(size16)(styled.div`
   letter-spacing: 0.2rem;
 `)
 
-const LargeIntro = ({ bannerText, img }) => {
+const LargeIntro = ({ bannerText, children }) => {
   return (
     <Content>
-      { img }
+      { children }
 
       <Banner>
         { bannerText }
@@ -38,12 +38,13 @@ const LargeIntro = ({ bannerText, img }) => {
 }
 
 LargeIntro.propTypes = {
-  bannerText: PropTypes.string,
-  img: PropTypes.element,
+  bannerText: T.string,
+  img: T.element,
 }
 
-LargeIntro.defaultProps = { bannerText: 'some intro text',
-  img: <img src='https://via.placeholder.com/600x420' />,
+LargeIntro.defaultProps = {
+  bannerText: 'some intro text',
+  children: null,
 }
 
 export default LargeIntro

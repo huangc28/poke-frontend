@@ -8,6 +8,7 @@ import App from './App'
 import ProviderWithRouter from './ProviderWithRouter'
 import rootReducer from './services/redux'
 
+
 const renderApp = () => (
   ReactDOM.render(
     <BrowserRouter>

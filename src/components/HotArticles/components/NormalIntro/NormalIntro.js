@@ -42,7 +42,8 @@ NormalIntro.propTypes = {
 }
 
 NormalIntro.defaultProps = {
-  bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸'
+  bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
+  children: null,
 }
 
 export default NormalIntro

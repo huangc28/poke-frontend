@@ -37,13 +37,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const App = ({ route }) => {
-  return (
-    <React.Fragment>
-      <GlobalStyle />
-      { renderRoutes(route.routes) }
-    </React.Fragment>
-  )
-}
+const App = ({ route }) => (
+  <React.Fragment>
+    <GlobalStyle />
+    { renderRoutes(route.routes) }
+  </React.Fragment>
+)
 
 export default App
