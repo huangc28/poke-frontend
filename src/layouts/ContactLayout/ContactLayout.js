@@ -26,6 +26,7 @@ const Right = styled.div`
   display: flex;
   justify-content: center;
   background-color: ${colors.gallery};
+  padding-bottom: 1.875rem;
 `
 
 const Content = styled.div`

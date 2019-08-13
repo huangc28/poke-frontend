@@ -2,6 +2,31 @@
 
 Use webpack-isomorphic tool to let nodejs know what has been bundled. Nodejs send the HTML that has the proper `<link>` to external assets (js / css) for the browser to load properly
 
+
+### Todos
+
+#### Pagination article structure
+
+Right now we are fetching the articles from the API every times when user clicked on page. However, we should memoize the page we've had fetched. For example, user should not be needing to refetch article from page 1 if he / she has already fetched the articles already.
+
+optimal article structure:
+
+```
+{
+  1: [
+    { article_one },
+    { article_two },
+    { article_three },
+  ],
+  2: [
+    { article_one },
+    { article_two },
+    { article_three },
+  ]
+  ...
+}
+```
+
 ### Addendum
 
  - [10 useful tips on styled components](https://medium.com/@pitipatdop/10-useful-tips-for-styled-components-b7710b021e6a)

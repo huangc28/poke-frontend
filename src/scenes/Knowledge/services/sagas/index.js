@@ -18,17 +18,35 @@ function * fetchHotArticlesFlow() {
   try {
     const resp = yield call(apis.fetchHotArticles)
 
-    yield put(fetchHotArticlesSuccess(resp))
+    const { articles } = resp
+
+    yield put(fetchHotArticlesSuccess(articles))
   } catch (error) {
     yield put(fetchHotArticlesFailed(error))
   }
 }
 
-function * fetchNutritionArticlesFlow() {
-  try {
-    const resp = yield call(apis.fetchNutritionArticles)
+function * fetchNutritionArticlesFlow(action) {
+  const {
+    limit,
+    offset,
+  } = action.payload
 
-    yield put(fetchNutritionArticlesSuccess(resp))
+  try {
+    const resp = yield call(apis.fetchNutritionArticles, [{
+      limit,
+      offset,
+    }])
+
+    const {
+      total_count,
+      articles,
+    } = resp
+
+    yield put(fetchNutritionArticlesSuccess({
+      totalCount: total_count,
+      articles,
+    }))
   } catch (error) {
     yield put(fetchNutritionArticlesFailed(error))
   }

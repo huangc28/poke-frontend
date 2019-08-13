@@ -10,6 +10,7 @@ import Paginator from '@poke/components/Paginator'
 
 import Main from '../../layouts/Main'
 import SecTwo from './components/SecTwo'
+import { PER_PAGE } from './constants/articles'
 import {
   fetchHotArticles,
   selectHotArticles,
@@ -17,58 +18,40 @@ import {
 import {
   fetchNutritionArticles,
   selectNutritionArticles,
+  selectNutritionArticlesTotalCount,
 } from './services/redux/nutritionArticles'
 
-const foodArticles = [
-  {
-    img: 'https://via.placeholder.com/600x420',
-    title: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-    descript: '必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸',
-    visit: 10,
-    updated_at: '2 days'
-  },
-  {
-    img: 'https://via.placeholder.com/300x200',
-    title: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-    descript: '必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸',
-    visit: 10,
-    updated_at: '5 minutes ago'
-  },
-  {
-    img: 'https://via.placeholder.com/300x200',
-    title: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-    descript: '必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸',
-    visit: 10,
-    updated_at: '10 minutes ago'
-  },
-  {
-    img: 'https://via.placeholder.com/300x200',
-    title: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-    descript: '必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸',
-    visit: 10,
-    updated_at: 'just now',
-  },
-  {
-    img: 'https://via.placeholder.com/300x200',
-    title: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-    descript: '必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸',
-    visit: 10,
-    updated_at: 'just now'
-  }
-]
+function countTotalPages (perPage, totalCount) {
+  const residual = totalCount % perPage
+  let pages = Math.floor(totalCount / perPage)
 
-const Knowledge = ({ fetchHotArticles, fetchNutritionArticles, articles, nutritionArticles }) => {
-  const sliceArticles = compose(
-    ([topArticle, restArticle]) => [topArticle[0] || {}, restArticle],
-    articles => [articles.slice(0, 1), articles.slice(1)]
-  )
+  if (residual > 0) {
+    pages++
+  }
+
+  return pages
+}
+
+const sliceArticles = compose(
+  ([topArticle, restArticle]) => [topArticle[0] || {}, restArticle],
+  articles => [articles.slice(0, 1), articles.slice(1)]
+)
+
+function Knowledge({
+  fetchHotArticles,
+  fetchNutritionArticles,
+  articles,
+  nutritionArticles,
+  nutritionArticlesTotalCount
+}) {
 
   const [topArticle, restArticle] = sliceArticles(nutritionArticles)
-
-  console.log('nutrition articles', topArticle, restArticle)
+  const pageCount = countTotalPages(PER_PAGE, nutritionArticlesTotalCount)
 
   useEffect(() => {
     fetchHotArticles()
+
+    // forcing to fetch the first page.
     fetchNutritionArticles()
   }, [])
 
@@ -102,11 +85,14 @@ const Knowledge = ({ fetchHotArticles, fetchNutritionArticles, articles, nutriti
         <div>
           <Paginator
             breakLabel={'...'}
-            pageCount={15}
+            pageCount={pageCount}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
-            onPageChange={() => {
-              console.log('trigger page change')
+            initialPage={0}
+            onPageChange={({ selected }) => {
+              fetchNutritionArticles({
+                offset: selected * PER_PAGE
+              })
             }}
           />
         </div>
@@ -118,13 +104,16 @@ const Knowledge = ({ fetchHotArticles, fetchNutritionArticles, articles, nutriti
 Knowledge.propTypes = {
   fetchHotArticles: T.func.isRequired,
   fetchNutritionArticles: T.func.isRequired,
+
   article: T.array,
   nutritionArticles: T.array,
+  nutritionArticlesTotalCount: T.number,
 }
 
 const mapToProps = state => ({
   articles: selectHotArticles(state),
   nutritionArticles: selectNutritionArticles(state),
+  nutritionArticlesTotalCount: selectNutritionArticlesTotalCount(state),
 })
 
 export default connect(mapToProps, {

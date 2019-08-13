@@ -64,6 +64,10 @@ const More = styled.div`
 `
 
 const SecTwo = ({ article }) => {
+  const timestamp = article.updated_at
+    ? convertDateTimeStringToTimestamp(article.updated_at)
+    : ''
+
   return (
     <TopArticleLayout
       left={
@@ -100,7 +104,7 @@ const SecTwo = ({ article }) => {
                 />
               }
               text={<TimeAgo
-                time={convertDateTimeStringToTimestamp(article.updated_at)}
+                time={timestamp}
               />}
             />
 
