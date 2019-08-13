@@ -8,6 +8,7 @@ import { size14Mixin, size26Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 import TopArticleLayout from '@poke/layouts/TopArticleLayout'
 import IconStat from '@poke/components/IconStat'
+import Img from '@poke/components/Img'
 
 const Pin = styled.div`
   width: 0.3125rem;
@@ -46,7 +47,7 @@ const SummaryContent = styled.div`
   flex-direction: column;
 `
 
-const Summary = styled.p`
+const Summary = styled.span`
   ${size14Mixin}
   color: ${colors.white};
   margin: 1.625rem 0 0 0;
@@ -74,8 +75,10 @@ const SecTwo = ({ article }) => {
           </Topic>
 
           <IntroContainer>
-            <img
+            <Img
               src={article.img}
+              fallbackImgWidth={600}
+              fallbackImgHeight={420}
             />
           </IntroContainer>
           <div style={{ clear: 'both' }} />
@@ -110,11 +113,7 @@ const SecTwo = ({ article }) => {
 
           <SummaryContent>
             <Summary>
-              必備胺基酸寵物必備胺基酸寵物必備寵
-              物必備胺基酸胺基酸寵物必備胺基酸寵
-              物必備胺基酸寵物必備胺基酸寵物必備
-              胺基酸寵物必備胺基酸寵物必備
-              胺基酸
+              <div dangerouslySetInnerHTML={{ __html: article.descript }} />
             </Summary>
 
             <More>

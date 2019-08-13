@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import T from 'prop-types'
 import styled from 'styled-components'
 
 import colors from '@poke/styles/colors'
@@ -24,21 +24,20 @@ const BottomBanner = size14(styled.div`
   line-height: 1.29;
 `)
 
-const NormalIntro = ({ children, bannerText }) => {
-  return (
-    <Content>
-      { children }
-      <BottomBanner>
-        { bannerText }
-      </BottomBanner>
-      <div style={{ clear: 'both' }} />
-    </Content>
-  )
-}
+const NormalIntro = ({ children, bannerText, onClick }) => (
+  <Content onClick={onClick}>
+    { children }
+    <BottomBanner>
+      { bannerText }
+    </BottomBanner>
+    <div style={{ clear: 'both' }} />
+  </Content>
+)
 
 NormalIntro.propTypes = {
-  children: PropTypes.element,
-  bannerText: PropTypes.string,
+  children: T.element,
+  bannerText: T.string,
+  onClick: T.func,
 }
 
 NormalIntro.defaultProps = {

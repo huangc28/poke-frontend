@@ -41,7 +41,6 @@ const Right = styled.div`
 
 const HotArticles = ({ articles }) => {
   const getArticleSect = articles => [articles.slice(0, 1), articles.slice(1)]
-
   const [top, rest] = getArticleSect(articles)
 
   return (
@@ -52,6 +51,10 @@ const HotArticles = ({ articles }) => {
             top.length > 0 && (
               <LargeIntro
                 bannerText={top[0].descript}
+                onClick={evt => {
+                  // @todo redirect to article page
+                  evt.stopPropagation()
+                }}
               >
                 <Img
                   fallbackImgWidth={600}
@@ -70,6 +73,10 @@ const HotArticles = ({ articles }) => {
                 <NormalIntro
                   bannerText={article.descript}
                   key={index}
+                  onClick={evt => {
+                    // @todo redirect to article page
+                    evt.stopPropagation()
+                  }}
                 >
                   <Img
                     fallbackImgWidth={300}

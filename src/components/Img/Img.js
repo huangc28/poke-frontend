@@ -16,7 +16,7 @@ const Img = ({ src, fallbackImgWidth, fallbackImgHeight, alt }) => {
       />
     </object>
   )
- }
+}
 
 Img.propTypes = {
   src: T.string,

@@ -10,31 +10,14 @@ import Paginator from '@poke/components/Paginator'
 
 import Main from '../../layouts/Main'
 import SecTwo from './components/SecTwo'
-import { fetchHotArticles, selectHotArticles } from './services/redux'
-
-// @todo these articles should be pull from server side
-// const articles = [
-//   {
-//     img: 'https://via.placeholder.com/600x420',
-//     bannerText: '必備胺基酸-寵物必備胺基酸寵物必備胺基酸',
-//   },
-//   {
-//     img: 'https://via.placeholder.com/300x200',
-//     bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-//   },
-//   {
-//     img: 'https://via.placeholder.com/300x200',
-//     bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-//   },
-//   {
-//     img: 'https://via.placeholder.com/300x200',
-//     bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-//   },
-//   {
-//     img: 'https://via.placeholder.com/300x200',
-//     bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-//   }
-// ]
+import {
+  fetchHotArticles,
+  selectHotArticles,
+} from './services/redux/hotArticles'
+import {
+  fetchNutritionArticles,
+  selectNutritionArticles,
+} from './services/redux/nutritionArticles'
 
 const foodArticles = [
   {
@@ -74,16 +57,19 @@ const foodArticles = [
   }
 ]
 
-const Knowledge = ({ fetchHotArticles, articles }) => {
+const Knowledge = ({ fetchHotArticles, fetchNutritionArticles, articles, nutritionArticles }) => {
   const sliceArticles = compose(
-    ([topArticle, restArticle]) => [topArticle[0] || null, restArticle],
+    ([topArticle, restArticle]) => [topArticle[0] || {}, restArticle],
     articles => [articles.slice(0, 1), articles.slice(1)]
   )
 
-  const [topArticle, restArticle] = sliceArticles(foodArticles)
+  const [topArticle, restArticle] = sliceArticles(nutritionArticles)
+
+  console.log('nutrition articles', topArticle, restArticle)
 
   useEffect(() => {
     fetchHotArticles()
+    fetchNutritionArticles()
   }, [])
 
   return (
@@ -131,13 +117,17 @@ const Knowledge = ({ fetchHotArticles, articles }) => {
 
 Knowledge.propTypes = {
   fetchHotArticles: T.func.isRequired,
+  fetchNutritionArticles: T.func.isRequired,
   article: T.array,
+  nutritionArticles: T.array,
 }
 
-const mapStateToProps = state => ({
+const mapToProps = state => ({
   articles: selectHotArticles(state),
+  nutritionArticles: selectNutritionArticles(state),
 })
 
-export default connect(mapStateToProps, {
+export default connect(mapToProps, {
   fetchHotArticles,
+  fetchNutritionArticles,
 })(Knowledge)

@@ -24,9 +24,9 @@ const Banner = compose(size16)(styled.div`
   letter-spacing: 0.2rem;
 `)
 
-const LargeIntro = ({ bannerText, children }) => {
+const LargeIntro = ({ bannerText, children, onClick }) => {
   return (
-    <Content>
+    <Content onClick={onClick}>
       { children }
 
       <Banner>
@@ -40,11 +40,13 @@ const LargeIntro = ({ bannerText, children }) => {
 LargeIntro.propTypes = {
   bannerText: T.string,
   img: T.element,
+  onClick: T.func,
 }
 
 LargeIntro.defaultProps = {
   bannerText: 'some intro text',
   children: null,
+  onClick: () => {},
 }
 
 export default LargeIntro
