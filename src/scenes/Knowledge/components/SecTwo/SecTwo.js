@@ -9,6 +9,7 @@ import colors from '@poke/styles/colors'
 import TopArticleLayout from '@poke/layouts/TopArticleLayout'
 import IconStat from '@poke/components/IconStat'
 import Img from '@poke/components/Img'
+import TimeAgo, { convertDateTimeStringToTimestamp } from '@poke/components/TimeAgo'
 
 const Pin = styled.div`
   width: 0.3125rem;
@@ -98,7 +99,9 @@ const SecTwo = ({ article }) => {
                   fontSize='small'
                 />
               }
-              text={article.updated_at}
+              text={<TimeAgo
+                time={convertDateTimeStringToTimestamp(article.updated_at)}
+              />}
             />
 
             <IconStat

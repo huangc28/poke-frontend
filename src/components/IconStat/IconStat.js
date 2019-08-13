@@ -11,7 +11,7 @@ const Stat = styled.div`
   margin-right: 0.75rem;
   cursor: pointer;
 
-  & > p {
+  & > div {
     ${size12Mixin}
     margin: 0 0 0 0.25rem;
     color: ${props => props.theme.fontColor}
@@ -60,9 +60,9 @@ const IconStat = ({
               </a>
             )
             : (
-              <p>
+              <div>
                 { text }
-              </p>
+              </div>
             )
         }
       </Stat>
@@ -78,8 +78,7 @@ IconStat.propTypes = {
   icon: PropTypes.element,
   text: PropTypes.oneOfType([
     null,
-    PropTypes.string,
-    PropTypes.number,
+    PropTypes.node,
   ]),
   theme: PropTypes.object,
 }
