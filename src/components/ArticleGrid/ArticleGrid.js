@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import T from 'prop-types'
 import Account from '@material-ui/icons/Person'
 
 import colors from '@poke/styles/colors'
 import { size26Mixin, size48Mixin } from '@poke/styles/font'
 import IconStat, { blackTheme } from '@poke/components/IconStat'
+import Img from '@poke/components/Img'
+import TimeAgo from '@poke/components/TimeAgo'
 
 const Grid = styled.div`
   display: flex;
@@ -19,6 +21,7 @@ const Left = styled.div`
 const Right = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   max-width: 32.5rem;
 `
 
@@ -81,53 +84,62 @@ const ArticleGrid = ({
 
       {/* Article Intro */}
       <Right>
-        <TopicContainer>
-          <ArticleTag>
-            { tagNum }
-          </ArticleTag>
+        <div>
+          <TopicContainer>
+            <ArticleTag>
+              { tagNum }
+            </ArticleTag>
 
-          <Title>
-            { title }
-          </Title>
-        </TopicContainer>
+            <Title>
+              { title }
+            </Title>
+          </TopicContainer>
 
-        <Summary>
-          { summary }
-        </Summary>
+          <Summary>
+            { summary }
+          </Summary>
+        </div>
 
-        <StatBar>
-          <IconStat
-            theme={blackTheme}
-            icon={<Account fontSize='small' />}
-            text={timeAgo}
-          />
+        <div>
+          <StatBar>
+            <IconStat
+              theme={blackTheme}
+              icon={<Account fontSize='small' />}
+              text={
+                <TimeAgo
+                  toTimestamp
+                  time={timeAgo}
+                />
+              }
+            />
 
-          <IconStat
-            theme={blackTheme}
-            icon={<Account fontSize='small' />}
-            text={`${numViewed}`}
-          />
+            <IconStat
+              theme={blackTheme}
+              icon={<Account fontSize='small' />}
+              text={`${numViewed}`}
+            />
 
-          <IconStat
-            theme={blackTheme}
-            icon={<Account fontSize='small' />}
-            text='more'
-            onClick={onClickMore}
-          />
-        </StatBar>
+            <IconStat
+              theme={blackTheme}
+              icon={<Account fontSize='small' />}
+              text='more'
+              onClick={onClickMore}
+            />
+          </StatBar>
+        </div>
       </Right>
     </Grid>
   )
 }
 
 ArticleGrid.propTypes = {
-  img: PropTypes.element,
-  tagNum: PropTypes.number,
-  title: PropTypes.string,
-  summary: PropTypes.string,
-  timeAgo: PropTypes.string,
-  numViewed: PropTypes.number,
-  onClickMore: PropTypes.func,
+  img: T.element,
+  tagNum: T.number,
+  title: T.string,
+  summary: T.string,
+  timeAgo: T.string,
+  numViewed: T.number,
+  onClickMore: T.func,
 }
 
 ArticleGrid.defaultProps = {

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import T from 'prop-types'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import AccIcon from '@material-ui/icons/Person'
 import Magnifier from '@material-ui/icons/Search'
@@ -11,55 +13,19 @@ import colors from '@poke/styles/colors'
 import HotArticles from '@poke/components/HotArticles'
 import IconStat from '@poke/components/IconStat'
 import Paginator from '@poke/components/Paginator'
-
 import ArticleGrid from '@poke/components/ArticleGrid'
+import TimeAgo from '@poke/components/TimeAgo'
+import Img from '@poke/components/Img'
+import { PER_PAGE } from '@poke/services/constants/articles'
+
+import {
+  fetchCanArticles,
+  selectCanArticles,
+  selectCanArticlesTotalCount
+} from './services/redux/canArticles'
+import { fetchDryFoodArticles, selectDryFoodArticles, selectDryFoodArticlesTotalCount } from './services/redux/dryFoodArticles'
 
 import Tabs, { TabBar, Tab, TabPanel } from './components/Tabs'
-
-// @todo these articles should be pull from server side
-const hotArticles = [
-  {
-    img: 'https://via.placeholder.com/600x420',
-    bannerText: '必備胺基酸-寵物必備胺基酸寵物必備胺基酸',
-  },
-  {
-    img: 'https://via.placeholder.com/300x200',
-    bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-  },
-  {
-    img: 'https://via.placeholder.com/300x200',
-    bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-  },
-  {
-    img: 'https://via.placeholder.com/300x200',
-    bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-  },
-  {
-    img: 'https://via.placeholder.com/300x200',
-    bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
-  }
-]
-
-const articleList = [
-  {
-    title: '必備胺基酸寵物必備胺基酸',
-    summary: '必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸',
-    timeAgo: '2 days ago',
-    numViewed: 999,
-    onClickMore() {
-      console.log('trigger article 1')
-    },
-  },
-  {
-    title: '必備胺基酸寵物必備胺基酸',
-    summary: '必備胺基酸寵物必備胺基酸寵物必備寵物必備胺基酸胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸寵物必備胺基酸',
-    timeAgo: '2 days ago',
-    numViewed: 999,
-    onClickMore() {
-      console.log('trigger article 2')
-    },
-  }
-]
 
 const IntroContainer = styled.div`
   float: left;
@@ -81,7 +47,7 @@ const SummaryContent = styled.div`
   flex-direction: column;
 `
 
-const Summary = styled.p`
+const Summary = styled.div`
   ${size14Mixin}
   color: ${colors.white};
   margin: 1.625rem 0 0 0;
@@ -96,33 +62,87 @@ const More = styled.div`
   margin: 2.25rem 0 0 0;
 `
 
-const FoodKnwledge = () => {
+const DRY_FOOD_TAB_ID = 'dry_food_tab'
+const CAN_FOOD_TAB_ID = 'can_food_tab'
+
+function countTotalPages (perPage, totalCount) {
+  const residual = totalCount % perPage
+  let pages = Math.floor(totalCount / perPage)
+
+  if (residual > 0) {
+    pages++
+  }
+
+  return pages
+}
+
+function FoodKnwledge ({
+  fetchCanArticles,
+  fetchDryFoodArticles,
+  canArticles,
+  canArticlesTotalCount,
+  dryFoodArticles,
+  dryFoodArticlesTotalCount,
+}) {
+  const [articleTotalCount, setArticleTotalCount] = useState(dryFoodArticlesTotalCount)
+  const [articleFetcher, setArticleFetcher] = useState(fetchDryFoodArticles)
+  const [displayArticles, setDisplayArticles] = useState(dryFoodArticles)
+  const [tabID, setActiveTab] = useState(DRY_FOOD_TAB_ID)
+
+  const getDisplayArticles = tabID => tabID === DRY_FOOD_TAB_ID
+    ? dryFoodArticles
+    : canArticles
+
+  const getArticleFetcher = tabID => tabID === DRY_FOOD_TAB_ID
+    ? fetchDryFoodArticles
+    : fetchCanArticles
+
+  const getTabbedArticleTotalCount = tabID => tabID === DRY_FOOD_TAB_ID
+    ? canArticlesTotalCount
+    : dryFoodArticlesTotalCount
+
+  useEffect(() => {
+    fetchCanArticles()
+    fetchDryFoodArticles()
+  }, [])
+
+  useEffect(() => {
+    const displayArticles = getDisplayArticles(tabID)
+    setDisplayArticles(displayArticles)
+
+    const articleFetcher = getArticleFetcher(tabID)
+    setArticleFetcher(articleFetcher)
+
+    const articleTotalCount = getTabbedArticleTotalCount(tabID)
+    setArticleTotalCount(articleTotalCount)
+  }, [tabID])
+
+  const top = displayArticles[0] || {}
+  const rest = displayArticles.slice(1)
+
   return (
     <Main>
-      <HotArticles
-        articles={hotArticles}
-      />
+      <HotArticles />
 
       <TopArticleLayout
         left={
           <React.Fragment>
-            <Tabs defaultTab='dry_food_db'>
+            <Tabs defaultTab={DRY_FOOD_TAB_ID}>
               <TabBar>
                 <Tab
-                  id='dry_food_db'
-                  onClick={() =>{
-                    console.log('clicked on dry food db')
-                    // @todo fetch relative articles from the API
+                  id={DRY_FOOD_TAB_ID}
+                  onClick={evt =>{
+                    setActiveTab(DRY_FOOD_TAB_ID)
+                    fetchCanArticles()
                   }}
                 >
                   乾飼料資料庫
                 </Tab>
-
               <Tab
-                id='can_food_db'
-                onClick={() => {
-                  console.log('clicked on can food db')
-                  // @todo fetch relative articles from the API
+                id={CAN_FOOD_TAB_ID}
+                onClick={evt => {
+                  setActiveTab(CAN_FOOD_TAB_ID)
+                  fetchDryFoodArticles()
                 }}
               >
                   罐罐料資料庫
@@ -131,22 +151,26 @@ const FoodKnwledge = () => {
               </TabBar>
 
               <TabPanel
-                whenActive='dry_food_db'
+                whenActive={DRY_FOOD_TAB_ID}
               >
                 <IntroContainer>
-                  <img
-                    src='https://via.placeholder.com/920x480'
+                  <Img
+                    src={top.img}
+                    fallbackImgWidth={920}
+                    fallbackImgHeight={480}
                   />
                 </IntroContainer>
                 <div style={{ clear: 'both' }} />
               </TabPanel>
 
               <TabPanel
-                whenActive='can_food_db'
+                whenActive={CAN_FOOD_TAB_ID}
               >
                 <IntroContainer>
-                  <img
-                    src='https://via.placeholder.com/920x480'
+                  <Img
+                    src={top.img}
+                    fallbackImgWidth={920}
+                    fallbackImgHeight={480}
                   />
                 </IntroContainer>
                 <div style={{ clear: 'both' }} />
@@ -157,7 +181,7 @@ const FoodKnwledge = () => {
         right={
           <React.Fragment>
             <Title>
-              必備胺基酸寵物必備胺基酸寵物必備胺基酸
+              { top.title }
             </Title>
 
             <ArticleStat>
@@ -167,7 +191,12 @@ const FoodKnwledge = () => {
                     fontSize='small'
                   />
                 }
-                text='2 days'
+                text={
+                  <TimeAgo
+                    toTimestamp
+                    time={top.updated_at || ''}
+                  />
+                }
               />
 
               <IconStat
@@ -176,17 +205,13 @@ const FoodKnwledge = () => {
                     fontSize='small'
                   />
                 }
-                text='999'
+                text={top.visit}
               />
             </ArticleStat>
 
             <SummaryContent>
               <Summary>
-                必備胺基酸寵物必備胺基酸寵物必備寵
-                物必備胺基酸胺基酸寵物必備胺基酸寵
-                物必備胺基酸寵物必備胺基酸寵物必備
-                胺基酸寵物必備胺基酸寵物必備
-                胺基酸
+                <div dangerouslySetInnerHTML={{ __html: top.descript }}/>
               </Summary>
 
               <More>
@@ -209,15 +234,24 @@ const FoodKnwledge = () => {
 
       <ContactLayout>
         {
-          articleList.map((article, index) => (
+          rest.map((article, index) => (
             <ArticleGrid
               key={index}
               tagNum={index + 1}
               title={article.title}
-              summary={article.summary}
-              timeAgo={article.timeAgo}
-              numViewed={article.numViewed}
-              onClickMore={article.onClickMore}
+              summary={article.descript}
+              timeAgo={article.updated_at}
+              numViewed={article.visit}
+              img={
+                <Img
+                  src={article.img}
+                  fallbackImgWidth={300}
+                  fallbackImgHeight={200}
+                />
+              }
+              onClickMore={() => {
+                console.log('clicked on index', index)
+              }}
             />
           ))
         }
@@ -225,7 +259,7 @@ const FoodKnwledge = () => {
         <div>
           <Paginator
             breakLabel={'...'}
-            pageCount={15}
+            pageCount={countTotalPages(PER_PAGE, articleTotalCount)}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
             onPageChange={() => {
@@ -238,4 +272,34 @@ const FoodKnwledge = () => {
   )
 }
 
-export default FoodKnwledge
+FoodKnwledge.propTypes = {
+  canArticles: T.array,
+  canArticlesTotalCount: T.number,
+
+  dryFoodArticles: T.array,
+  dryFoodArticlesTotalCount: T.number,
+
+  fetchCanArticles: T.func.isRequired,
+  fetchDryFoodArticles: T.func.isRequired,
+}
+
+FoodKnwledge.defaultProps = {
+  canArticles: [],
+  canArticlesTotalCount: 0,
+
+  dryFoodArticles: [],
+  dryFoodArticlesTotalCount: 0,
+}
+
+const mapToProps = state => ({
+  canArticles: selectCanArticles(state),
+  canArticlesTotalCount: selectCanArticlesTotalCount(state),
+
+  dryFoodArticles: selectDryFoodArticles(state),
+  dryFoodArticlesTotalCount: selectDryFoodArticlesTotalCount(state)
+})
+
+export default connect(mapToProps, {
+  fetchCanArticles,
+  fetchDryFoodArticles,
+})(FoodKnwledge)

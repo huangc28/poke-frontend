@@ -1,13 +1,5 @@
 import { fetchApi } from '@poke/services/apis/util'
 
-export const fetchHotArticles = () => (
-  fetchApi('articles', 'GET', {
-    params: {
-      limit: 5,
-    }
-  })
-)
-
 export const fetchNutritionArticles = ({ limit = 5, offset = 0 } = {}) => (
   fetchApi('articles', 'GET', {
     params: {

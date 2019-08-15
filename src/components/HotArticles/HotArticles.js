@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import Img from '@poke/components/Img'
 import { insetShadow } from '@poke/styles/shadow'
+import FetchHotArticles from '@poke/hoc/FetchHotArticles'
 
 import LargeIntro from './components/LargeIntro'
 import NormalIntro from './components/NormalIntro'
@@ -106,4 +107,4 @@ HotArticles.defaultProps = {
   articles: [],
 }
 
-export default HotArticles
+export default FetchHotArticles(HotArticles)

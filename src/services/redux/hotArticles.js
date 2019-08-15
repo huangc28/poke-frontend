@@ -42,4 +42,4 @@ const reducer = handleActions({
 }, initialState)
 
 export default reducer
-export const selectHotArticles = state => state.knowledge.hotArticles.hotArticles
+export const selectHotArticles = state => state.hotArticles.hotArticles

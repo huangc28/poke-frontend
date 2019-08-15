@@ -6,15 +6,12 @@ import HotArticles from '@poke/components/HotArticles'
 import ArticleGrid from '@poke/components/ArticleGrid'
 import ContactLayout from '@poke/layouts/ContactLayout'
 import compose from '@poke/util/compose'
+import sliceArticles from '@poke/util/sliceArticles'
 import Paginator from '@poke/components/Paginator'
 
 import Main from '../../layouts/Main'
 import SecTwo from './components/SecTwo'
 import { PER_PAGE } from './constants/articles'
-import {
-  fetchHotArticles,
-  selectHotArticles,
-} from './services/redux/hotArticles'
 import {
   fetchNutritionArticles,
   selectNutritionArticles,
@@ -32,34 +29,22 @@ function countTotalPages (perPage, totalCount) {
   return pages
 }
 
-const sliceArticles = compose(
-  ([topArticle, restArticle]) => [topArticle[0] || {}, restArticle],
-  articles => [articles.slice(0, 1), articles.slice(1)]
-)
-
 function Knowledge({
-  fetchHotArticles,
   fetchNutritionArticles,
-  articles,
   nutritionArticles,
   nutritionArticlesTotalCount
 }) {
-
   const [topArticle, restArticle] = sliceArticles(nutritionArticles)
   const pageCount = countTotalPages(PER_PAGE, nutritionArticlesTotalCount)
 
   useEffect(() => {
-    fetchHotArticles()
-
     // forcing to fetch the first page.
     fetchNutritionArticles()
   }, [])
 
   return (
     <Main>
-      <HotArticles
-        articles={articles}
-      />
+      <HotArticles />
 
       <SecTwo
         article={topArticle}
@@ -102,7 +87,6 @@ function Knowledge({
 }
 
 Knowledge.propTypes = {
-  fetchHotArticles: T.func.isRequired,
   fetchNutritionArticles: T.func.isRequired,
 
   article: T.array,
@@ -111,12 +95,10 @@ Knowledge.propTypes = {
 }
 
 const mapToProps = state => ({
-  articles: selectHotArticles(state),
   nutritionArticles: selectNutritionArticles(state),
   nutritionArticlesTotalCount: selectNutritionArticlesTotalCount(state),
 })
 
 export default connect(mapToProps, {
-  fetchHotArticles,
   fetchNutritionArticles,
 })(Knowledge)

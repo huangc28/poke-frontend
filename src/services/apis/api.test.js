@@ -1,4 +1,3 @@
-// import { fetchApi } from '@poke/services/apis/util'
 import { fetchHotArticles } from './'
 
 describe('fetch articles api', () => {

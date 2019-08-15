@@ -1,7 +1,7 @@
 import React  from 'react'
 import T from 'prop-types'
 
-export const convertDateTimeStringToTimestamp = (dateString) => {
+export const convertDateTimeStringToTimestamp = dateString => {
   const dateTimeParts = dateString.split(' ')
   const timeParts = dateTimeParts[1].split(':')
   const dateParts = dateTimeParts[0].split('-')
@@ -94,14 +94,27 @@ const convertTimestampToRelative = (time = Date.now(), short = false) => {
 }
 /* eslint-enable */
 
-const TimeAgo = ({ time, short }) => (
-  <div>{convertTimestampToRelative(time, short)}</div>
-)
+const TimeAgo = ({ time, short, toTimestamp }) => {
+  if (toTimestamp) {
+    time = time
+      ? convertDateTimeStringToTimestamp(time)
+      : ''
+  }
+
+  return (
+    <div>{convertTimestampToRelative(time, short)}</div>
+  )
+}
 
 TimeAgo.propTypes = {
   time: T.oneOfType([T.number, T.string]).isRequired,
   className: T.string,
   short: T.bool,
+  toTimestamp: T.bool,
+}
+
+TimeAgo.defaultProps = {
+  toTimestamp: false,
 }
 
 export default TimeAgo
