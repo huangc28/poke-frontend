@@ -23,7 +23,11 @@ import {
   selectCanArticles,
   selectCanArticlesTotalCount
 } from './services/redux/canArticles'
-import { fetchDryFoodArticles, selectDryFoodArticles, selectDryFoodArticlesTotalCount } from './services/redux/dryFoodArticles'
+import {
+  fetchDryFoodArticles,
+  selectDryFoodArticles,
+  selectDryFoodArticlesTotalCount
+} from './services/redux/dryFoodArticles'
 
 import Tabs, { TabBar, Tab, TabPanel } from './components/Tabs'
 
@@ -84,9 +88,10 @@ function FoodKnwledge ({
   dryFoodArticles,
   dryFoodArticlesTotalCount,
 }) {
+  const [topArticle, setTopArticle] = useState({})
+  const [restArticles, setRestArticles] = useState([])
   const [articleTotalCount, setArticleTotalCount] = useState(dryFoodArticlesTotalCount)
   const [articleFetcher, setArticleFetcher] = useState(fetchDryFoodArticles)
-  const [displayArticles, setDisplayArticles] = useState(dryFoodArticles)
   const [tabID, setActiveTab] = useState(DRY_FOOD_TAB_ID)
 
   const getDisplayArticles = tabID => tabID === DRY_FOOD_TAB_ID
@@ -108,17 +113,17 @@ function FoodKnwledge ({
 
   useEffect(() => {
     const displayArticles = getDisplayArticles(tabID)
-    setDisplayArticles(displayArticles)
+    const top = displayArticles[0] || {}
+    const rest = displayArticles.slice(1)
+    setTopArticle(top)
+    setRestArticles(rest)
 
     const articleFetcher = getArticleFetcher(tabID)
     setArticleFetcher(articleFetcher)
 
     const articleTotalCount = getTabbedArticleTotalCount(tabID)
     setArticleTotalCount(articleTotalCount)
-  }, [tabID])
-
-  const top = displayArticles[0] || {}
-  const rest = displayArticles.slice(1)
+  }, [canArticles.length, dryFoodArticles.length, tabID])
 
   return (
     <Main>
@@ -155,7 +160,7 @@ function FoodKnwledge ({
               >
                 <IntroContainer>
                   <Img
-                    src={top.img}
+                    src={topArticle.img}
                     fallbackImgWidth={920}
                     fallbackImgHeight={480}
                   />
@@ -168,7 +173,7 @@ function FoodKnwledge ({
               >
                 <IntroContainer>
                   <Img
-                    src={top.img}
+                    src={topArticle.img}
                     fallbackImgWidth={920}
                     fallbackImgHeight={480}
                   />
@@ -181,7 +186,7 @@ function FoodKnwledge ({
         right={
           <React.Fragment>
             <Title>
-              { top.title }
+              { topArticle.title }
             </Title>
 
             <ArticleStat>
@@ -194,7 +199,7 @@ function FoodKnwledge ({
                 text={
                   <TimeAgo
                     toTimestamp
-                    time={top.updated_at || ''}
+                    time={topArticle.updated_at || ''}
                   />
                 }
               />
@@ -205,13 +210,13 @@ function FoodKnwledge ({
                     fontSize='small'
                   />
                 }
-                text={top.visit}
+                text={topArticle.visit}
               />
             </ArticleStat>
 
             <SummaryContent>
               <Summary>
-                <div dangerouslySetInnerHTML={{ __html: top.descript }}/>
+                <div dangerouslySetInnerHTML={{ __html: topArticle.descript }}/>
               </Summary>
 
               <More>
@@ -234,7 +239,7 @@ function FoodKnwledge ({
 
       <ContactLayout>
         {
-          rest.map((article, index) => (
+          restArticles.map((article, index) => (
             <ArticleGrid
               key={index}
               tagNum={index + 1}

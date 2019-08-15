@@ -19,8 +19,6 @@ function * fetchDryFoodArticlesFlow(action) {
       offset
     })
 
-    console.log('fetchDryFoodArticlesFlow!@@@', resp)
-
     const {
       articles,
       total_count
