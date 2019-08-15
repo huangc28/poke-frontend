@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import HotArticles from '@poke/components/HotArticles'
 import ArticleGrid from '@poke/components/ArticleGrid'
 import ContactLayout from '@poke/layouts/ContactLayout'
-import compose from '@poke/util/compose'
 import sliceArticles from '@poke/util/sliceArticles'
 import Paginator from '@poke/components/Paginator'
 

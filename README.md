@@ -27,6 +27,10 @@ optimal article structure:
 }
 ```
 
+#### Rename IconStat to Iconlabel
+
+#### Top article should be stationary. It should stay on top. Page change should not effect the the top article.
+
 ### Addendum
 
  - [10 useful tips on styled components](https://medium.com/@pitipatdop/10-useful-tips-for-styled-components-b7710b021e6a)

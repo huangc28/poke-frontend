@@ -262,8 +262,10 @@ function FoodKnwledge ({
             pageCount={countTotalPages(PER_PAGE, articleTotalCount)}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
-            onPageChange={() => {
-              console.log('trigger page change')
+            onPageChange={({ selected }) => {
+              articleFetcher({
+                offset: selected * PER_PAGE
+              })
             }}
           />
         </div>
