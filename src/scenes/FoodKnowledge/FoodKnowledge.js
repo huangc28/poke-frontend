@@ -17,6 +17,7 @@ import ArticleGrid from '@poke/components/ArticleGrid'
 import TimeAgo from '@poke/components/TimeAgo'
 import Img from '@poke/components/Img'
 import { PER_PAGE } from '@poke/services/constants/articles'
+import { insetShadow } from '@poke/styles/shadow'
 
 import {
   fetchCanArticles,
@@ -64,6 +65,21 @@ const More = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   margin: 2.25rem 0 0 0;
+`
+
+const ArticlesContainer = styled.div`
+  ${insetShadow}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 7.4375rem 3.875rem 0;
+  & > div {
+    margin-bottom: 4.625rem;
+  }
+`
+const PaginatorContainer = styled.div`
+  padding-bottom: 3.125rem;
 `
 
 const DRY_FOOD_TAB_ID = 'dry_food_tab'
@@ -238,30 +254,31 @@ function FoodKnwledge ({
       />
 
       <ContactLayout>
-        {
-          restArticles.map((article, index) => (
-            <ArticleGrid
-              key={index}
-              tagNum={index + 1}
-              title={article.title}
-              summary={article.descript}
-              timeAgo={article.updated_at}
-              numViewed={article.visit}
-              img={
-                <Img
-                  src={article.img}
-                  fallbackImgWidth={300}
-                  fallbackImgHeight={200}
-                />
-              }
-              onClickMore={() => {
-                console.log('clicked on index', index)
-              }}
-            />
-          ))
-        }
-
-        <div>
+        <ArticlesContainer>
+          {
+            restArticles.map((article, index) => (
+              <ArticleGrid
+                key={index}
+                tagNum={index + 1}
+                title={article.title}
+                summary={article.descript}
+                timeAgo={article.updated_at}
+                numViewed={article.visit}
+                img={
+                  <Img
+                    src={article.img}
+                    fallbackImgWidth={300}
+                    fallbackImgHeight={200}
+                  />
+                }
+                onClickMore={() => {
+                  console.log('clicked on index', index)
+                }}
+              />
+            ))
+          }
+        </ArticlesContainer>
+        <PaginatorContainer>
           <Paginator
             breakLabel={'...'}
             pageCount={countTotalPages(PER_PAGE, articleTotalCount)}
@@ -273,7 +290,7 @@ function FoodKnwledge ({
               })
             }}
           />
-        </div>
+        </PaginatorContainer>
       </ContactLayout>
     </Main>
   )

@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import T from 'prop-types'
-import Account from '@material-ui/icons/Person'
 
 import colors from '@poke/styles/colors'
 import { size26Mixin, size48Mixin } from '@poke/styles/font'
 import IconStat, { blackTheme } from '@poke/components/IconStat'
-import Img from '@poke/components/Img'
 import TimeAgo from '@poke/components/TimeAgo'
+import { RecentUpdatedDate, NumViews, More } from '@poke/components/Icons'
 
 const Grid = styled.div`
   display: flex;
+  width: 100%;
 `
 
 const Left = styled.div`
@@ -22,7 +22,7 @@ const Right = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 32.5rem;
+  width: 100%;
 `
 
 const TopicContainer = styled.div`
@@ -104,7 +104,7 @@ const ArticleGrid = ({
           <StatBar>
             <IconStat
               theme={blackTheme}
-              icon={<Account fontSize='small' />}
+              icon={<RecentUpdatedDate width={16} height={16} />}
               text={
                 <TimeAgo
                   toTimestamp
@@ -115,13 +115,13 @@ const ArticleGrid = ({
 
             <IconStat
               theme={blackTheme}
-              icon={<Account fontSize='small' />}
+              icon={<NumViews width={16} height={16} />}
               text={`${numViewed}`}
             />
 
             <IconStat
               theme={blackTheme}
-              icon={<Account fontSize='small' />}
+              icon={<More width={16} height={16} />}
               text='more'
               onClick={onClickMore}
             />

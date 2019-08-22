@@ -39,6 +39,11 @@ export const size38Mixin = css`
   font-size: 2.375rem;
 `
 
+export const size40Mixin = css`
+  font-size: 40px;
+  font-size: 2.5rem;
+`
+
 export const size48Mixin = css`
   font-size: 48px;
   font-size: 3rem;

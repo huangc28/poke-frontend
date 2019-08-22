@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import styled from 'styled-components'
 import T from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -7,6 +8,7 @@ import ArticleGrid from '@poke/components/ArticleGrid'
 import ContactLayout from '@poke/layouts/ContactLayout'
 import sliceArticles from '@poke/util/sliceArticles'
 import Paginator from '@poke/components/Paginator'
+import { insetShadow } from '@poke/styles/shadow'
 
 import Main from '../../layouts/Main'
 import SecTwo from './components/SecTwo'
@@ -16,6 +18,22 @@ import {
   selectNutritionArticles,
   selectNutritionArticlesTotalCount,
 } from './services/redux/nutritionArticles'
+
+const ArticlesContainer = styled.div`
+  ${insetShadow}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 7.4375rem 3.875rem 0;
+  & > div {
+    margin-bottom: 4.625rem;
+  }
+`
+
+const PaginatorContainer = styled.div`
+  padding-bottom: 3.125rem;
+`
 
 function countTotalPages (perPage, totalCount) {
   const residual = totalCount % perPage
@@ -50,23 +68,25 @@ function Knowledge({
       />
 
       <ContactLayout>
-        {
-          restArticle.map((article, index) => (
-            <ArticleGrid
-              key={index}
-              tagNum={2}
-              title={article.title}
-              summary={article.descript}
-              timeAgo={article.updated_at}
-              numViewed={article.visit}
-              onClickMore={() => {
-                console.log('trigger on click more')
-              }}
-            />
-          ))
-        }
+        <ArticlesContainer>
+          {
+            restArticle.map((article, index) => (
+              <ArticleGrid
+                key={index}
+                tagNum={2}
+                title={article.title}
+                summary={article.descript}
+                timeAgo={article.updated_at}
+                numViewed={article.visit}
+                onClickMore={() => {
+                  console.log('trigger on click more')
+                }}
+              />
+            ))
+          }
+        </ArticlesContainer>
 
-        <div>
+        <PaginatorContainer>
           <Paginator
             breakLabel={'...'}
             pageCount={pageCount}
@@ -79,7 +99,7 @@ function Knowledge({
               })
             }}
           />
-        </div>
+        </PaginatorContainer>
       </ContactLayout>
     </Main>
   )

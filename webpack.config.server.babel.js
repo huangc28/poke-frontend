@@ -24,7 +24,7 @@ const plugins = [
 
   new CleanWebpackPlugin({
     verbose: true,
-    cleanOnceBeforeBuildPatterns: ['dist/server']
+    cleanOnceBeforeBuildPatterns: ['dist/server/*']
   }),
 ]
 

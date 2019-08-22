@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 
 import FoodKnowledge from './FoodKnowledge'
 
-storiesOf('Food Knowledge', module)
+storiesOf('scenes', module)
   .add('Food Knowledge', () => {
     return (
       <Router>

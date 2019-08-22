@@ -36,7 +36,7 @@ ProviderWithRouter.propTypes = {
   rootReducer: T.func,
   history: T.object.isRequired,
   store: T.oneOfType([
-    null,
+    T.oneOf([null]),
     T.object,
   ]),
 }

@@ -15,6 +15,8 @@ module.exports = (env, argv) => {
 
   const PUBLIC_PATH = isDev ? `http://localhost:${dotenv.parsed.DEV_SERVER_PORT}/` : '/';
 
+  console.log('DEBUG', PUBLIC_PATH)
+
   return {
     mode: isProd ? 'production' : 'development',
     devtool: isProd ? 'source-map': 'eval',

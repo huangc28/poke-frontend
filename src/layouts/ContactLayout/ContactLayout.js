@@ -13,14 +13,6 @@ const Section = styled.section`
   background-color: ${colors.white};
 `
 
-const Left = styled.div`
-  ${insetShadow}
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 7.4375rem;
-`
-
 const Right = styled.div`
   ${insetShadow}
   display: flex;
@@ -28,25 +20,17 @@ const Right = styled.div`
   background-color: ${colors.gallery};
   padding-bottom: 1.875rem;
 `
-
-const Content = styled.div`
-  & > div {
-    margin-bottom: 4.625rem;
-  }
-`
 const ContactContainer = styled.div`
   width: 18.125rem;
-  padding-top: 8.6rem;
+  padding-top: 3.875rem;
 `
 
 const ContactLayout = ({ children }) => {
   return (
     <Section>
-      <Left>
-        <Content>
-          { children }
-        </Content>
-      </Left>
+      <div>
+        { children }
+      </div>
 
       <Right>
         <ContactContainer>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import PropTypes from 'prop-types'
+import T from 'prop-types'
 
 import { size12Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
@@ -71,16 +71,16 @@ const IconStat = ({
 }
 
 IconStat.propTypes = {
-  onClick: PropTypes.oneOfType([
-    PropTypes.func,
-    null,
+  onClick: T.oneOfType([
+    T.func,
+    T.oneOf([null]),
   ]),
-  icon: PropTypes.element,
-  text: PropTypes.oneOfType([
-    null,
-    PropTypes.node,
+  icon: T.element,
+  text: T.oneOfType([
+    T.oneOf([null]),
+    T.node,
   ]),
-  theme: PropTypes.object,
+  theme: T.object,
 }
 
 IconStat.defaultProps = {

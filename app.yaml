@@ -1,3 +1,5 @@
 # [START gae_quickstart_yaml]
 runtime: nodejs10
+vpc_access_connector:
+  name: "projects/poke-love/locations/us-central1/connectors/poke-love-vpn-connector"
 # [END gae_quickstart_yaml]

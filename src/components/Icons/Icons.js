@@ -162,3 +162,6 @@ export default Icon;
 
 export const Facebook = Icon('facebook.svg')
 export const Instagram = Icon('instagram.svg')
+export const RecentUpdatedDate = Icon('date_blue.png')
+export const NumViews = Icon('ppl_blue.png')
+export const More = Icon('more.png')

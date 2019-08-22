@@ -31,6 +31,10 @@ optimal article structure:
 
 #### Top article should be stationary. It should stay on top. Page change should not effect the the top article.
 
+#### Use cloud build for GAE
+
+Here is the relavant official [document](https://cloud.google.com/source-repositories/docs/quickstart-triggering-builds-with-source-repositories) for GAE cloud build.
+
 ### Addendum
 
  - [10 useful tips on styled components](https://medium.com/@pitipatdop/10-useful-tips-for-styled-components-b7710b021e6a)
@@ -39,3 +43,4 @@ optimal article structure:
  - [Kent c Dodds Compound components](https://kentcdodds.com/blog/compound-components-with-react-hooks/)
  - [Eric Elliot - hooks can't replace redux](https://medium.com/javascript-scene/do-react-hooks-replace-redux-210bab340672)
  - [Prevent xss on react app](https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0)
+ - [redux standard action](https://github.com/redux-utilities/redux-actions)

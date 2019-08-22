@@ -92,7 +92,6 @@ const convertTimestampToRelative = (time = Date.now(), short = false) => {
     ? `${Math.floor(diff / ONE_YEAR)}y ago`
     : `${Math.floor(diff / ONE_YEAR)} years ago`
 }
-/* eslint-enable */
 
 const TimeAgo = ({ time, short, toTimestamp }) => {
   if (toTimestamp) {
