@@ -146,7 +146,9 @@ function FoodKnwledge ({
 
   return (
     <Main>
-      <HotArticles />
+      <HotArticles
+        onClickArticle={({ articleID }) => history.push(`/articles/${articleID}`)}
+      />
 
       <TopArticleLayout
         left={
