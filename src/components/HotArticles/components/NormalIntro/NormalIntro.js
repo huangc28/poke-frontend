@@ -3,7 +3,7 @@ import T from 'prop-types'
 import styled from 'styled-components'
 
 import colors from '@poke/styles/colors'
-import { size14 } from '@poke/styles/font'
+import { size14Mixin } from '@poke/styles/font'
 
 const Content = styled.div`
   float: left;
@@ -12,8 +12,10 @@ const Content = styled.div`
   position: relative;
 `
 
-const BottomBanner = size14(styled.div`
+const BottomBanner = styled.div`
+  ${size14Mixin}
   position: absolute;
+  width: 100%;
   bottom: 0%;
   right: 0%;
   background-color: ${colors.pickledBluewood};
@@ -22,7 +24,8 @@ const BottomBanner = size14(styled.div`
   box-sizing: border-box;
   letter-spacing: 0.175rem;
   line-height: 1.29;
-`)
+  text-align: center;
+`
 
 const NormalIntro = ({ children, bannerText, onClick }) => (
   <Content onClick={onClick}>
@@ -41,7 +44,7 @@ NormalIntro.propTypes = {
 }
 
 NormalIntro.defaultProps = {
-  bannerText: '必備胺基酸-寵物必備胺基酸-寵物必基酸寵物必備胺基酸',
+  bannerText: '',
   children: null,
 }
 

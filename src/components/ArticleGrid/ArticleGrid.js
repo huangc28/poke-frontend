@@ -7,6 +7,7 @@ import { size26Mixin, size48Mixin } from '@poke/styles/font'
 import IconStat, { blackTheme } from '@poke/components/IconStat'
 import TimeAgo from '@poke/components/TimeAgo'
 import { RecentUpdatedDate, NumViews, More } from '@poke/components/Icons'
+import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
 
 const Grid = styled.div`
   display: flex;
@@ -107,8 +108,11 @@ const ArticleGrid = ({
               icon={<RecentUpdatedDate width={16} height={16} />}
               text={
                 <TimeAgo
-                  toTimestamp
-                  time={timeAgo}
+                  time={
+                    timeAgo
+                      ? convertDateTimeStringToTimestamp(timeAgo)
+                      : Date.now()
+                  }
                 />
               }
             />

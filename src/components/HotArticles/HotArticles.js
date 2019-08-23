@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import T from 'prop-types'
 import styled from 'styled-components'
 
 import Img from '@poke/components/Img'
@@ -40,27 +40,25 @@ const Right = styled.div`
   }
 `
 
-const HotArticles = ({ articles }) => {
-  const getArticleSect = articles => [articles.slice(0, 1), articles.slice(1)]
-  const [top, rest] = getArticleSect(articles)
+
+const HotArticles = ({ articles, onClickArticle }) => {
+  const top = articles[0]
+  const rest = articles.slice(1)
 
   return (
     <Section>
       <Content>
         <Left>
           {
-            top.length > 0 && (
+            top && (
               <LargeIntro
-                bannerText={top[0].descript}
-                onClick={evt => {
-                  // @todo redirect to article page
-                  evt.stopPropagation()
-                }}
+                bannerText={top.descript}
+                onClick={evt => onClickArticle({ evt, articleID: top.article_id })}
               >
                 <Img
                   fallbackImgWidth={600}
                   fallbackImgHeight={420}
-                  src={top[0].img}
+                  src={top.img}
                 />
               </LargeIntro>
             )
@@ -74,10 +72,7 @@ const HotArticles = ({ articles }) => {
                 <NormalIntro
                   bannerText={article.descript}
                   key={index}
-                  onClick={evt => {
-                    // @todo redirect to article page
-                    evt.stopPropagation()
-                  }}
+                  onClick={evt => onClickArticle({ evt, articleID: article.article_id })}
                 >
                   <Img
                     fallbackImgWidth={300}
@@ -95,12 +90,13 @@ const HotArticles = ({ articles }) => {
 }
 
 HotArticles.propTypes = {
-  articles: PropTypes.arrayOf(
-    PropTypes.shape({
-      img: PropTypes.string,
-      descript: PropTypes.string,
+  articles: T.arrayOf(
+    T.shape({
+      img: T.string,
+      descript: T.string,
     })
   ),
+  onClickArticle: T.func.isRequired,
 }
 
 HotArticles.defaultProps = {

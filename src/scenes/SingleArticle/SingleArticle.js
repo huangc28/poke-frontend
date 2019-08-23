@@ -8,18 +8,19 @@ import ContactLayout from '@poke/layouts/ContactLayout'
 import { size40Mixin } from '@poke/styles/font'
 import { insetShadow } from '@poke/styles/shadow'
 import colors from '@poke/styles/colors'
-import IconStat from '@poke/components/IconStat'
+import IconStat, { blackTheme } from '@poke/components/IconStat'
 import { RecentUpdatedDate, NumViews } from '@poke/components/Icons'
 import TimeAgo from '@poke/components/TimeAgo'
+import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
 
 import {
   fetchArticle,
   selectArticle,
 } from './services/redux/singleArticle'
-import dogBG from './images/dogBG.png'
+import defaultBanner from './images/default_banner.png'
 
 const Content = styled.div`
-  padding: 0 2.375rem 0;
+  padding: 0 2.375rem 2.5rem;
 `
 
 const TopBanner = styled.div`
@@ -61,7 +62,7 @@ function SingleArticle ({ match, fetchArticle, article }) {
     <Main>
       <ContactLayout>
         <TopBanner
-          img={article.img || dogBG}
+          img={article.img || defaultBanner}
         />
 
         <Content>
@@ -72,6 +73,7 @@ function SingleArticle ({ match, fetchArticle, article }) {
             <StatContainer>
               {/* created at */}
               <IconStat
+                theme={blackTheme}
                 icon={
                   <RecentUpdatedDate
                     width={16}
@@ -80,26 +82,25 @@ function SingleArticle ({ match, fetchArticle, article }) {
                 }
                 text={
                   <TimeAgo
-                    time={article.updated_at}
-                    toTimestamp
+                    time={
+                      article.updated_at
+                        ? convertDateTimeStringToTimestamp(article.updated_at)
+                        : Date.now()
+                    }
                   />
                 }
               />
 
               {/* viewed */}
               <IconStat
+                theme={blackTheme}
                 icon={
                   <NumViews
                     width={16}
                     height={16}
                   />
                 }
-                text={
-                  <TimeAgo
-                    time={article.updated_at}
-                    toTimestamp
-                  />
-                }
+                text={article.visit}
               />
             </StatContainer>
           </TopicBar>

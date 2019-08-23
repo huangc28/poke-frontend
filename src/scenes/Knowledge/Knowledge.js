@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { compose } from 'redux'
 import T from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import HotArticles from '@poke/components/HotArticles'
 import ArticleGrid from '@poke/components/ArticleGrid'
@@ -49,7 +51,8 @@ function countTotalPages (perPage, totalCount) {
 function Knowledge({
   fetchNutritionArticles,
   nutritionArticles,
-  nutritionArticlesTotalCount
+  nutritionArticlesTotalCount,
+  history,
 }) {
   const [topArticle, restArticle] = sliceArticles(nutritionArticles)
   const pageCount = countTotalPages(PER_PAGE, nutritionArticlesTotalCount)
@@ -61,10 +64,13 @@ function Knowledge({
 
   return (
     <Main>
-      <HotArticles />
+      <HotArticles
+        onClickArticle={({ articleID }) => history.push(`/articles/${articleID}`)}
+      />
 
       <SecTwo
         article={topArticle}
+        onClickTopArticle={() => history.push(`/articles/${topArticle.article_id}`)}
       />
 
       <ContactLayout>
@@ -79,7 +85,7 @@ function Knowledge({
                 timeAgo={article.updated_at}
                 numViewed={article.visit}
                 onClickMore={() => {
-                  console.log('trigger on click more')
+                  history.push(`/articles/${article.article_id}`)
                 }}
               />
             ))
@@ -118,6 +124,9 @@ const mapToProps = state => ({
   nutritionArticlesTotalCount: selectNutritionArticlesTotalCount(state),
 })
 
-export default connect(mapToProps, {
-  fetchNutritionArticles,
-})(Knowledge)
+export default compose(
+  connect(mapToProps, {
+    fetchNutritionArticles,
+  }),
+  withRouter
+)(Knowledge)

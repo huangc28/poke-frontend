@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import T from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import AccIcon from '@material-ui/icons/Person'
-import Magnifier from '@material-ui/icons/Search'
+import { compose } from 'redux'
+import { withRouter } from 'react-router'
 
 import Main from '@poke/layouts/Main'
 import TopArticleLayout from '@poke/layouts/TopArticleLayout'
@@ -12,12 +12,14 @@ import { size26Mixin, size14Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 import HotArticles from '@poke/components/HotArticles'
 import IconStat from '@poke/components/IconStat'
+import { DateWhite, PPWhite, More as MoreIcon } from '@poke/components/Icons'
 import Paginator from '@poke/components/Paginator'
 import ArticleGrid from '@poke/components/ArticleGrid'
 import TimeAgo from '@poke/components/TimeAgo'
 import Img from '@poke/components/Img'
 import { PER_PAGE } from '@poke/services/constants/articles'
 import { insetShadow } from '@poke/styles/shadow'
+import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
 
 import {
   fetchCanArticles,
@@ -103,6 +105,7 @@ function FoodKnwledge ({
   canArticlesTotalCount,
   dryFoodArticles,
   dryFoodArticlesTotalCount,
+  history,
 }) {
   const [topArticle, setTopArticle] = useState({})
   const [restArticles, setRestArticles] = useState([])
@@ -208,22 +211,27 @@ function FoodKnwledge ({
             <ArticleStat>
               <IconStat
                 icon={
-                  <AccIcon
-                    fontSize='small'
+                  <DateWhite
+                    width={16}
+                    height={16}
                   />
                 }
                 text={
                   <TimeAgo
-                    toTimestamp
-                    time={topArticle.updated_at || ''}
+                    time={
+                      topArticle.updated_at
+                        ? convertDateTimeStringToTimestamp(topArticle)
+                        : Date.now()
+                    }
                   />
                 }
               />
 
               <IconStat
                 icon={
-                  <Magnifier
-                    fontSize='small'
+                  <PPWhite
+                    width={16}
+                    height={16}
                   />
                 }
                 text={topArticle.visit}
@@ -238,14 +246,13 @@ function FoodKnwledge ({
               <More>
                 <IconStat
                   icon={
-                    <AccIcon
-                      fontSize='small'
+                    <MoreIcon
+                      width={16}
+                      height={16}
                     />
                   }
                   text='more'
-                  onClick={evt => {
-                    console.log('trigger more')
-                  }}
+                  onClick={() => history.push(`/articles/${topArticle.article_id}`)}
                 />
               </More>
             </SummaryContent>
@@ -262,7 +269,7 @@ function FoodKnwledge ({
                 tagNum={index + 1}
                 title={article.title}
                 summary={article.descript}
-                timeAgo={article.updated_at}
+                timeAgo={article.updated_at || ''}
                 numViewed={article.visit}
                 img={
                   <Img
@@ -271,9 +278,7 @@ function FoodKnwledge ({
                     fallbackImgHeight={200}
                   />
                 }
-                onClickMore={() => {
-                  console.log('clicked on index', index)
-                }}
+                onClickMore={() => history.push(`/articles/${article.article_id}`)}
               />
             ))
           }
@@ -305,6 +310,8 @@ FoodKnwledge.propTypes = {
 
   fetchCanArticles: T.func.isRequired,
   fetchDryFoodArticles: T.func.isRequired,
+
+  history: T.objectOf(T.any).isRequired,
 }
 
 FoodKnwledge.defaultProps = {
@@ -323,7 +330,10 @@ const mapToProps = state => ({
   dryFoodArticlesTotalCount: selectDryFoodArticlesTotalCount(state)
 })
 
-export default connect(mapToProps, {
-  fetchCanArticles,
-  fetchDryFoodArticles,
-})(FoodKnwledge)
+export default compose(
+  connect(mapToProps, {
+    fetchCanArticles,
+    fetchDryFoodArticles,
+  }),
+  withRouter
+)(FoodKnwledge)

@@ -1,7 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import TimeAgo, { convertDateTimeStringToTimestamp } from './TimeAgo'
+import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
+import TimeAgo from './TimeAgo'
 
 
 storiesOf('Time ago', module)

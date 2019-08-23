@@ -13,8 +13,6 @@ function * fetchSingleArticleFlow(action) {
   try {
     const article = yield call(fetchHotArticles, articleID)
 
-    console.log('DEBUG1', article)
-
     yield put(fetchArticleSuccess(article))
   } catch (err) {
     yield put(fetchArticleFailed(err))

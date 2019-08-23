@@ -1,15 +1,15 @@
 import React from 'react'
 import T from 'prop-types'
 import styled from 'styled-components'
-import AccIcon from '@material-ui/icons/Person'
-import Magnifier from '@material-ui/icons/Search'
 
 import { size14Mixin, size26Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 import TopArticleLayout from '@poke/layouts/TopArticleLayout'
 import IconStat from '@poke/components/IconStat'
 import Img from '@poke/components/Img'
-import TimeAgo, { convertDateTimeStringToTimestamp } from '@poke/components/TimeAgo'
+import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
+import TimeAgo from '@poke/components/TimeAgo'
+import { DateWhite, PPWhite, More as MoreIcon } from '@poke/components/Icons'
 
 const Pin = styled.div`
   width: 0.3125rem;
@@ -63,10 +63,10 @@ const More = styled.div`
   margin: 2.25rem 0 0 0;
 `
 
-const SecTwo = ({ article }) => {
+const SecTwo = ({ article, onClickArticle }) => {
   const timestamp = article.updated_at
     ? convertDateTimeStringToTimestamp(article.updated_at)
-    : ''
+    : Date.now()
 
   return (
     <TopArticleLayout
@@ -99,8 +99,9 @@ const SecTwo = ({ article }) => {
           <ArticleStat>
             <IconStat
               icon={
-                <AccIcon
-                  fontSize='small'
+                <DateWhite
+                  width={16}
+                  height={16}
                 />
               }
               text={<TimeAgo
@@ -110,8 +111,9 @@ const SecTwo = ({ article }) => {
 
             <IconStat
               icon={
-                <Magnifier
-                  fontSize='small'
+                <PPWhite
+                  width={16}
+                  height={16}
                 />
               }
               text={article.visit}
@@ -126,14 +128,13 @@ const SecTwo = ({ article }) => {
             <More>
               <IconStat
                 icon={
-                  <AccIcon
-                    fontSize='small'
+                  <MoreIcon
+                    width={16}
+                    height={16}
                   />
                 }
                 text='more'
-                onClick={evt => {
-                  console.log('trigger more')
-                }}
+                onClick={onClickArticle}
               />
             </More>
           </SummaryContent>
@@ -148,10 +149,12 @@ SecTwo.propTypes = {
     title: T.string,
     img: T.string,
   }),
+  onClickArticle: T.func,
 }
 
 SecTwo.defaultProps = {
   article: {},
+  onClickArticle: () => {} ,
 }
 
 export default SecTwo
