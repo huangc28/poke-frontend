@@ -63,7 +63,7 @@ const More = styled.div`
   margin: 2.25rem 0 0 0;
 `
 
-const SecTwo = ({ article, onClickArticle }) => {
+function SecTwo ({ article, onClickArticle }) {
   const timestamp = article.updated_at
     ? convertDateTimeStringToTimestamp(article.updated_at)
     : Date.now()
