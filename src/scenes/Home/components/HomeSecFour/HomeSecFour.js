@@ -1,13 +1,21 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 import styled from 'styled-components'
+import T from 'prop-types'
 
 import compose from '@poke/util/compose'
 import colors from '@poke/styles/colors'
-import { bold, size14 } from '@poke/styles/font'
+import { bold, size12Mixin, size14 } from '@poke/styles/font'
+import FetchHotArticles from '@poke/hoc/FetchHotArticles'
+import Img from '@poke/components/Img'
+import TimeAgo from '@poke/components/TimeAgo'
+import { convertDateTimeStringToTimestamp } from '@poke/util/convertDateTimeStringToTimestamp'
 
 import Moscot from './images/10.png'
 import ConfusedMan from './images/11.png'
 import StepFlagImg from './images/31.png'
+import LoveImg from './images/19.png'
+import ReadImg from './images/20.png'
 
 import ArticleCarousel from './components/ArticleSlider'
 
@@ -93,7 +101,52 @@ const ArticlesContainer = styled.div`
     margin: 0 0 1.4375rem 0;
   }
 `
-const HomeSecFour = () => {
+const ArticleContainer = styled.div`
+  width: 11.3125rem;
+  height: 9.0625rem;
+  display: flex;
+  flex-direction: column;
+`
+
+const ArticleStatusBar = styled.div`
+  width: 100%;
+  height: 1.375rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+`
+
+const LikeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 0.25rem;
+
+  & > img {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-right: 0.25rem;
+  }
+`
+
+const ReadContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & > img {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-right: 0.25rem;
+  }
+`
+
+const Span = styled.span`
+  ${size12Mixin}
+`
+
+function HomeSecFour ({ history, articles }) {
   return (
     <Section>
       <StepFlag src={StepFlagImg} />
@@ -137,10 +190,65 @@ const HomeSecFour = () => {
           精選熱門文章
         </h3>
 
-        <ArticleCarousel />
+        {/* Article Slider */}
+        <ArticleCarousel>
+          {
+            articles.map((article, index) => (
+              <div key={index}>
+                <ArticleContainer
+                  onClick={() => history.push(`/articles/${article.article_id}`)}
+                >
+                  <Img
+                    src={article.img}
+                    fallbackImgWidth={181}
+                    fallbackImgHeight={123}
+                  />
+                  <ArticleStatusBar>
+                    <LikeContainer>
+                      <img src={LoveImg} />
+                      <Span>
+                        {article.visit}
+                      </Span>
+                    </LikeContainer>
+                    <ReadContainer>
+                      <img src={ReadImg} />
+                      <Span>
+                        <TimeAgo
+                          time={
+                            article.updated_at
+                              ? convertDateTimeStringToTimestamp(article.updated_at)
+                              : Date.now()
+                          }
+                        />
+                      </Span>
+                    </ReadContainer>
+                  </ArticleStatusBar>
+                </ArticleContainer>
+              </div>
+            ))
+          }
+        </ArticleCarousel>
       </ArticlesContainer>
     </Section>
   )
 }
 
-export default HomeSecFour
+HomeSecFour.proptypes = {
+  articles: T.arrayOf(
+    T.shape({
+      img: T.string,
+      descript: T.string,
+    })
+  ),
+  onClickArticle: T.func.isRequired,
+  history: T.objectOf(T.any).isRequired,
+}
+
+HomeSecFour.defaultProps = {
+  articles: [],
+}
+
+export default compose(
+  FetchHotArticles,
+  withRouter,
+)(HomeSecFour)

@@ -182,8 +182,10 @@ function FoodKnwledge ({
                 <IntroContainer>
                   <Img
                     src={topArticle.img}
-                    fallbackImgWidth={920}
-                    fallbackImgHeight={480}
+                    width={600}
+                    height={420}
+                    fallbackImgWidth={600}
+                    fallbackImgHeight={420}
                   />
                 </IntroContainer>
                 <div style={{ clear: 'both' }} />
@@ -195,8 +197,10 @@ function FoodKnwledge ({
                 <IntroContainer>
                   <Img
                     src={topArticle.img}
-                    fallbackImgWidth={920}
-                    fallbackImgHeight={480}
+                    width={600}
+                    height={420}
+                    fallbackImgWidth={600}
+                    fallbackImgHeight={420}
                   />
                 </IntroContainer>
                 <div style={{ clear: 'both' }} />

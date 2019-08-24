@@ -10,6 +10,7 @@ const Content = styled.div`
   height: 12.5rem;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 `
 
 const BottomBanner = styled.div`

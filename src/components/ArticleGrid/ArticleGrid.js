@@ -17,6 +17,7 @@ const Grid = styled.div`
 const Left = styled.div`
   display: flex;
   margin-right: 2.6875rem;
+  cursor: pointer;
 `
 
 const Right = styled.div`
@@ -45,6 +46,7 @@ const ArticleTag = styled.div`
   color: ${colors.white};
   border-radius: 0.75rem;
   margin-right: 1.25rem;
+  cursor: pointer;
 `
 
 const Title = styled.div`
@@ -77,9 +79,11 @@ const ArticleGrid = ({
   onClickMore,
 }) => {
   return (
-    <Grid>
+    <Grid >
       {/* Article head image */}
-      <Left>
+      <Left
+        onClick={onClickMore}
+      >
         { img }
       </Left>
 
@@ -87,7 +91,9 @@ const ArticleGrid = ({
       <Right>
         <div>
           <TopicContainer>
-            <ArticleTag>
+            <ArticleTag
+              onClick={onClickMore}
+            >
               { tagNum }
             </ArticleTag>
 

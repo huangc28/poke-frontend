@@ -89,17 +89,20 @@ const HomeSecSix = () => {
             </P>
           </CaptionText>
           <ButtonContainer>
-            <Button
-              text='看更多'
-              size='small'
-              theme='black'
-            >
+            {/* Disable more video button for now */}
+            {/*
+              <Button
+                text='看更多'
+                size='small'
+                theme='black'
+              >
               <img
                 height={12}
                 width={12}
                 src={PlusImg}
               />
-            </Button>
+              </Button>
+            */}
           </ButtonContainer>
         </Right>
       </Container>

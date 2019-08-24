@@ -68,3 +68,5 @@ Here is the relavant official [document](https://cloud.google.com/source-reposit
  - [Eric Elliot - hooks can't replace redux](https://medium.com/javascript-scene/do-react-hooks-replace-redux-210bab340672)
  - [Prevent xss on react app](https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0)
  - [redux standard action](https://github.com/redux-utilities/redux-actions)
+ - [styled component media query](https://jsramblings.com/2018/02/04/styled-components-media-queries.html)
+ - [100% correct way to do css breakpoints](https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/)

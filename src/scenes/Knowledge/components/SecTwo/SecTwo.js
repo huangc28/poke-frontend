@@ -82,6 +82,8 @@ function SecTwo ({ article, onClickArticle }) {
           <IntroContainer>
             <Img
               src={article.img}
+              width={600}
+              height={420}
               fallbackImgWidth={600}
               fallbackImgHeight={420}
             />
@@ -133,7 +135,7 @@ function SecTwo ({ article, onClickArticle }) {
                     height={16}
                   />
                 }
-                text='more'
+                label='more'
                 onClick={onClickArticle}
               />
             </More>

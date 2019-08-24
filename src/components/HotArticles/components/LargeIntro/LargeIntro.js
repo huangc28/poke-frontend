@@ -10,6 +10,7 @@ import { size16 } from '@poke/styles/font'
 const Content = styled.div`
   position: relative;
   float: left;
+  cursor: pointer;
 `
 
 const Banner = compose(size16)(styled.div`

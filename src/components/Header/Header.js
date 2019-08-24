@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
-import AccIcon from '@material-ui/icons/Person'
 import Magnifier from '@material-ui/icons/Search'
 
 import colors from '@poke/styles/colors'
@@ -48,11 +47,6 @@ const LoginContainer = styled.div`
   }
 `
 
-const IconContainer = styled.div`
-  display: flex;
-  margin-right: 0.25rem;
-`
-
 const HeadRight = styled.div`
   display: flex;
   align-items: center;
@@ -85,7 +79,7 @@ const NavContent = styled.div`
   }
 `
 
-const Header = ({ history }) => {
+function Header ({ history }) {
   return (
     <HeaderRegion>
       <HeadLeft>
@@ -124,7 +118,7 @@ const Header = ({ history }) => {
                     營養小百科
                   </MenuItem>
                   <MenuItem>
-                    寵物觀察日記
+                    飯飯標示大全
                   </MenuItem>
                   <MenuItem
                     onClick={evt => {
@@ -156,19 +150,21 @@ const Header = ({ history }) => {
       <HeadRight>
         <LoginContainer>
           {/* Icon */}
-          <IconContainer>
-            <AccIcon
-              fontSize='small'
-            />
-          </IconContainer>
-
           {/* @ref how to disable react router link: https://github.com/ReactTraining/react-router/issues/1082 */}
+          {/*
+            <IconContainer>
+              <AccIcon
+                fontSize='small'
+              />
+            </IconContainer>
+
           <Link
             to='/login'
             onClick={evt => evt.preventDefault()}
           >
-            Login
+          Login
           </Link>
+        */}
         </LoginContainer>
         <SearchBar
           placeholder='SEARCH'

@@ -5,7 +5,7 @@ import StepFlagImg from './images/32.png'
 import Mascot from './images/12.png'
 import FunnelImg from './images/48.png'
 
-import { size14 } from '@poke/styles/font'
+import { size14Mixin } from '@poke/styles/font'
 import CaptionText from '@poke/components/CaptionText'
 import Button from '@poke/components/Button'
 
@@ -50,10 +50,11 @@ const Right = styled.div`
   flex-direction: column;
 `
 
-const P = size14(styled.p`
+const P = styled.p`
+  ${size14Mixin}
   margin-top: 0;
   line-height: 1.57;
-`)
+`
 
 const HomeSecFive = () => {
   return (
@@ -83,7 +84,7 @@ const HomeSecFive = () => {
           <LeftBottom>
             <div>
               <Button
-                text='篩選 GO'
+                text='coming soon'
               >
                 <img
                   width={40}
