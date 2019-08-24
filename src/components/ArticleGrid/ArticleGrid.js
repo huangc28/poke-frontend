@@ -4,7 +4,7 @@ import T from 'prop-types'
 
 import colors from '@poke/styles/colors'
 import { size26Mixin, size48Mixin } from '@poke/styles/font'
-import IconStat, { blackTheme } from '@poke/components/IconStat'
+import IconLabel, { blackTheme } from '@poke/components/IconLabel'
 import TimeAgo from '@poke/components/TimeAgo'
 import { RecentUpdatedDate, NumViews, More } from '@poke/components/Icons'
 import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
@@ -103,10 +103,10 @@ const ArticleGrid = ({
 
         <div>
           <StatBar>
-            <IconStat
+            <IconLabel
               theme={blackTheme}
               icon={<RecentUpdatedDate width={16} height={16} />}
-              text={
+              label={
                 <TimeAgo
                   time={
                     timeAgo
@@ -117,13 +117,13 @@ const ArticleGrid = ({
               }
             />
 
-            <IconStat
+            <IconLabel
               theme={blackTheme}
               icon={<NumViews width={16} height={16} />}
               text={`${numViewed}`}
             />
 
-            <IconStat
+            <IconLabel
               theme={blackTheme}
               icon={<More width={16} height={16} />}
               text='more'

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { size14Mixin, size26Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 import TopArticleLayout from '@poke/layouts/TopArticleLayout'
-import IconStat from '@poke/components/IconStat'
+import IconLabel from '@poke/components/IconLabel'
 import Img from '@poke/components/Img'
 import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
 import TimeAgo from '@poke/components/TimeAgo'
@@ -97,26 +97,26 @@ function SecTwo ({ article, onClickArticle }) {
           </Title>
 
           <ArticleStat>
-            <IconStat
+            <IconLabel
               icon={
                 <DateWhite
                   width={16}
                   height={16}
                 />
               }
-              text={<TimeAgo
+              label={<TimeAgo
                 time={timestamp}
               />}
             />
 
-            <IconStat
+            <IconLabel
               icon={
                 <PPWhite
                   width={16}
                   height={16}
                 />
               }
-              text={article.visit}
+              label={article.visit}
             />
           </ArticleStat>
 
@@ -126,7 +126,7 @@ function SecTwo ({ article, onClickArticle }) {
             </Summary>
 
             <More>
-              <IconStat
+              <IconLabel
                 icon={
                   <MoreIcon
                     width={16}

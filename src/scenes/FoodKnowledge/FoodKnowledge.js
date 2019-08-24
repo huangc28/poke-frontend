@@ -11,7 +11,7 @@ import ContactLayout from '@poke/layouts/ContactLayout'
 import { size26Mixin, size14Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 import HotArticles from '@poke/components/HotArticles'
-import IconStat from '@poke/components/IconStat'
+import IconLabel from '@poke/components/IconLabel'
 import { DateWhite, PPWhite, More as MoreIcon } from '@poke/components/Icons'
 import Paginator from '@poke/components/Paginator'
 import ArticleGrid from '@poke/components/ArticleGrid'
@@ -211,14 +211,14 @@ function FoodKnwledge ({
             </Title>
 
             <ArticleStat>
-              <IconStat
+              <IconLabel
                 icon={
                   <DateWhite
                     width={16}
                     height={16}
                   />
                 }
-                text={
+                label={
                   <TimeAgo
                     time={
                       topArticle.updated_at
@@ -229,14 +229,14 @@ function FoodKnwledge ({
                 }
               />
 
-              <IconStat
+              <IconLabel
                 icon={
                   <PPWhite
                     width={16}
                     height={16}
                   />
                 }
-                text={topArticle.visit}
+                label={topArticle.visit}
               />
             </ArticleStat>
 
@@ -246,14 +246,14 @@ function FoodKnwledge ({
               </Summary>
 
               <More>
-                <IconStat
+                <IconLabel
                   icon={
                     <MoreIcon
                       width={16}
                       height={16}
                     />
                   }
-                  text='more'
+                  label='more'
                   onClick={() => history.push(`/articles/${topArticle.article_id}`)}
                 />
               </More>

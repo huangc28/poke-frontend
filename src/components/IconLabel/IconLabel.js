@@ -33,10 +33,10 @@ export const blackTheme = {
   fontColor: colors.black,
 }
 
-const IconStat = ({
+const IconLabel = ({
   onClick,
   icon,
-  text,
+  label,
   theme,
 }) => {
   const handleClick = evt => {
@@ -56,12 +56,12 @@ const IconStat = ({
           onClick
             ? (
               <a>
-                { text }
+                { label }
               </a>
             )
             : (
               <div>
-                { text }
+                { label }
               </div>
             )
         }
@@ -70,24 +70,24 @@ const IconStat = ({
   )
 }
 
-IconStat.propTypes = {
+IconLabel.propTypes = {
   onClick: T.oneOfType([
     T.func,
     T.oneOf([null]),
   ]),
   icon: T.element,
-  text: T.oneOfType([
+  label: T.oneOfType([
     T.oneOf([null]),
     T.node,
   ]),
   theme: T.object,
 }
 
-IconStat.defaultProps = {
+IconLabel.defaultProps = {
   onClick: null,
   icon: null,
-  text: '',
+  label: '',
   theme: defaultTheme,
 }
 
-export default IconStat
+export default IconLabel

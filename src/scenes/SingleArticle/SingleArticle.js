@@ -8,7 +8,7 @@ import ContactLayout from '@poke/layouts/ContactLayout'
 import { size40Mixin } from '@poke/styles/font'
 import { insetShadow } from '@poke/styles/shadow'
 import colors from '@poke/styles/colors'
-import IconStat, { blackTheme } from '@poke/components/IconStat'
+import IconLabel, { blackTheme } from '@poke/components/IconLabel'
 import { RecentUpdatedDate, NumViews } from '@poke/components/Icons'
 import TimeAgo from '@poke/components/TimeAgo'
 import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
@@ -72,7 +72,7 @@ function SingleArticle ({ match, fetchArticle, article }) {
             </Topic>
             <StatContainer>
               {/* created at */}
-              <IconStat
+              <IconLabel
                 theme={blackTheme}
                 icon={
                   <RecentUpdatedDate
@@ -80,7 +80,7 @@ function SingleArticle ({ match, fetchArticle, article }) {
                     height={16}
                   />
                 }
-                text={
+                label={
                   <TimeAgo
                     time={
                       article.updated_at
@@ -92,7 +92,7 @@ function SingleArticle ({ match, fetchArticle, article }) {
               />
 
               {/* viewed */}
-              <IconStat
+              <IconLabel
                 theme={blackTheme}
                 icon={
                   <NumViews
@@ -100,7 +100,7 @@ function SingleArticle ({ match, fetchArticle, article }) {
                     height={16}
                   />
                 }
-                text={article.visit}
+                label={article.visit}
               />
             </StatContainer>
           </TopicBar>

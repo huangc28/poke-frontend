@@ -4,7 +4,7 @@ import Account from '@material-ui/icons/Person'
 
 import colors from '@poke/styles/colors'
 
-import IconStat, { blackTheme } from './IconStat'
+import IconLabel, { blackTheme } from './IconLabel'
 
 const darkThemeStyles = {
   height: 200,
@@ -22,19 +22,19 @@ const brightThemeStyles = {
 const IconStatDarkDecorator = storyFn => <div style={darkThemeStyles}>{storyFn()}</div>
 const IconStatBrightDecorator = storyFn => <div style={brightThemeStyles}>{storyFn()}</div>
 
-storiesOf('Knowledge/IconStat', module)
+storiesOf('Knowledge/IconLabel', module)
   .addDecorator(IconStatDarkDecorator)
-  .add('IconStat with white theme', () => (
-    <IconStat
+  .add('IconLabel with white theme', () => (
+    <IconLabel
       icon={<Account />}
       text='2 days ago'
     />
   ))
 
-storiesOf('Knowledge/IconStat', module)
+storiesOf('Knowledge/IconLabel', module)
   .addDecorator(IconStatBrightDecorator)
-  .add('IconStat with black theme', () => (
-    <IconStat
+  .add('IconLabel with black theme', () => (
+    <IconLabel
       theme={blackTheme}
       icon={<Account/>}
       text='2 days ago'
