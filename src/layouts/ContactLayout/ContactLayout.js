@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import colors from '@poke/styles/colors'
 import { insetShadow } from '@poke/styles/shadow'
@@ -20,20 +20,48 @@ const Right = styled.div`
   background-color: ${colors.gallery};
   padding-bottom: 1.875rem;
 `
-const ContactContainer = styled.div`
-  width: 18.125rem;
-  padding-top: 3.875rem;
+
+const fixedToTop = css`
+  position: fixed;
+  top: 0;
 `
 
-const ContactLayout = ({ children }) => {
+const ContactContainer = styled.div`
+  ${({ hasReachedTop }) => hasReachedTop ? fixedToTop : ''}
+  padding-top: ${({ hasReachedTop }) => hasReachedTop ? '8.6rem': '9.375rem'};
+  width: 18.125rem;
+`
+
+function ContactLayout ({ children }) {
+  let domRef = React.createRef()
+  const [hasReached, setHasReached] = useState(false)
+  useEffect(() => {
+    let sticky = domRef.current.offsetTop + 500 // 500 is the offset to make sticky effect to be smoother.
+    function handleWindowScroll() {
+      window.scrollY > sticky
+        ? setHasReached(true)
+        : setHasReached(false)
+    }
+
+    window.addEventListener('scroll', handleWindowScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleWindowScroll)
+    }
+  }, [])
+
+  console.log('DEBUG hasReached', hasReached)
+
   return (
-    <Section>
+    <Section ref={domRef}>
       <div>
         { children }
       </div>
 
       <Right>
-        <ContactContainer>
+        <ContactContainer
+          hasReachedTop={hasReached}
+        >
           <ContactColumn />
         </ContactContainer>
       </Right>

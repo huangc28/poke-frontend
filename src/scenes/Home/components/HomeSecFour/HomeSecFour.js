@@ -9,7 +9,7 @@ import { bold, size12Mixin, size14 } from '@poke/styles/font'
 import FetchHotArticles from '@poke/hoc/FetchHotArticles'
 import Img from '@poke/components/Img'
 import TimeAgo from '@poke/components/TimeAgo'
-import { convertDateTimeStringToTimestamp } from '@poke/util/convertDateTimeStringToTimestamp'
+import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
 
 import Moscot from './images/10.png'
 import ConfusedMan from './images/11.png'

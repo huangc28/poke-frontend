@@ -46,7 +46,7 @@ const Icons = styled.div`
   }
 `
 
-const ContactColumn = () => {
+function ContactColumn() {
   return (
     <Content>
       <TopicLayout
