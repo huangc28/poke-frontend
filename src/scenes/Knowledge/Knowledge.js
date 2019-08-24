@@ -70,7 +70,7 @@ function Knowledge({
 
       <SecTwo
         article={topArticle}
-        onClickTopArticle={() => history.push(`/articles/${topArticle.article_id}`)}
+        onClickArticle={() => history.push(`/articles/${topArticle.article_id}`)}
       />
 
       <ContactLayout>
