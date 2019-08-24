@@ -13,6 +13,10 @@ import HeaderMenu, { MenuItem } from './components/HeaderMenu'
 import SearchBar from '../SearchBar'
 
 const HeaderRegion = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

@@ -10,6 +10,7 @@ import Moscot from './images/03.png'
 
 const Section = styled.section`
   position: relative;
+  margin-top: 3.5rem;
   padding-top: 9.75rem;
   display: flex;
   flex-direction: row;
@@ -59,7 +60,7 @@ const Slogen = styled.p`
   margin-bottom: 2.9375rem;
 `
 
-const HomeSecOne = () => {
+function HomeSecOne () {
   return (
     <Section>
       <ImgContainerOne>
