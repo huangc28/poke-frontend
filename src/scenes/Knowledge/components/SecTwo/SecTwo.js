@@ -79,7 +79,9 @@ function SecTwo ({ article, onClickArticle }) {
             </p>
           </Topic>
 
-          <IntroContainer>
+          <IntroContainer
+            onClick={onClickArticle}
+          >
             <Img
               src={article.img}
               width={600}
