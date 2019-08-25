@@ -28,36 +28,46 @@ const fixedToTop = css`
 
 const ContactContainer = styled.div`
   ${({ hasReachedTop }) => hasReachedTop ? fixedToTop : ''}
-  padding-top: ${({ hasReachedTop }) => hasReachedTop ? '8.6rem': '9.375rem'};
+  padding-top: ${({ hasReachedTop }) => hasReachedTop ? '6.5rem': '9.375rem'};
   width: 18.125rem;
 `
+function offset(el) {
+    let rect = el.getBoundingClientRect()
+    let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop
+
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+}
 
 function ContactLayout ({ children }) {
   let domRef = React.createRef()
   const [hasReached, setHasReached] = useState(false)
+
   useEffect(() => {
-    let sticky = domRef.current.offsetTop + 500 // 500 is the offset to make sticky effect to be smoother.
-    function handleWindowScroll() {
-      window.scrollY > sticky
-        ? setHasReached(true)
-        : setHasReached(false)
+    let sticky = offset(domRef.current).top + 500  // 500 is the offset to make sticky effect to be smoother.
+    console.log('DEBUG sticky', sticky)
+    function handleScrollWindow(offsetTop) {
+      console.log('DEBUG 1', window.scrollY)
+      console.log('DEBUG 2', offsetTop)
+      setHasReached(window.scrollY > offsetTop)
     }
 
-    window.addEventListener('scroll', handleWindowScroll)
-
+    handleScrollWindow(sticky)
+    window.addEventListener('scroll', handleScrollWindow.bind(null, sticky))
     return () => {
-      window.removeEventListener('scroll', handleWindowScroll)
+      window.removeEventListener('scroll', handleScrollWindow.bind(null, sticky))
     }
   }, [])
 
   return (
-    <Section ref={domRef}>
+    <Section>
       <div>
         { children }
       </div>
 
       <Right>
         <ContactContainer
+          ref={domRef}
           hasReachedTop={hasReached}
         >
           <ContactColumn />
