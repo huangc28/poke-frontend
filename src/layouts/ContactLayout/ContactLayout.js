@@ -28,7 +28,7 @@ const fixedToTop = css`
 
 const ContactContainer = styled.div`
   ${({ hasReachedTop }) => hasReachedTop ? fixedToTop : ''}
-  padding-top: ${({ hasReachedTop }) => hasReachedTop ? '6.5rem': '9.375rem'};
+  padding-top: ${({ hasReachedTop }) => hasReachedTop ? '7rem': '9.375rem'};
   width: 18.125rem;
 `
 function offset(el) {

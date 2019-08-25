@@ -31,6 +31,11 @@ const LogoContainer = styled.div`
   margin-right: 2.125rem;
 `
 
+const HeaderStuff = styled.div`
+  width: 100%;
+  height: 3.5rem;
+`
+
 const HeadLeft = styled.div`
   display: flex;
   align-items: center;
@@ -85,101 +90,104 @@ const NavContent = styled.div`
 
 function Header ({ history }) {
   return (
-    <HeaderRegion>
-      <HeadLeft>
-        {/* Logo */}
-        <LogoContainer
-          onClick={evt => {
-            evt.preventDefault()
-            history.push('/')
-          }}
-        >
-          <img
-            height={44}
-            width={132}
-            src={Logo}
-          />
-        </LogoContainer>
-
-        {/* Navigation */}
-        <Navbar>
-          <NavElem>
-            <NavContent>
-              <a onClick={evt => {
-                evt.preventDefault()
-                history.push('/knowledge')
-              }}>
-                小百科
-              </a>
-              <MenuContainer>
-                <HeaderMenu>
-                  <MenuItem
-                    onClick={evt => {
-                      evt.preventDefault()
-                      history.push('/knowledge')
-                    }}
-                  >
-                    營養小百科
-                  </MenuItem>
-                  <MenuItem>
-                    飯飯標示大全
-                  </MenuItem>
-                  <MenuItem
-                    onClick={evt => {
-                      evt.preventDefault()
-                      history.push('/food-knowledge')
-                    }}
-                  >
-                    飯飯學問大
-                  </MenuItem>
-                </HeaderMenu>
-              </MenuContainer>
-            </NavContent>
-          </NavElem>
-
-          <NavElem>
-            <Link to='/knowledge'>
-              篩選器
-            </Link>
-          </NavElem>
-
-          <NavElem>
-            <Link to=''>
-              理念
-            </Link>
-          </NavElem>
-        </Navbar>
-      </HeadLeft>
-
-      <HeadRight>
-        <LoginContainer>
-          {/* Icon */}
-          {/* @ref how to disable react router link: https://github.com/ReactTraining/react-router/issues/1082 */}
-          {/*
-            <IconContainer>
-              <AccIcon
-                fontSize='small'
-              />
-            </IconContainer>
-
-          <Link
-            to='/login'
-            onClick={evt => evt.preventDefault()}
-          >
-          Login
-          </Link>
-        */}
-        </LoginContainer>
-        <SearchBar
-          placeholder='SEARCH'
-          icon={<Magnifier
-            style={{
-              fontSize: 16,
+    <React.Fragment>
+      <HeaderStuff />
+      <HeaderRegion>
+        <HeadLeft>
+          {/* Logo */}
+          <LogoContainer
+            onClick={evt => {
+              evt.preventDefault()
+              history.push('/')
             }}
-          />}
-        />
-      </HeadRight>
-    </HeaderRegion>
+          >
+            <img
+              height={44}
+              width={132}
+              src={Logo}
+            />
+          </LogoContainer>
+
+          {/* Navigation */}
+          <Navbar>
+            <NavElem>
+              <NavContent>
+                <a onClick={evt => {
+                  evt.preventDefault()
+                  history.push('/knowledge')
+                }}>
+                  小百科
+                </a>
+                <MenuContainer>
+                  <HeaderMenu>
+                    <MenuItem
+                      onClick={evt => {
+                        evt.preventDefault()
+                        history.push('/knowledge')
+                      }}
+                    >
+                      營養小百科
+                    </MenuItem>
+                    <MenuItem>
+                      飯飯標示大全
+                    </MenuItem>
+                    <MenuItem
+                      onClick={evt => {
+                        evt.preventDefault()
+                        history.push('/food-knowledge')
+                      }}
+                    >
+                      飯飯學問大
+                    </MenuItem>
+                  </HeaderMenu>
+                </MenuContainer>
+              </NavContent>
+            </NavElem>
+                    
+            <NavElem>
+              <Link to='/knowledge'>
+                篩選器
+              </Link>
+            </NavElem>
+                    
+            <NavElem>
+              <Link to=''>
+                理念
+              </Link>
+            </NavElem>
+          </Navbar>
+        </HeadLeft>
+                    
+        <HeadRight>
+          <LoginContainer>
+            {/* Icon */}
+            {/* @ref how to disable react router link: https://github.com/ReactTraining/react-router/issues/1082 */}
+            {/*
+              <IconContainer>
+                <AccIcon
+                  fontSize='small'
+                />
+              </IconContainer>
+            
+            <Link
+              to='/login'
+              onClick={evt => evt.preventDefault()}
+            >
+            Login
+            </Link>
+          */}
+          </LoginContainer>
+          <SearchBar
+            placeholder='SEARCH'
+            icon={<Magnifier
+              style={{
+                fontSize: 16,
+              }}
+            />}
+          />
+        </HeadRight>
+      </HeaderRegion>
+    </React.Fragment>
   )
 }
 
