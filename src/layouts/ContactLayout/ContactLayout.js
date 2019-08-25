@@ -50,8 +50,6 @@ function ContactLayout ({ children }) {
     }
   }, [])
 
-  console.log('DEBUG hasReached', hasReached)
-
   return (
     <Section ref={domRef}>
       <div>
