@@ -29,7 +29,7 @@ const TopBanner = styled.div`
   background-size: cover;
   background-color: ${colors.white};
   width: 100%;
-  height: 30rem ;
+  min-height: 30rem ;
 `
 
 const TopicBar = styled.div`
@@ -56,7 +56,7 @@ function SingleArticle ({ match, fetchArticle, article }) {
 
   useEffect(() => {
     fetchArticle(parseInt(articleID, 10))
-  }, [ articleID ])
+  }, [])
 
   return (
     <Main>

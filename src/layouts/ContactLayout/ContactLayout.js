@@ -28,7 +28,7 @@ const fixedToTop = css`
 
 const ContactContainer = styled.div`
   ${({ hasReachedTop }) => hasReachedTop ? fixedToTop : ''}
-  padding-top: ${({ hasReachedTop }) => hasReachedTop ? '7rem': '9.375rem'};
+  padding-top: 8.6rem;
   width: 18.125rem;
 `
 function offset(el) {
@@ -44,11 +44,8 @@ function ContactLayout ({ children }) {
   const [hasReached, setHasReached] = useState(false)
 
   useEffect(() => {
-    let sticky = offset(domRef.current).top + 500  // 500 is the offset to make sticky effect to be smoother.
-    console.log('DEBUG sticky', sticky)
+    let sticky = offset(domRef.current).top
     function handleScrollWindow(offsetTop) {
-      console.log('DEBUG 1', window.scrollY)
-      console.log('DEBUG 2', offsetTop)
       setHasReached(window.scrollY > offsetTop)
     }
 

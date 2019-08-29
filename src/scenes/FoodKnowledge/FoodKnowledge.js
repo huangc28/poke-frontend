@@ -34,6 +34,13 @@ import {
 
 import Tabs, { TabBar, Tab, TabPanel } from './components/Tabs'
 
+const SectionOne = styled.div`
+  min-height: 33rem;
+`
+const SectionTwo = styled.div`
+  min-height: 30rem;
+`
+
 const IntroContainer = styled.div`
   float: left;
 `
@@ -146,125 +153,136 @@ function FoodKnwledge ({
 
   return (
     <Main>
-      <HotArticles
-        onClickArticle={({ articleID }) => history.push(`/articles/${articleID}`)}
-      />
+      <SectionOne>
+        <HotArticles
+          onClickArticle={({ articleID }) => history.push(`/articles/${articleID}`)}
+        />
+      </SectionOne>
 
-      <TopArticleLayout
-        left={
-          <React.Fragment>
-            <Tabs defaultTab={DRY_FOOD_TAB_ID}>
-              <TabBar>
-                <Tab
-                  id={DRY_FOOD_TAB_ID}
-                  onClick={evt =>{
-                    setActiveTab(DRY_FOOD_TAB_ID)
-                    fetchCanArticles()
-                  }}
+      <SectionTwo>
+        <TopArticleLayout
+          left={
+            <React.Fragment>
+              <Tabs defaultTab={DRY_FOOD_TAB_ID}>
+                <TabBar>
+                  <Tab
+                    id={DRY_FOOD_TAB_ID}
+                    onClick={evt => {
+                      setActiveTab(DRY_FOOD_TAB_ID)
+                      fetchCanArticles()
+                    }}
+                  >
+                    乾飼料資料庫
+                  </Tab>
+                  <Tab
+                    id={CAN_FOOD_TAB_ID}
+                    onClick={evt => {
+                      setActiveTab(CAN_FOOD_TAB_ID)
+                      fetchDryFoodArticles()
+                    }}
+                  >
+                    罐罐料資料庫
+                  </Tab>
+                </TabBar>
+
+                <TabPanel
+                  whenActive={DRY_FOOD_TAB_ID}
                 >
-                  乾飼料資料庫
-                </Tab>
-              <Tab
-                id={CAN_FOOD_TAB_ID}
-                onClick={evt => {
-                  setActiveTab(CAN_FOOD_TAB_ID)
-                  fetchDryFoodArticles()
-                }}
-              >
-                  罐罐料資料庫
-              </Tab>
-
-              </TabBar>
-
-              <TabPanel
-                whenActive={DRY_FOOD_TAB_ID}
-              >
-                <IntroContainer>
-                  <Img
-                    src={topArticle.img}
-                    width={600}
-                    height={420}
-                    fallbackImgWidth={600}
-                    fallbackImgHeight={420}
-                  />
-                </IntroContainer>
-                <div style={{ clear: 'both' }} />
-              </TabPanel>
-
-              <TabPanel
-                whenActive={CAN_FOOD_TAB_ID}
-              >
-                <IntroContainer>
-                  <Img
-                    src={topArticle.img}
-                    width={600}
-                    height={420}
-                    fallbackImgWidth={600}
-                    fallbackImgHeight={420}
-                  />
-                </IntroContainer>
-                <div style={{ clear: 'both' }} />
-            </TabPanel>
-            </Tabs>
-          </React.Fragment>
-        }
-        right={
-          <React.Fragment>
-            <Title>
-              { topArticle.title }
-            </Title>
-
-            <ArticleStat>
-              <IconLabel
-                icon={
-                  <DateWhite
-                    width={16}
-                    height={16}
-                  />
-                }
-                label={
-                  <TimeAgo
-                    time={
-                      topArticle.updated_at
-                        ? convertDateTimeStringToTimestamp(topArticle)
-                        : Date.now()
+                  <IntroContainer
+                    onClick={
+                      () => history.push(`/articles/${topArticle.article_id}`)
                     }
-                  />
-                }
-              />
+                  >
+                    <Img
+                      src={topArticle.img}
+                      width={600}
+                      height={420}
+                      fallbackImgWidth={600}
+                      fallbackImgHeight={420}
+                    />
+                  </IntroContainer>
+                  <div style={{ clear: 'both' }} />
+                </TabPanel>
 
-              <IconLabel
-                icon={
-                  <PPWhite
-                    width={16}
-                    height={16}
-                  />
-                }
-                label={topArticle.visit}
-              />
-            </ArticleStat>
+                <TabPanel
+                  whenActive={CAN_FOOD_TAB_ID}
+                >
+                  <IntroContainer
+                    onClick={
+                      () => history.push(`/articles/${topArticle.article_id}`)
+                    }
+                  >
+                    <Img
+                      src={topArticle.img}
+                      width={600}
+                      height={420}
+                      fallbackImgWidth={600}
+                      fallbackImgHeight={420}
+                    />
+                  </IntroContainer>
+                  <div style={{ clear: 'both' }} />
+                </TabPanel>
+              </Tabs>
+            </React.Fragment>
+          }
+          right={
+            <React.Fragment>
+              <Title>
+                {topArticle.title}
+              </Title>
 
-            <SummaryContent>
-              <Summary>
-                <div dangerouslySetInnerHTML={{ __html: topArticle.descript }}/>
-              </Summary>
-
-              <More>
+              <ArticleStat>
                 <IconLabel
                   icon={
-                    <MoreIcon
+                    <DateWhite
                       width={16}
                       height={16}
                     />
                   }
-                  label='more'
-                  onClick={() => history.push(`/articles/${topArticle.article_id}`)}
+                  label={
+                    <TimeAgo
+                      time={
+                        topArticle.updated_at
+                          ? convertDateTimeStringToTimestamp(topArticle)
+                          : Date.now()
+                      }
+                    />
+                  }
                 />
-              </More>
-            </SummaryContent>
-          </React.Fragment>
-        }
-      />
+
+                <IconLabel
+                  icon={
+                    <PPWhite
+                      width={16}
+                      height={16}
+                    />
+                  }
+                  label={topArticle.visit}
+                />
+              </ArticleStat>
+
+              <SummaryContent>
+                <Summary>
+                  <div dangerouslySetInnerHTML={{ __html: topArticle.descript }} />
+                </Summary>
+
+                <More>
+                  <IconLabel
+                    icon={
+                      <MoreIcon
+                        width={16}
+                        height={16}
+                      />
+                    }
+                    label='more'
+                    onClick={() => history.push(`/articles/${topArticle.article_id}`)}
+                  />
+                </More>
+              </SummaryContent>
+            </React.Fragment>
+          }
+        />
+      </SectionTwo>
 
       <ContactLayout>
         <ArticlesContainer>

@@ -37,6 +37,14 @@ const PaginatorContainer = styled.div`
   padding-bottom: 3.125rem;
 `
 
+const SectionOne = styled.div`
+  min-height: 33rem;
+`
+
+const SectionTwo = styled.div`
+  min-height: 30rem;
+`
+
 function countTotalPages (perPage, totalCount) {
   const residual = totalCount % perPage
   let pages = Math.floor(totalCount / perPage)
@@ -64,14 +72,18 @@ function Knowledge({
 
   return (
     <Main>
-      <HotArticles
-        onClickArticle={({ articleID }) => history.push(`/articles/${articleID}`)}
-      />
+      <SectionOne>
+        <HotArticles
+          onClickArticle={({ articleID }) => history.push(`/articles/${articleID}`)}
+        />
+      </SectionOne>
 
-      <SecTwo
-        article={topArticle}
-        onClickArticle={() => history.push(`/articles/${topArticle.article_id}`)}
-      />
+      <SectionTwo>
+        <SecTwo
+          article={topArticle}
+          onClickArticle={() => history.push(`/articles/${topArticle.article_id}`)}
+        />
+      </SectionTwo>
 
       <ContactLayout>
         <ArticlesContainer>
