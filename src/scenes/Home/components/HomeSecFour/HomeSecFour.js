@@ -17,7 +17,7 @@ import StepFlagImg from './images/31.png'
 import LoveImg from './images/19.png'
 import ReadImg from './images/20.png'
 
-import ArticleCarousel from './components/ArticleSlider'
+import ArticleSlider from './components/ArticleSlider'
 
 const Section = styled.section`
   position: relative;
@@ -147,6 +147,32 @@ const Span = styled.span`
 `
 
 function HomeSecFour ({ history, articles }) {
+  console.log('DEBUG 1 articles', articles)
+  console.log('DEBUG articles type', Array.isArray(articles))
+  // articles = [
+  //   {
+  //     title: 'sometitle',
+  //     content: '<h1 style="margin- right: 0cm; text - align: center"><span style="font - family: Verdana, Geneva, sans - serif"><span dir="ltr"><span style="color: #ff0066"><span style="font - size: 26px">『常常聽到人家提到WDJ，不過到底代表什麼意思呢？』</span></span></span></span></h1>',
+  //   },
+  //   {
+  //     title: 'sometitle',
+  //     content: '<h1 style="margin- right: 0cm; text - align: center"><span style="font - family: Verdana, Geneva, sans - serif"><span dir="ltr"><span style="color: #ff0066"><span style="font - size: 26px">『常常聽到人家提到WDJ，不過到底代表什麼意思呢？』</span></span></span></span></h1>',
+  //   },
+  //   {
+  //     title: 'sometitle',
+  //     content: '<h1 style="margin- right: 0cm; text - align: center"><span style="font - family: Verdana, Geneva, sans - serif"><span dir="ltr"><span style="color: #ff0066"><span style="font - size: 26px">『常常聽到人家提到WDJ，不過到底代表什麼意思呢？』</span></span></span></span></h1>',
+  //   },
+  //   {
+  //     title: 'sometitle',
+  //     content: '<h1 style="margin- right: 0cm; text - align: center"><span style="font - family: Verdana, Geneva, sans - serif"><span dir="ltr"><span style="color: #ff0066"><span style="font - size: 26px">『常常聽到人家提到WDJ，不過到底代表什麼意思呢？』</span></span></span></span></h1>',
+  //   },
+  //   {
+  //     title: 'sometitle',
+  //     content: '<h1 style="margin- right: 0cm; text - align: center"><span style="font - family: Verdana, Geneva, sans - serif"><span dir="ltr"><span style="color: #ff0066"><span style="font - size: 26px">『常常聽到人家提到WDJ，不過到底代表什麼意思呢？』</span></span></span></span></h1>',
+  //   },
+  // ]
+  // console.log('DEBUG 2 articles', articles)
+
   return (
     <Section>
       <StepFlag src={StepFlagImg} />
@@ -191,7 +217,7 @@ function HomeSecFour ({ history, articles }) {
         </h3>
 
         {/* Article Slider */}
-        <ArticleCarousel>
+        <ArticleSlider>
           {
             articles.map((article, index) => (
               <div key={index}>
@@ -227,7 +253,8 @@ function HomeSecFour ({ history, articles }) {
               </div>
             ))
           }
-        </ArticleCarousel>
+
+        </ArticleSlider>
       </ArticlesContainer>
     </Section>
   )

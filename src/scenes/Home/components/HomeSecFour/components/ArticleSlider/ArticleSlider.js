@@ -3,8 +3,6 @@ import Slider from 'react-slick'
 import styled from 'styled-components'
 import T from 'prop-types'
 
-import { size12 } from '@poke/styles/font'
-
 import leftArrowImg from './images/17.png'
 import rightArrowImg from './images/18.png'
 
@@ -60,41 +58,17 @@ const SliderContainer = styled.div`
   }
 `
 
-// @todo Data should be passed from outside
-const articles = [
-  {
-    link: 'https://via.placeholder.com/181x123.png',
-    likes: 817,
-    read: 999,
-  },
-  {
-    link: 'https://via.placeholder.com/181x123.png',
-    likes: 817,
-    read: 999,
-  },
-  {
-    link: 'https://via.placeholder.com/181x123.png',
-    likes: 817,
-    read: 999,
-  },
-  {
-    link: 'https://via.placeholder.com/181x123.png',
-    likes: 817,
-    read: 999,
-  },
-  {
-    link: 'https://via.placeholder.com/181x123.png',
-    likes: 817,
-    read: 999,
-  },
-]
 
-function ArticleSlider ({ width, children }) {
+function ArticleSlider ({ width, children, maxSlidesToShow }) {
+  const slidesToShow = children.length >= maxSlidesToShow
+    ? MAX_SLIDES_TO_SHOW
+    : children.length
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow,
     slidesToScroll: 1,
     prevArrow: <LeftArrow />,
     nextArrow: <RightArrow />,
@@ -111,6 +85,8 @@ function ArticleSlider ({ width, children }) {
   )
 }
 
+const DEFAULT_MAX_SLIDES_TO_SHOW = 4
+const DEFAULT_SLIDER_CONTAINER_WIDTH = 862
 
 ArticleSlider.propTypes = {
   width: T.number,
@@ -118,7 +94,8 @@ ArticleSlider.propTypes = {
 }
 
 ArticleSlider.defaultProps = {
-  width: 862,
+  width: DEFAULT_SLIDER_CONTAINER_WIDTH,
+  maxSlidesToShow: DEFAULT_MAX_SLIDES_TO_SHOW,
 }
 
 export default ArticleSlider

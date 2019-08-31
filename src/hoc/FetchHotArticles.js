@@ -16,8 +16,8 @@ function FetchHotArticles (WrappedComponent) {
 
       return (
         <WrappedComponent
-          articles={articles}
           {...this.props}
+          articles={articles}
         />
       )
     }

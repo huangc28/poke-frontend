@@ -145,7 +145,7 @@ function Header ({ history }) {
             </NavElem>
                     
             <NavElem>
-              <Link to='/knowledge'>
+              <Link to=''>
                 篩選器
               </Link>
             </NavElem>

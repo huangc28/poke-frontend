@@ -1,0 +1,10 @@
+dispatch:
+  # Send all api.poke.love traffic to backend
+  - url: "api.poke.love/*"
+    service: api
+
+  # send poke.love traffic to frontend
+  - url: "poke.love/*"
+    service: default
+
+
