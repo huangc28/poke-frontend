@@ -46,7 +46,8 @@ function ContactLayout ({ children }) {
   useEffect(() => {
     let sticky = offset(domRef.current).top
     function handleScrollWindow(offsetTop) {
-      setHasReached(window.scrollY > offsetTop)
+      const SCROLL_BOTTOM_OFFSET = 36
+      setHasReached((window.scrollY - SCROLL_BOTTOM_OFFSET) > offsetTop)
     }
 
     handleScrollWindow(sticky)
