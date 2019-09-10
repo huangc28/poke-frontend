@@ -104,7 +104,6 @@ function SingleArticle ({ match, fetchArticle, article }) {
               />
             </StatContainer>
           </TopicBar>
-
           <div dangerouslySetInnerHTML={{ __html: article.content }}/>
         </Content>
       </ContactLayout>

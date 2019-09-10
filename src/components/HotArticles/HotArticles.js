@@ -52,7 +52,7 @@ const HotArticles = ({ articles, onClickArticle }) => {
           {
             top && (
               <LargeIntro
-                bannerText={top.descript}
+                bannerText={top.title}
                 onClick={evt => onClickArticle({ evt, articleID: top.article_id })}
               >
                 <Img
@@ -70,7 +70,7 @@ const HotArticles = ({ articles, onClickArticle }) => {
             rest.length > 0 && (
               rest.map((article, index) => (
                 <NormalIntro
-                  bannerText={article.descript}
+                  bannerText={article.title}
                   key={index}
                   onClick={evt => onClickArticle({ evt, articleID: article.article_id })}
                 >
