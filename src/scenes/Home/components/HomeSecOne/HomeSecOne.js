@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 import colors from '@poke/styles/colors'
 
-import DESKTOP from './images/01.jpg'
-import MOBILE from './images/01_s.jpg'
+import DESKTOP from './images/01.png'
+import MOBILE from './images/01_s.png'
 
 const Section = styled.section`
   @media (max-width: 576px) {

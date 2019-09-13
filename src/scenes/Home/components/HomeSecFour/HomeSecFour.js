@@ -13,7 +13,7 @@ import TimeAgo from '@poke/components/TimeAgo'
 import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
 
 import Moscot from './images/10.png'
-import MoscotS from './images/10_s.jpg'
+import MoscotS from './images/10_s.png'
 import ConfusedMan from './images/11.png'
 import StepFlagImg from './images/31.png'
 import LoveImg from './images/19.png'
