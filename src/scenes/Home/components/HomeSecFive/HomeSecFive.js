@@ -11,10 +11,10 @@ import CaptionText from '@poke/components/CaptionText'
 import Button from '@poke/components/Button'
 
 const StepFlag = styled.img`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     position: absolute;
     top: 0%;
     right: 0%;   
@@ -22,10 +22,10 @@ const StepFlag = styled.img`
 `
 
 const Section = styled.section`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     padding: 30px 20px 0px 20px
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     width: 100%;
     position: relative;
@@ -38,22 +38,22 @@ const Section = styled.section`
 `
 
 const Container = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     transform: scaleY(-1);
     & > * {
         transform: scaleY(-1);
     }
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
   }
 `
 
 const Left = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   
   }
-  @media (min-width: 577px) {  
+  @media (min-width: 577px) and (min-height: 577px) {  
     display: flex;
     flex-direction: column;
     margin-right: 5.5rem;
@@ -62,10 +62,10 @@ const Left = styled.div`
 `
 
 const LeftBottom = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -75,23 +75,23 @@ const LeftBottom = styled.div`
 const CaptionContainer = styled.div``
 
 const Right = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   
   }
-  @media (min-width: 577px) {  
+  @media (min-width: 577px) and (min-height: 577px) {  
     display: flex;
     flex-direction: column;
   }
 `
 
 const P = styled.p`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     & > br {
       display: none;
     }
     color: #3c4e6b;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     ${size14Mixin}
     margin-top: 0;
     line-height: 1.57;
@@ -99,16 +99,16 @@ const P = styled.p`
 `
 
 const DesktopDiv = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
   }
 `
 const MobileDiv = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: none;
   }
 `

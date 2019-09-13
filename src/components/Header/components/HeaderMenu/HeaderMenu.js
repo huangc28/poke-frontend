@@ -7,11 +7,11 @@ import { size12 } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 
 const Container = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
       display: block;
       background-color: ${colors.linen};
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       position: relative;
       background-color: ${colors.linen};
       border-radius: 0 0.4rem 0.4rem 0.4rem;

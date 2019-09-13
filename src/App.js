@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 import { renderRoutes } from 'react-router-config'
 
 import MSJH from '@poke/styles/font-themes/msjh_0.woff2'
+// import MSJH from '@poke/styles/font-themes/sample.woff2'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -12,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'PokeFont', Fallback, sans-serif;
+    font-family: 'PokeFont', Microsoft JhengHei, Fallback, sans-serif;
     padding: 0px;
     margin: 0px;
   }

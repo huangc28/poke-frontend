@@ -95,7 +95,7 @@ module.exports = (env, argv) => {
             limit: 50000,
             mimetype: 'application/font-woff2',
             name: '[hash].[ext]',
-            publicPath: PUBLIC_PATH,
+            // publicPath: PUBLIC_PATH,
           },
         },
         {

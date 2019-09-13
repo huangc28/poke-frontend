@@ -14,21 +14,21 @@ import FacebookIconS from './images/fbfb.png'
 import InstagramIconS from './images/IGIG.png'
 
 const FooterContainer = styled.footer`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: block;
     margin-top: 30px;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-direction: column;
   }
 `
 
 const Upper = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     background-color: ${colors.prussianBlue};
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     width:100%;
     background-color: ${colors.fiord};
     color: ${colors.osloGray};
@@ -43,7 +43,7 @@ const Upper = styled.div`
 `
 
 const Bottom = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     background-color: ${colors.prussianBlue};
     justify-content: center;
     width: 100%;
@@ -54,7 +54,7 @@ const Bottom = styled.div`
     font-weight: 300;
     line-height: 1.25;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -68,13 +68,13 @@ const Bottom = styled.div`
 `
 
 const TitleContainer = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     padding-top: 40px;
     justify-content: center;
     align-items: center;
     width: 100%;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     align-items: center;
     margin-bottom: 1.25rem;
@@ -82,14 +82,14 @@ const TitleContainer = styled.div`
 `
 
 const HRContainer = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: flex;
     & > hr {
         width: 120px;
         color: ${colors.gainsboro}
     }
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     & > hr {
       width: 4.125rem;
@@ -98,7 +98,7 @@ const HRContainer = styled.div`
 `
 
 const Title = styled.h1`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     text-align: center;
     margin: 0;
     color: ${colors.white};
@@ -106,7 +106,7 @@ const Title = styled.h1`
     font-weight: 300;
     line-height: normal;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     margin: 0;
     color: ${colors.robinsEggBlue};
     margin-right: 1.125rem;
@@ -115,10 +115,10 @@ const Title = styled.h1`
 `
 
 const AboutUs = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-direction: column;
     width: 15.875rem;
@@ -127,9 +127,9 @@ const AboutUs = styled.div`
 `
 
 const GetInTouch = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-direction: column;
     width: 13.25rem;
@@ -138,10 +138,10 @@ const GetInTouch = styled.div`
 `
 
 const SocialMedia = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-direction: column;
     width: 16.625rem;
@@ -149,10 +149,10 @@ const SocialMedia = styled.div`
 `
 
 const SocialMediaIcons = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     text-align: center;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     margin-top: 0.75rem;
 
@@ -163,13 +163,13 @@ const SocialMediaIcons = styled.div`
 `
 
 const Content = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     color: ${colors.white};
     text-align: center;
     font-size: 14px;
     line-height: 1.64;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     margin: 0px;
     padding: 0px;
   }
@@ -180,16 +180,16 @@ const Ul = styled.ul`
 `
 
 const DesktopDiv = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
   }
 `
 const MobileDiv = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: none;
   }
 `

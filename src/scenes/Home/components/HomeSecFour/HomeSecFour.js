@@ -22,10 +22,10 @@ import ReadImg from './images/20.png'
 import ArticleSlider from './components/ArticleSlider'
 
 const Section = styled.section`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     padding: 0px;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     position: relative;
     padding-top: 2.125rem;
     display: flex;
@@ -36,12 +36,12 @@ const Section = styled.section`
 `
 
 const PokePediaContainer = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: block;
     padding-left: 20px;
     padding-right: 20px;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -51,10 +51,10 @@ const PokePediaContainer = styled.div`
 `
 
 const StepFlag = styled.img`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     position: absolute;
     top: 0%;
     right: 0%;
@@ -62,11 +62,11 @@ const StepFlag = styled.img`
 `
 
 const MoscotContainer = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     margin: 0px;
     padding-top: 30px;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     margin-right: 5.625rem;
   }
 `
@@ -77,7 +77,7 @@ const Li = compose(size14, bold)(styled.li`
 `)
 
 const TextContainer = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     margin-top: 24px;
     & > h3 {
       width: 18.125rem;
@@ -96,7 +96,7 @@ const TextContainer = styled.div`
         content: '-  '
     }
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     & > h3 {
       margin: 0 0 0.25rem 0;
       border-bottom: solid 1px;
@@ -128,7 +128,7 @@ const PokePediaDescContainer = styled.div`
 `
 
 const PokePediaDesc = styled.p`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     & > br {
       display: none;
     }
@@ -140,10 +140,10 @@ const PokePediaDesc = styled.p`
 `
 
 const ArticlesContainer = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     height: 14.375rem;
     width: 100%;
     background-color: ${colors.concrete};
@@ -204,16 +204,16 @@ const Span = styled.span`
 `
 
 const DesktopDiv = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
   }
 `
 const MobileDiv = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: none;
   }
 `

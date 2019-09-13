@@ -10,11 +10,11 @@ import CaptionText from '@poke/components/CaptionText'
 import Button from '@poke/components/Button'
 
 const Section = styled.section`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: block;
     padding: 30px 20px 0px 20px
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     position: relative;
     background-color: ${colors.athensGray};
     display: flex;
@@ -27,10 +27,10 @@ const Section = styled.section`
 `
 
 const StepFlag = styled.img`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     position: absolute;
     top: 0%;
     right: 0%;  
@@ -38,26 +38,26 @@ const StepFlag = styled.img`
 `
 
 const Container = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: block;
   }
-  @media (min-width: 577px) {  
+  @media (min-width: 577px) and (min-height: 577px) {  
     display: flex;
   }
 `
 
 const Left = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     margin-right: 4.125rem;
     width: 429px;
   }
 `
 
 const P = styled.p`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     & > br {
         display: none;
     }
@@ -86,9 +86,9 @@ const Moscot = styled.img`
 `
 
 const MobileDiv = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     display: none;
   }
 `

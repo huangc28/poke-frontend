@@ -3,27 +3,37 @@ import styled from 'styled-components'
 
 import colors from '@poke/styles/colors'
 
-import DESKTOP from './images/01.png'
-import MOBILE from './images/01_s.png'
+import Desktop from './images/01.png'
+import MobileStraight from './images/01_s.png'
+import MobileLandscape from './images/01_s_landscape.png'
 
 const Section = styled.section`
-  @media (max-width: 576px) {
+  // 手機 - 直向
+  @media all and (max-width: 576px) {
     position: relative;
-    background: url(${MOBILE})  right top;
-    background-size:100%;
+    background: url(${MobileStraight}) no-repeat right top;
+    background-size: cover;
     width: 100%;
     height: 400px;
   }
-  @media (min-width: 577px) {
+  // 手機 - 橫向
+  @media all and (min-width: 577px) and (max-height: 576px) {
     position: relative;
-    padding-top: 9.75rem;
+    background: url(${MobileLandscape}) no-repeat center;
+    // background-size: ;
+    background-color: ${colors.hintOfRed};
+    width: 100%;
+    height: 375px;
+  }
+  @media (min-width: 577px) and (min-height: 577px) {
+    position: relative;
     display: flex;
     flex-direction: row;
-    background: url(${DESKTOP}) no-repeat right top;
+    background: url(${Desktop}) no-repeat right top;
     background-size: cover;
     background-color: ${colors.hintOfRed};
     width: 100%;
-    height: 29.25rem;
+    height: 38rem;
     box-sizing: border-box;
     overflow: hidden;
     box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
@@ -32,7 +42,8 @@ const Section = styled.section`
 
 
 const Slogen = styled.p`
-  @media (max-width: 576px) {
+  // 手機 - 直向
+  @media all and (max-width: 576px) {
     position: absolute;
     top: 157px;
     left: 19px;
@@ -48,7 +59,13 @@ const Slogen = styled.p`
     text-align: left;
     color: #3c4e6b;
   }
-  @media (min-width: 577px) {
+  // 手機 - 橫向
+  @media all and (min-width: 577px) and (max-height: 576px) {
+    display: none;
+    padding: 0px;
+    margin: 0px;
+  }
+  @media (min-width: 577px) and (min-height: 577px) {
     position: absolute;
     bottom: 0;
     width: 100%;

@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import colors from '@poke/styles/colors'
 
 const Navigation = styled.ul`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
       display: block;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       display: flex;
       flex-direction: inline-flex;
       list-style: none;

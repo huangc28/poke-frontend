@@ -14,7 +14,7 @@ import SearchBar from '../SearchBar'
 import { FaBars, FaSearch } from 'react-icons/fa'
 
 const HeaderRegion = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
       position: fixed;
       z-index: 1;
       width: 100%;
@@ -22,7 +22,7 @@ const HeaderRegion = styled.div`
       margin: 0px;
       background-color: ${colors.white};
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       position: fixed;
       top: 0;
       width: 100%;
@@ -37,41 +37,41 @@ const HeaderRegion = styled.div`
   }
 `
 const HeaderStuff = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
       display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       width: 100%;
       height: 3.5rem;
   }
 `
 
 const LogoContainer = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       cursor: pointer;
       margin-right: 2.125rem;
   }
 `
 const Mobile = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
 
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       display: none;
   }
 `
 
 const HeadLeft = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
       margin-top: 6px;
       margin-left: 6px;
       padding: 0px;
       display: flex;
       position: relative;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       max-width: 170px;
       width: 20%;
       float: left;
@@ -85,20 +85,20 @@ const HeadLeft = styled.div`
 `
 
 const HeadCenter = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     float: left;
     padding: 0.375rem 0px 0.375rem 0rem;
   }
 `
 
 const HeadRight = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     float: right;
     display: flex;
     align-items: center;
@@ -125,11 +125,11 @@ const LoginContainer = styled.div`
 
 
 const MenuContainer = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
       visibility: hidden;
       position: absolute;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       visibility: hidden;
       position: absolute;
       top: 1rem;
@@ -153,11 +153,11 @@ const NavContent = styled.div`
 `
 
 const LogoImg = styled.img`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
       height: 65px;
       width: 180px;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       height: 44px;
       width: 132px;
   }

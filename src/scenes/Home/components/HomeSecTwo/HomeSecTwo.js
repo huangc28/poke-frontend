@@ -13,10 +13,10 @@ import FoodTwo from './images/39.png'
 import FoodThree from './images/40.png'
 
 const Section = styled.section`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
       display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
       display: flex;
       flex-direction: column;
       background: url(${BGImg}) no-repeat center center fixed;
@@ -30,19 +30,19 @@ const Section = styled.section`
 `
 
 const IntroUpper = styled.div`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-direction: row;
 }
 `
 const UpperLeft = styled.div`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -70,10 +70,10 @@ const UpperLeft = styled.div`
 `
 
 const UpperRight = styled.div`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -92,10 +92,10 @@ const UpperRight = styled.div`
 `
 
 const IntroLower = styled.div`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -104,10 +104,10 @@ const IntroLower = styled.div`
 `
 
 const LowerLeft = styled.div`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     flex-direction: column;
     margin-right: 2.625rem;
@@ -115,20 +115,20 @@ const LowerLeft = styled.div`
 `
 
 const FoodDecideImg = styled.img`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     width: 22rem;
     height: 6.375rem;
 }
 `
 
 const FoodImgContainer = styled.div`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     width: 100%;
     display: inline-flex;
     justify-content: flex-start;
@@ -142,10 +142,10 @@ const FoodImgContainer = styled.div`
 `
 
 const LowerRight = styled.div`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     flex-grow: 1;
     display: flex;
     flex-direction: row;
@@ -154,10 +154,10 @@ const LowerRight = styled.div`
 `
 
 const FoodText = styled.div`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     line-height: 1.375rem;
   
     & > h3 {
@@ -179,10 +179,10 @@ const FoodText = styled.div`
 
 
 const MoscotContainer = styled.div`
-@media (max-width: 576px) {
+@media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
 }
-@media (min-width: 577px) {
+@media (min-width: 577px) and (min-height: 577px) {
     display: flex;
     align-items: flex-end;
 }

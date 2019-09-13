@@ -11,7 +11,7 @@ const Li = compose(size14)(styled.li`
 `)
 
 const Container = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     & > h3 {
       width: 18.125rem;
       color: #3c4e6b;
@@ -30,7 +30,7 @@ const Container = styled.div`
         content: '-  '
     }
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
     & > h3 {
       margin: 0 0 0.25rem 0;
       border-bottom: solid 1px;
@@ -57,10 +57,10 @@ const DescContainer = styled.div`
 `
 
 const DesktopDiv = styled.div`
-  @media (max-width: 576px) {
+  @media all and (max-width: 576px), all and (max-height: 576px) {
     display: none;
   }
-  @media (min-width: 577px) {
+  @media (min-width: 577px) and (min-height: 577px) {
   }
 `
 
