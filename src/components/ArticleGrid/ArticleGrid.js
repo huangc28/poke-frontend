@@ -133,6 +133,7 @@ const ArticleGrid = ({
               theme={blackTheme}
               icon={<More width={16} height={16} />}
               text='more'
+              cursor='pointer'
               onClick={onClickMore}
             />
           </StatBar>

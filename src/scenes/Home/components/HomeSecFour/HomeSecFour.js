@@ -8,10 +8,12 @@ import colors from '@poke/styles/colors'
 import { bold, size12Mixin, size14 } from '@poke/styles/font'
 import FetchHotArticles from '@poke/hoc/FetchHotArticles'
 import Img from '@poke/components/Img'
+import Button from '@poke/components/Button'
 import TimeAgo from '@poke/components/TimeAgo'
 import convertDateTimeStringToTimestamp from '@poke/util/convertDateTimeStringToTimestamp'
 
 import Moscot from './images/10.png'
+import MoscotS from './images/10_s.jpg'
 import ConfusedMan from './images/11.png'
 import StepFlagImg from './images/31.png'
 import LoveImg from './images/19.png'
@@ -20,30 +22,53 @@ import ReadImg from './images/20.png'
 import ArticleSlider from './components/ArticleSlider'
 
 const Section = styled.section`
-  position: relative;
-  padding-top: 2.125rem;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
+  @media (max-width: 576px) {
+    padding: 0px;
+  }
+  @media (min-width: 577px) {
+    position: relative;
+    padding-top: 2.125rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
 `
 
 const PokePediaContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  @media (max-width: 576px) {
+    display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @media (min-width: 577px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
 `
 
 const StepFlag = styled.img`
-  position: absolute;
-  top: 0%;
-  right: 0%;
+  @media (max-width: 576px) {
+    display: none;
+  }
+  @media (min-width: 577px) {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+  }
 `
 
 const MoscotContainer = styled.div`
-  margin-right: 5.625rem;
+  @media (max-width: 576px) {
+    margin: 0px;
+    padding-top: 30px;
+  }
+  @media (min-width: 577px) {
+    margin-right: 5.625rem;
+  }
 `
 
 
@@ -52,20 +77,41 @@ const Li = compose(size14, bold)(styled.li`
 `)
 
 const TextContainer = styled.div`
-  & > h3 {
-    margin: 0 0 0.25rem 0;
-    border-bottom: solid 1px;
-    width: 18.125rem;
+  @media (max-width: 576px) {
+    margin-top: 24px;
+    & > h3 {
+      width: 18.125rem;
+      color: #3c4e6b;
+    }
+    & > h3:before {
+        content: '01';
+        margin-right: 10px;
+    }
+    & > ul {
+        padding-left: 10px;
+        list-style-type: none;
+        line-height: 1.63;
+    }
+    & > ul > li:before {
+        content: '-  '
+    }
   }
-
-  & > ul {
-    padding-left: 1.125rem;
-    margin: 0.5rem 0 0.625rem 0;
-    list-style-type: square;
-  }
-
-  & > ul > li > span {
-    line-height: 1.8;
+  @media (min-width: 577px) {
+    & > h3 {
+      margin: 0 0 0.25rem 0;
+      border-bottom: solid 1px;
+      width: 18.125rem;
+    }
+    
+    & > ul {
+      padding-left: 1.125rem;
+      margin: 0.5rem 0 0.625rem 0;
+      list-style-type: square;
+    }
+    
+    & > ul > li > span {
+      line-height: 1.8;
+    }
   }
 `
 
@@ -82,23 +128,34 @@ const PokePediaDescContainer = styled.div`
 `
 
 const PokePediaDesc = styled.p`
+  @media (max-width: 576px) {
+    & > br {
+      display: none;
+    }
+    color: #3c4e6b;
+  }
   margin-top: 0;
   font-size: 0.875rem;
   line-height: 1.57;
 `
 
 const ArticlesContainer = styled.div`
-  height: 14.375rem;
-  width: 100%;
-  background-color: ${colors.concrete};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  & > h3 {
-    font-weight: bold;
-    margin: 0 0 1.4375rem 0;
+  @media (max-width: 576px) {
+    display: none;
+  }
+  @media (min-width: 577px) {
+    height: 14.375rem;
+    width: 100%;
+    background-color: ${colors.concrete};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    & > h3 {
+      font-weight: bold;
+      margin: 0 0 1.4375rem 0;
+    }
   }
 `
 const ArticleContainer = styled.div`
@@ -146,6 +203,22 @@ const Span = styled.span`
   ${size12Mixin}
 `
 
+const DesktopDiv = styled.div`
+  @media (max-width: 576px) {
+    display: none;
+  }
+  @media (min-width: 577px) {
+  }
+`
+const MobileDiv = styled.div`
+  @media (max-width: 576px) {
+  }
+  @media (min-width: 577px) {
+    display: none;
+  }
+`
+
+
 function HomeSecFour ({ history, articles }) {
   return (
     <Section>
@@ -154,20 +227,19 @@ function HomeSecFour ({ history, articles }) {
       <PokePediaContainer>
         {/* Poke moscot */}
         <MoscotContainer>
-          <img src={Moscot} />
+          <picture>
+              <source media="(max-width: 576px)" srcset={MoscotS}/>
+              <source media="(min-width: 577px)" srcset={Moscot}/>
+              <img src={Moscot} style={{ display:'block', margin:'auto' }}/>
+          </picture>
+          {/* <img src={Moscot} srcset={MoscotS}/> */}
         </MoscotContainer>
 
         <TextContainer>
-          <h3>
-            剝殼小百科
-          </h3>
+          <h3>剝殼小百科</h3>
           <ul>
-            <Li>
-              <span> 專業科學的背景 </span>
-            </Li>
-            <Li>
-              <span> 提供優質易懂的 『寵物飲食文章』</span>
-            </Li>
+            <Li><span> 專業科學的背景 </span></Li>
+            <Li><span> 提供優質易懂的 『寵物飲食文章』</span></Li>
           </ul>
           <PokePediaDescContainer>
             <PokePediaDesc>
@@ -179,9 +251,13 @@ function HomeSecFour ({ history, articles }) {
               讓你我、他 <br />
               一起成長!一起茁壯!
             </PokePediaDesc>
-
-            <img src={ConfusedMan} />
+            <DesktopDiv>
+              <img src={ConfusedMan}/>
+            </DesktopDiv>
           </PokePediaDescContainer>
+          <MobileDiv>
+            <Button text='了解更多' size='block' theme='gray'></Button>
+          </MobileDiv>
         </TextContainer>
       </PokePediaContainer>
 

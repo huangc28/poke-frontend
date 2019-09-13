@@ -5,10 +5,15 @@ import styled from 'styled-components'
 import colors from '@poke/styles/colors'
 
 const Navigation = styled.ul`
-  display: flex;
-  flex-direction: inline-flex;
-  list-style: none;
-  padding: 0;
+  @media (max-width: 576px) {
+      display: block;
+  }
+  @media (min-width: 577px) {
+      display: flex;
+      flex-direction: inline-flex;
+      list-style: none;
+      padding: 0;
+  }
 `
 const NavElem = styled.li`
   border-right: solid 1px ${colors.gray};

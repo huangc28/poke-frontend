@@ -14,8 +14,6 @@ const Img = ({ fallbackImgWidth, fallbackImgHeight, ...props }) => {
         style={{width: fallbackImgWidth, height: fallbackImgHeight}}
         onError={()=>this.src=fallbackImgURL}
       />
-    // <object data={fallbackImgURL} type='image/png'>
-    // </object>
   )
 }
 

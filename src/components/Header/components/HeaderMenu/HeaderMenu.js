@@ -7,27 +7,33 @@ import { size12 } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 
 const Container = styled.div`
-  position: relative;
-  background-color: ${colors.linen};
-  border-radius: 0 0.4rem 0.4rem 0.4rem;
-  width: 8.75rem;
-  height: 8.75rem;
-  box-shadow: 0 10px 20px 0 rgba(64, 64, 66, 0.2);
-  margin: 0 auto;
+  @media (max-width: 576px) {
+      display: block;
+      background-color: ${colors.linen};
+  }
+  @media (min-width: 577px) {
+      position: relative;
+      background-color: ${colors.linen};
+      border-radius: 0 0.4rem 0.4rem 0.4rem;
+      width: 8.75rem;
+      height: 8.75rem;
+      box-shadow: 0 10px 20px 0 rgba(64, 64, 66, 0.2);
+      margin: 0 auto;
 
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 8.6%;
-    width: 0;
-    height: 0;
-    border: 1.5rem solid transparent;
-    border-bottom-color: ${colors.linen};
-    border-top: 0;
-    border-left: 0;
-    margin-left: -0.75rem;
-    margin-top: -1.5rem;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 8.6%;
+        width: 0;
+        height: 0;
+        border: 1.5rem solid transparent;
+        border-bottom-color: ${colors.linen};
+        border-top: 0;
+        border-left: 0;
+        margin-left: -0.75rem;
+        margin-top: -1.5rem;
+      }
   }
 `
 

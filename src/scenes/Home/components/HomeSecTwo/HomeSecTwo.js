@@ -13,124 +13,179 @@ import FoodTwo from './images/39.png'
 import FoodThree from './images/40.png'
 
 const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  background: url(${BGImg}) no-repeat center center fixed;
-  background-size: cover;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 4.125rem 0;
-  box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
+  @media (max-width: 576px) {
+      display: none;
+  }
+  @media (min-width: 577px) {
+      display: flex;
+      flex-direction: column;
+      background: url(${BGImg}) no-repeat center center fixed;
+      background-size: cover;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 4.125rem 0;
+      box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
+  }
 `
 
 const IntroUpper = styled.div`
-  display: flex;
-  flex-direction: row;
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    display: flex;
+    flex-direction: row;
+}
 `
 const UpperLeft = styled.div`
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  box-sizing: border-box;
-  margin-right: 2rem;
-
-  & > h3 {
-    max-width: 290px;
-    padding-bottom: 0.3125rem;
-    border-bottom: solid 1px;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-  & > p {
-    font-size: 0.875rem;
-    white-space: nowrap;
-    margin-top: 0.5rem;
-    line-height: 1.57;
-    margin-bottom: 0;
-  }
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 2rem;
+  
+    & > h3 {
+      max-width: 290px;
+      padding-bottom: 0.3125rem;
+      border-bottom: solid 1px;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  
+    & > p {
+      font-size: 0.875rem;
+      white-space: nowrap;
+      margin-top: 0.5rem;
+      line-height: 1.57;
+      margin-bottom: 0;
+    }
+}  
 `
 
 const UpperRight = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
 
-  & > img {
-    width: 9.5rem;
-    height: 9.5rem;
-  }
+    & > img {
+      width: 9.5rem;
+      height: 9.5rem;
+    }
 
-  & > p {
-    font-size: 0.875rem;
-  }
+    & > p {
+      font-size: 0.875rem;
+    }
+}
 `
 
 const IntroLower = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
 `
 
 const LowerLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-right: 2.625rem;
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2.625rem;
+}
 `
 
 const FoodDecideImg = styled.img`
-  width: 22rem;
-  height: 6.375rem;
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    width: 22rem;
+    height: 6.375rem;
+}
 `
 
 const FoodImgContainer = styled.div`
-  width: 100%;
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-
-  & > img {
-    width: 8.5rem;
-    height: 8.5rem;
-  }
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    width: 100%;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  
+    & > img {
+      width: 8.5rem;
+      height: 8.5rem;
+    }
+}
 `
 
 const LowerRight = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
 `
 
 const FoodText = styled.div`
-  line-height: 1.375rem;
-
-  & > h3 {
-    border-bottom: solid 1px;
-    max-width: 18.125rem;
-    padding-bottom: 0.3125rem;
-  }
-
-  & > p {
-    font-size: 0.875rem;
-    font-size: 14px;
-    margin: 0;
-    line-height: 1.57;
-    min-width: 16.6875rem;
-    margin-top: 0.5rem;
-  }
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    line-height: 1.375rem;
+  
+    & > h3 {
+      border-bottom: solid 1px;
+      max-width: 18.125rem;
+      padding-bottom: 0.3125rem;
+    }
+  
+    & > p {
+      font-size: 0.875rem;
+      font-size: 14px;
+      margin: 0;
+      line-height: 1.57;
+      min-width: 16.6875rem;
+      margin-top: 0.5rem;
+    }
+}
 `
 
 
 const MoscotContainer = styled.div`
-  display: flex;
-  align-items: flex-end;
+@media (max-width: 576px) {
+    display: none;
+}
+@media (min-width: 577px) {
+    display: flex;
+    align-items: flex-end;
+}
 `
 
 const prodImages = [

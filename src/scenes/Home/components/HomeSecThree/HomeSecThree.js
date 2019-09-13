@@ -21,17 +21,15 @@ const Text = styled.p`
   color: ${colors.white};
   font-size: 1.125rem;
   font-weight: bold;
-  line-height: 1.5;
+  line-height: 0;
   letter-spacing: 1.8;
 `
 
 const HomeSecThree = () => {
   return (
     <Section>
-      <Text>
-        我們是"剝殼計畫" <br />
-        為解決問題，我們提供以下服務 <br />
-      </Text>
+      <Text>我們是"剝殼計畫"</Text>
+      <Text>為解決問題，我們提供以下服務</Text>
     </Section>
   )
 }

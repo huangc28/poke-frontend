@@ -8,9 +8,15 @@ import { size20 } from '@poke/styles/font'
 
 const sizeMap = {
   height: {
-    normal: 3.4375,
-    small: 1.6875,
+    normal: '3.4375rem',
+    small: '1.6875rem',
+    block: '35px',
   },
+  width: {
+    normal: 'auto',
+    small: 'auto',
+    block: '100%',
+  }
 }
 
 const themes = {
@@ -21,13 +27,17 @@ const themes = {
   pink: {
     backgroundColor: colors.tickleMePink,
     color: colors.white,
+  },
+  gray: {
+    backgroundColor: colors.gray,
+    color: colors.white,
   }
 }
 
 const StyledButton = styled.button`
   color: white;
-  width: auto;
-  height: ${props => props.height}rem;
+  width: ${props => props.width};
+  height: ${props => props.height};
   border-radius: 1rem;
   background: ${props => props.backgroundColor};
   border: 0;
@@ -56,6 +66,7 @@ const Text = compose(size20)(styled.span`
   display: flex;
   align-items: center;
   color: ${props => props.color};
+  font-size: ${(props => props.fontSize)}
 `)
 
 const Button = ({
@@ -64,14 +75,17 @@ const Button = ({
   text,
   size,
   theme,
+  fontSize,
 }) => {
   const buttonHeight = sizeMap.height[size] || sizeMap.height['normal']
+  const buttonWidth = sizeMap.width[size] || sizeMap.width['normal']
   const stheme = themes[theme] || themes['pink']
 
   return (
     <StyledButton
       onClick={onClick}
       height={buttonHeight}
+      width={buttonWidth}
       backgroundColor={stheme.backgroundColor}
     >
       <Content>
@@ -84,6 +98,7 @@ const Button = ({
         }
         <Text
           color={stheme.color}
+          fontSize={fontSize}
         >
           {text}
         </Text>
@@ -98,6 +113,7 @@ Button.propTypes = {
   text: PropTypes.string,
   size: PropTypes.string,
   theme: PropTypes.string,
+  fontSize: PropTypes.string,
 }
 
 Button.defaultProps = {
@@ -106,6 +122,7 @@ Button.defaultProps = {
   Text: '',
   size: 'normal',
   theme: 'pink',
+  fontSize: '1.25rem',
 }
 
 export default Button

@@ -74,6 +74,7 @@ function SingleArticle ({ match, fetchArticle, article }) {
               {/* created at */}
               <IconLabel
                 theme={blackTheme}
+                cursor='default'
                 icon={
                   <RecentUpdatedDate
                     width={16}

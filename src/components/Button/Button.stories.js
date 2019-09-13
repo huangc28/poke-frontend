@@ -30,3 +30,12 @@ storiesOf('Button', module)
       />
     </Button>
   ))
+  .add('Gray background with more', () => (
+      <Button
+        text='了解更多'
+        size='block'
+        theme='gray'
+        fontSize='13px'
+      >
+      </Button>
+  ))

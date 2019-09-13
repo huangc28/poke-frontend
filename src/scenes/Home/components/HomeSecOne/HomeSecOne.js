@@ -3,79 +3,65 @@ import styled from 'styled-components'
 
 import colors from '@poke/styles/colors'
 
-import Deer from './images/04.png'
-import BearChild from './images/05.png'
-import BGImg from './images/06.png'
-import Moscot from './images/03.png'
+import DESKTOP from './images/01.jpg'
+import MOBILE from './images/01_s.jpg'
 
 const Section = styled.section`
-  position: relative;
-  padding-top: 9.75rem;
-  display: flex;
-  flex-direction: row;
-  background: url(${BGImg}) no-repeat right top;
-  background-size: cover;
-  background-color: ${colors.hintOfRed};
-  width: 100%;
-  height: 29.25rem;
-  box-sizing: border-box;
-  overflow: hidden;
-  box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
+  @media (max-width: 576px) {
+    position: relative;
+    background: url(${MOBILE})  right top;
+    background-size:100%;
+    width: 100%;
+    height: 400px;
+  }
+  @media (min-width: 577px) {
+    position: relative;
+    padding-top: 9.75rem;
+    display: flex;
+    flex-direction: row;
+    background: url(${DESKTOP}) no-repeat right top;
+    background-size: cover;
+    background-color: ${colors.hintOfRed};
+    width: 100%;
+    height: 29.25rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.7);
+  }
 `
 
-const ImgContainerOne = styled.div`
-  flex-grow: 2;
-  display: inline-flex;
-  justify-content: flex-end;
-  padding-bottom: 2.125rem;
-`
-
-const StuffOne = styled.div`
-  flex-grow: 0.1;
-`
-
-const ImgContainerTwo = styled.div`
-  flex-grow: 2;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const ImgContainerThree = styled.div`
-  flex-grow: 1;
-  display: inline-flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding-bottom: 4rem;
-`
 
 const Slogen = styled.p`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 0;
-  margin-bottom: 2.9375rem;
+  @media (max-width: 576px) {
+    position: absolute;
+    top: 157px;
+    left: 19px;
+    width: 125px;
+    height: 40px;
+    font-family: MicrosoftJhengHei;
+    font-size: 17px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.47;
+    letter-spacing: 1.28px;
+    text-align: left;
+    color: #3c4e6b;
+  }
+  @media (min-width: 577px) {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 2.9375rem;
+  }
 `
 
 function HomeSecOne () {
   return (
     <Section>
-      <ImgContainerOne>
-        <img src={Moscot} />
-      </ImgContainerOne>
-
-      <ImgContainerTwo>
-        <img src={Deer} />
-      </ImgContainerTwo>
-
-      <ImgContainerThree>
-        <img src={BearChild} />
-      </ImgContainerThree>
-
-      <StuffOne />
-
       <Slogen>
         懂他，選擇最適合的愛給他
       </Slogen>

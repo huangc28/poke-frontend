@@ -13,6 +13,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'PokeFont', Fallback, sans-serif;
+    padding: 0px;
+    margin: 0px;
   }
 
   h1 {
@@ -32,6 +34,11 @@ const GlobalStyle = createGlobalStyle`
   }
   h6 {
     font-size: 0.7em;
+  }
+
+  #app {
+    margin: 0px;
+    padding: 0px;
   }
 `
 

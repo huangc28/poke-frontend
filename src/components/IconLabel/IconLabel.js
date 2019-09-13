@@ -9,7 +9,7 @@ const Stat = styled.div`
   display: flex;
   align-items: center;
   margin-right: 0.75rem;
-  cursor: pointer;
+  cursor: ${props => props.cursor};
 
   & > div {
     ${size12Mixin}
@@ -38,6 +38,7 @@ const IconLabel = ({
   icon,
   label,
   theme,
+  cursor,
 }) => {
   const handleClick = evt => {
     evt.preventDefault()
@@ -48,7 +49,7 @@ const IconLabel = ({
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} cursor={cursor}>
       <Stat onClick={handleClick}>
         { icon }
 
@@ -81,6 +82,7 @@ IconLabel.propTypes = {
     T.node,
   ]),
   theme: T.object,
+  cursor: T.string,
 }
 
 IconLabel.defaultProps = {
@@ -88,6 +90,7 @@ IconLabel.defaultProps = {
   icon: null,
   label: '',
   theme: defaultTheme,
+  cursor: 'pointer',
 }
 
 export default IconLabel

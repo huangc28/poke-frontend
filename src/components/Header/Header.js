@@ -11,38 +11,104 @@ import Logo from './images/50.png'
 import Navbar, { NavElem } from './components/Navbar'
 import HeaderMenu, { MenuItem } from './components/HeaderMenu'
 import SearchBar from '../SearchBar'
+import { FaBars, FaSearch } from 'react-icons/fa'
 
 const HeaderRegion = styled.div`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 4rem;
-  background-color: ${colors.concrete};
-  box-shadow: 0 4px 1px -2px  rgba(0,0,0,0.30);
-  align-items: center;
+  @media (max-width: 576px) {
+      position: fixed;
+      z-index: 1;
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
+      background-color: ${colors.white};
+  }
+  @media (min-width: 577px) {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      /* display: flex; */
+      flex-direction: row;
+      justify-content: space-evenly;
+      height: 4rem;
+      background-color: ${colors.concrete};
+      box-shadow: 0 4px 1px -2px  rgba(0,0,0,0.30);
+      align-items: center;
+  }
 `
-const LogoContainer = styled.div`
-  cursor: pointer;
-  margin-right: 2.125rem;
+const HeaderStuff = styled.div`
+  @media (max-width: 576px) {
+      display: none;
+  }
+  @media (min-width: 577px) {
+      width: 100%;
+      height: 3.5rem;
+  }
 `
 
-const HeaderStuff = styled.div`
-  width: 100%;
-  height: 3.5rem;
+const LogoContainer = styled.div`
+  @media (max-width: 576px) {
+  }
+  @media (min-width: 577px) {
+      cursor: pointer;
+      margin-right: 2.125rem;
+  }
+`
+const Mobile = styled.div`
+  @media (max-width: 576px) {
+
+  }
+  @media (min-width: 577px) {
+      display: none;
+  }
 `
 
 const HeadLeft = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0.375rem 0 0.375rem 1.875rem;
-  box-sizing: border-box;
-  flex: 1;
+  @media (max-width: 576px) {
+      margin-top: 6px;
+      margin-left: 6px;
+      padding: 0px;
+      display: flex;
+      position: relative;
+  }
+  @media (min-width: 577px) {
+      max-width: 170px;
+      width: 20%;
+      float: left;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0.375rem 0 0.375rem 1.875rem;
+      box-sizing: border-box;
+      flex: 1;
+  }
+`
+
+const HeadCenter = styled.div`
+  @media (max-width: 576px) {
+    display: none;
+  }
+  @media (min-width: 577px) {
+    float: left;
+    padding: 0.375rem 0px 0.375rem 0rem;
+  }
+`
+
+const HeadRight = styled.div`
+  @media (max-width: 576px) {
+    display: none;
+  }
+  @media (min-width: 577px) {
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    padding: 0.375rem 2.75rem 0.375rem 1.875rem;
+    box-sizing: border-box;
+    flex: 1;
+  }
+
 `
 
 const LoginContainer = styled.div`
@@ -56,22 +122,20 @@ const LoginContainer = styled.div`
   }
 `
 
-const HeadRight = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-  padding: 0.375rem 2.75rem 0.375rem 1.875rem;
-  box-sizing: border-box;
-  flex: 1;
-`
+
 
 const MenuContainer = styled.div`
-  visibility: hidden;
-  position: absolute;
-  top: 1rem;
-  padding-top: 2.5rem;
-  z-index: 20;
+  @media (max-width: 576px) {
+      visibility: hidden;
+      position: absolute;
+  }
+  @media (min-width: 577px) {
+      visibility: hidden;
+      position: absolute;
+      top: 1rem;
+      padding-top: 2.5rem;
+      z-index: 20;
+  }
 `
 
 const NavContent = styled.div`
@@ -88,6 +152,18 @@ const NavContent = styled.div`
   }
 `
 
+const LogoImg = styled.img`
+  @media (max-width: 576px) {
+      height: 65px;
+      width: 180px;
+  }
+  @media (min-width: 577px) {
+      height: 44px;
+      width: 132px;
+  }
+`
+
+
 function Header ({ history }) {
   return (
     <React.Fragment>
@@ -95,19 +171,20 @@ function Header ({ history }) {
       <HeaderRegion>
         <HeadLeft>
           {/* Logo */}
-          <LogoContainer
-            onClick={evt => {
+          <LogoContainer onClick={evt => {
               evt.preventDefault()
               history.push('/')
-            }}
-          >
-            <img
-              height={44}
-              width={132}
-              src={Logo}
-            />
+            }}>
+            <LogoImg src={Logo}></LogoImg>
           </LogoContainer>
-
+          <Mobile style={{ padding: '22px 10px 10px 10px' }}>
+              <FaSearch style={{ color: '#a0a0a0', 'font-size': '30px' }}></FaSearch>
+          </Mobile>
+          <Mobile style={{ position: 'absolute', right: '0px', padding: '16px 15px' }}>
+              <FaBars style={{ color: '#3c4e6b', 'font-size': '40px' }}></FaBars>
+          </Mobile>
+        </HeadLeft>
+        <HeadCenter>
           {/* Navigation */}
           <Navbar>
             <NavElem>
@@ -156,8 +233,7 @@ function Header ({ history }) {
               </Link>
             </NavElem>
           </Navbar>
-        </HeadLeft>
-                    
+        </HeadCenter>
         <HeadRight>
           <LoginContainer>
             {/* Icon */}

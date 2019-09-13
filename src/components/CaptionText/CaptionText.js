@@ -11,21 +11,42 @@ const Li = compose(size14)(styled.li`
 `)
 
 const Container = styled.div`
-  & > h3 {
-    margin: 0 0 0.25rem 0;
-    border-bottom: solid 1px;
-    width: 18.125rem;
-    padding-bottom: 0.3125rem;
+  @media (max-width: 576px) {
+    & > h3 {
+      width: 18.125rem;
+      color: #3c4e6b;
+    }
+    & > h3:before {
+        content: "${props => props.flag}";
+        margin-right: 10px;
+    }
+    & > ul {
+        padding-left: 10px;
+        list-style-type: none;
+        line-height: 1.63;
+        font-weight: bold;
+    }
+    & > ul > li:before {
+        content: '-  '
+    }
   }
-
-  & > ul {
-    padding-left: 1.125rem;
-    margin: 0.5rem 0 0.625rem 0;
-    list-style-type: square;
-  }
-
-  & > ul > li > span {
-    line-height: 1.8;
+  @media (min-width: 577px) {
+    & > h3 {
+      margin: 0 0 0.25rem 0;
+      border-bottom: solid 1px;
+      width: 18.125rem;
+      padding-bottom: 0.3125rem;
+    }
+  
+    & > ul {
+      padding-left: 1.125rem;
+      margin: 0.5rem 0 0.625rem 0;
+      list-style-type: square;
+    }
+  
+    & > ul > li > span {
+      line-height: 1.8;
+    }
   }
 `
 
@@ -35,9 +56,18 @@ const DescContainer = styled.div`
   position: relative;
 `
 
-const CaptionText = ({ title, highLights, img, children }) => {
+const DesktopDiv = styled.div`
+  @media (max-width: 576px) {
+    display: none;
+  }
+  @media (min-width: 577px) {
+  }
+`
+
+
+const CaptionText = ({flag, title, highLights, img, children }) => {
   return (
-    <Container>
+    <Container flag={flag}>
       <h3>
         { title }
       </h3>
@@ -56,20 +86,23 @@ const CaptionText = ({ title, highLights, img, children }) => {
       }
       <DescContainer>
         { children }
-
-        { img }
+        <DesktopDiv>
+          { img }
+        </DesktopDiv>
       </DescContainer>
     </Container>
   )
 }
 
 CaptionText.propTypes = {
+  flag: PropTypes.string,
   title: PropTypes.string,
   highLights: PropTypes.arrayOf(PropTypes.string),
   Img: PropTypes.element,
 }
 
 CaptionText.defaultProps = {
+  flag: '01',
   title: '',
   highLights: [],
   Img: null,

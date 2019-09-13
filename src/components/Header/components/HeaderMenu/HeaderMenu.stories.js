@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react'
 import HeaderMenu, { MenuItem } from './HeaderMenu'
 
 const styles = {
-  height: 200,
-  display: 'flex',
+  'height': 200,
+  'display': 'flex',
   'justify-content': 'center',
   'align-items': 'center',
 }

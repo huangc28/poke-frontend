@@ -20,4 +20,7 @@ export default {
   pickledBluewood: '#354560',
   gallery: '#efefef',
   silver: '#ccc',
+  softWhite:'#efeff0',
+  prussianBlue: '#3c4e6b',
+  gainsboro: '#959595',
 }
