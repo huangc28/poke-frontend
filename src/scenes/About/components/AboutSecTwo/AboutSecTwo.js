@@ -98,12 +98,12 @@ function AboutSecTwo () {
                 </p>
               </Column>
               <Column width='40%'>
-                <img src={LoveImg} style={{ display: 'block', margin: 'auto'}}/>
+                <img src={LoveImg} style={{ display: 'block', margin: 'auto', 'max-width': '100%'}}/>
               </Column>
             </Row>
             <Row>
               <Column width='50%'>
-                <img src={RespImg} style={{ display: 'block', margin: 'auto'}}/>
+                <img src={RespImg} style={{ display: 'block', margin: 'auto', 'max-width': '100%'}}/>
               </Column>
               <Column width='50%'>
                 <SubTitle>Responsibility(責任)</SubTitle>
@@ -124,7 +124,7 @@ function AboutSecTwo () {
                 </p>
               </Column>
               <Column width='40%'>
-                <img src={LearnImg} style={{ display: 'block', margin: 'auto'}}/>
+                <img src={LearnImg} style={{ display: 'block', margin: 'auto', 'max-width': '100%'}}/>
               </Column>
             </Row>
         </Section>

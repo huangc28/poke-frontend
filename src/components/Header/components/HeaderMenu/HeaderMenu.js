@@ -79,7 +79,7 @@ MenuItem.propTypes = {
 
 const HeaderMenu = ({ children }) => {
   return (
-    <Container id="KnowledgeMenu">
+    <Container>
       <Content>
         { children }
       </Content>
