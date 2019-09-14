@@ -81,9 +81,7 @@ const ArticleGrid = ({
   return (
     <Grid >
       {/* Article head image */}
-      <Left
-        onClick={onClickMore}
-      >
+      <Left onClick={onClickMore}>
         { img }
       </Left>
 
@@ -91,13 +89,11 @@ const ArticleGrid = ({
       <Right>
         <div>
           <TopicContainer>
-            <ArticleTag
-              onClick={onClickMore}
-            >
+            <ArticleTag onClick={onClickMore}>
               { tagNum }
             </ArticleTag>
 
-            <Title>
+            <Title onClick={onClickMore}>
               { title }
             </Title>
           </TopicContainer>

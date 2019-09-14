@@ -20,7 +20,6 @@ const Section = styled.section`
   @media all and (min-width: 577px) and (max-height: 576px) {
     position: relative;
     background: url(${MobileLandscape}) no-repeat center;
-    // background-size: ;
     background-color: ${colors.hintOfRed};
     width: 100%;
     height: 375px;

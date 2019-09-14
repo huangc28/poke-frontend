@@ -278,6 +278,8 @@ function HomeSecFour ({ history, articles }) {
                     src={article.img}
                     fallbackImgWidth={181}
                     fallbackImgHeight={123}
+                    width={181}
+                    height={123}
                   />
                   <ArticleStatusBar>
                     <LikeContainer>

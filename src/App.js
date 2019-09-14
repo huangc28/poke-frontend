@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 import { renderRoutes } from 'react-router-config'
 
 import MSJH from '@poke/styles/font-themes/msjh_0.woff2'
-// import MSJH from '@poke/styles/font-themes/sample.woff2'
+import $ from "jquery";
 
 const GlobalStyle = createGlobalStyle`
 

@@ -59,6 +59,7 @@ const HotArticles = ({ articles, onClickArticle }) => {
                   fallbackImgWidth={600}
                   fallbackImgHeight={420}
                   src={top.img}
+                  style={{ cursor: 'pointer' }}
                 />
               </LargeIntro>
             )

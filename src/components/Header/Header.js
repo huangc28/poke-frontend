@@ -12,6 +12,7 @@ import Navbar, { NavElem } from './components/Navbar'
 import HeaderMenu, { MenuItem } from './components/HeaderMenu'
 import SearchBar from '../SearchBar'
 import { FaBars, FaSearch } from 'react-icons/fa'
+import $ from 'jquery'
 
 const HeaderRegion = styled.div`
   @media all and (max-width: 576px), all and (max-height: 576px) {
@@ -42,7 +43,7 @@ const HeaderStuff = styled.div`
   }
   @media (min-width: 577px) and (min-height: 577px) {
       width: 100%;
-      height: 3.5rem;
+      height: 3rem;
   }
 `
 
@@ -86,7 +87,19 @@ const HeadLeft = styled.div`
 
 const HeadCenter = styled.div`
   @media all and (max-width: 576px), all and (max-height: 576px) {
-    display: none;
+    height: 0px;
+    overflow: hidden;
+    transition: height 1s;
+
+    & > ul {
+      list-style-type: none;
+      padding: 0px;
+      text-align: center;
+      border: solid 1px;
+    }
+    & > ul > li {
+      border: solid 1px;
+    }
   }
   @media (min-width: 577px) and (min-height: 577px) {
     float: left;
@@ -126,8 +139,9 @@ const LoginContainer = styled.div`
 
 const MenuContainer = styled.div`
   @media all and (max-width: 576px), all and (max-height: 576px) {
-      visibility: hidden;
-      position: absolute;
+      height: 0px;
+      overflow: hidden;
+      transition: height 1s;
   }
   @media (min-width: 577px) and (min-height: 577px) {
       visibility: hidden;
@@ -180,22 +194,41 @@ function Header ({ history }) {
           <Mobile style={{ padding: '22px 10px 10px 10px' }}>
               <FaSearch style={{ color: '#a0a0a0', 'font-size': '30px' }}></FaSearch>
           </Mobile>
-          <Mobile style={{ position: 'absolute', right: '0px', padding: '16px 15px' }}>
+          <Mobile 
+              style={{ position: 'absolute', right: '0px', padding: '16px 15px' }}
+              onClick={evt => {
+                  if ($('#HeadCenter').css('height') == '0px') {
+                    if ($('#MenuContainer').css('height') == '0px') $('#HeadCenter').css('height', '100px')
+                    else $('#HeadCenter').css('height', '230px')
+                  }
+                  else $('#HeadCenter').css('height', '0px')
+              }}
+              >
               <FaBars style={{ color: '#3c4e6b', 'font-size': '40px' }}></FaBars>
           </Mobile>
         </HeadLeft>
-        <HeadCenter>
+        <HeadCenter id="HeadCenter">
           {/* Navigation */}
           <Navbar>
             <NavElem>
               <NavContent>
                 <a onClick={evt => {
                   evt.preventDefault()
-                  history.push('/knowledge')
+                  if ($(window).width() >= 577) history.push('/knowledge')
+                  else {
+                    if ($('#MenuContainer').css('height') == '0px') {
+                      $('#HeadCenter').css('height', '230px')
+                      $('#MenuContainer').css('height', '140px')
+                    }
+                    else {
+                      $('#HeadCenter').css('height', '100px')
+                      $('#MenuContainer').css('height', '0px')
+                    }
+                  }
                 }}>
                   小百科
                 </a>
-                <MenuContainer>
+                <MenuContainer id="MenuContainer">
                   <HeaderMenu>
                     <MenuItem
                       onClick={evt => {
@@ -228,7 +261,7 @@ function Header ({ history }) {
             </NavElem>
                     
             <NavElem>
-              <Link to=''>
+              <Link to='/about'>
                 理念
               </Link>
             </NavElem>

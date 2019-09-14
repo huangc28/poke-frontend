@@ -74,9 +74,7 @@ function SecTwo ({ article, onClickArticle }) {
         <React.Fragment>
           <Topic>
             <Pin/>
-            <p>
-              營養小百科
-            </p>
+            <p>營養小百科</p>
           </Topic>
 
           <IntroContainer
@@ -88,6 +86,7 @@ function SecTwo ({ article, onClickArticle }) {
               height={420}
               fallbackImgWidth={600}
               fallbackImgHeight={420}
+              style={{ cursor: 'pointer' }}
             />
           </IntroContainer>
           <div style={{ clear: 'both' }} />

@@ -11,12 +11,12 @@ const Img = ({ fallbackImgWidth, fallbackImgHeight, ...props }) => {
   return (
       <img
         {...props}
-        style={{width: fallbackImgWidth, height: fallbackImgHeight}}
-        onError={()=>this.src=fallbackImgURL}
+        onError={(e)=> e.target.src=fallbackImgURL}
       />
   )
 }
 
+  
 Img.propTypes = {
   src: T.string,
   fallbackImgWidth: T.number,
@@ -30,5 +30,6 @@ Img.defaultProps = {
   fallbackImgHeight: 100,
   alt: 'article image',
 }
+
 
 export default Img
