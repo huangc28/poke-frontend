@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'PokeFont', Microsoft JhengHei, Fallback, sans-serif;
+    font-family: Microsoft JhengHei, Fallback, sans-serif;
     padding: 0px;
     margin: 0px;
   }

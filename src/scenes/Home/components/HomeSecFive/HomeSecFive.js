@@ -155,7 +155,7 @@ const HomeSecFive = () => {
               </div>
             </DesktopDiv>
             <MobileDiv>
-              <Button text='了解更多' size='block' theme='gray'></Button>
+              <Button text='了解更多' size='block' theme='gray'/*  onClick={e => {history.push('/knowledge')}} */></Button>
             </MobileDiv>
           </LeftBottom>
         </Left>
