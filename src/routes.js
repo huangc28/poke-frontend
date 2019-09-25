@@ -5,6 +5,7 @@ import Knowledge from './scenes/Knowledge'
 import FoodKnowledge from './scenes/FoodKnowledge'
 import SingleArticle from './scenes/SingleArticle'
 import About from './scenes/About'
+import Verify from './scenes/Verify'
 
 const routes = [
   {
@@ -34,6 +35,11 @@ const routes = [
         path: '/about',
         exact: true,
         component: About,
+      },
+      {
+        path: '/verify',
+        exect: true,
+        component: Verify,
       }
     ],
   }

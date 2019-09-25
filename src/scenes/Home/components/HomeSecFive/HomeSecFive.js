@@ -163,8 +163,8 @@ const HomeSecFive = () => {
         {/* Right part */}
         <Right>
           <picture>
-            <source media="(max-width: 576px)" srcset={MascotS}/>
-            <source media="(min-width: 577px)" srcset={Mascot}/>
+            <source media="(max-width: 576px)" srcSet={MascotS}/>
+            <source media="(min-width: 577px)" srcSet={Mascot}/>
             <img src={Mascot} style={{ display:'block', margin:'20px auto' }}/>
           </picture>
         </Right>

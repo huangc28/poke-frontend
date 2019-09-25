@@ -228,11 +228,11 @@ function HomeSecFour ({ history, articles }) {
         {/* Poke moscot */}
         <MoscotContainer>
           <picture>
-              <source media="(max-width: 576px)" srcset={MoscotS}/>
-              <source media="(min-width: 577px)" srcset={Moscot}/>
+              <source media="(max-width: 576px)" srcSet={MoscotS}/>
+              <source media="(min-width: 577px)" srcSet={Moscot}/>
               <img src={Moscot} style={{ display:'block', margin:'auto' }}/>
           </picture>
-          {/* <img src={Moscot} srcset={MoscotS}/> */}
+          {/* <img src={Moscot} srcSet={MoscotS}/> */}
         </MoscotContainer>
 
         <TextContainer>

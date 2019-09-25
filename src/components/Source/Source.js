@@ -11,7 +11,7 @@ const Source = ({ fallbackImgWidth, fallbackImgHeight, ...props }) => {
     <source
       {...props}
       style={{width: fallbackImgWidth, height: fallbackImgHeight}}
-      srcset={fallbackImgURL}
+      srcSet={fallbackImgURL}
     />
   )
 }

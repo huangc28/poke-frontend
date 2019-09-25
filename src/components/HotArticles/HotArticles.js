@@ -59,7 +59,7 @@ const HotArticles = ({ articles, onClickArticle }) => {
                   fallbackImgWidth={600}
                   fallbackImgHeight={420}
                   src={top.img}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: 'pointer', width: '600px', height: '420px' }}
                 />
               </LargeIntro>
             )
@@ -79,6 +79,7 @@ const HotArticles = ({ articles, onClickArticle }) => {
                     fallbackImgWidth={300}
                     fallbackImgHeight={200}
                     src={article.img}
+                    style={{ cursor: 'pointer', width: '600px', height: '420px' }}
                   />
                 </NormalIntro>
               ))

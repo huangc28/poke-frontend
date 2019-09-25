@@ -10,6 +10,7 @@ import colors from '@poke/styles/colors'
 import Logo from './images/50.png'
 import Navbar, { NavElem } from './components/Navbar'
 import HeaderMenu, { MenuItem } from './components/HeaderMenu'
+import LoginForm from './components/LoginForm'
 import SearchBar from '../SearchBar'
 import { FaBars, FaSearch } from 'react-icons/fa'
 import $ from 'jquery'
@@ -278,14 +279,19 @@ function Header ({ history }) {
                 />
               </IconContainer>
             
+            */}
             <Link
-              to='/login'
-              onClick={evt => evt.preventDefault()}
+            //   to='/login'
+              onClick={evt => {
+                evt.preventDefault()
+                $('#LoginContainer').toggle()
+              }}
             >
             Login
             </Link>
-          */}
           </LoginContainer>
+          <LoginForm>
+          </LoginForm>
           <SearchBar
             placeholder='SEARCH'
             icon={<Magnifier
