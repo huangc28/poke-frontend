@@ -242,7 +242,7 @@ class FoodKnowledge extends Component {
             <Main>
                 <SectionOne>
                     <HotArticles
-                      onClickArticle={({ articleID }) => history.push(`/articles/${articleID}`)}
+                      onClickArticle={({ articleID }) => location.href = `/articles/${articleID}`}
                     />
                 </SectionOne>
 

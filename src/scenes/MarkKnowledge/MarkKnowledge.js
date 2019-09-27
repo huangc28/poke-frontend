@@ -102,7 +102,7 @@ const PrevArrow = styled.div`
   
 `
 
-class Knowledge extends Component {
+class MarkKnowledge extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -113,12 +113,6 @@ class Knowledge extends Component {
         this.ajaxArticle = this.ajaxArticle.bind(this)
         this.countTotalPages = this.countTotalPages.bind(this)
     }
-
-    // componentDidMount() {
-        // this.ajaxArticle(
-        //     (this.state.page - 1) * this.state.PER_PAGE
-        // )
-    // }
 
     countTotalPages (perPage, totalCount) {
         const residual = totalCount % perPage
@@ -133,7 +127,7 @@ class Knowledge extends Component {
 
     ajaxArticle({ offset }){
         let params = {
-            category: '營養小百科',
+            category: '飯飯標示大全',
             sort: 'created_at',
             limit: this.state.PER_PAGE,
             offset,
@@ -164,7 +158,7 @@ class Knowledge extends Component {
                     <React.Fragment>
                         <Topic>
                             <Pin/>
-                            <p>營養小百科</p>
+                            <p>飯飯標示大全</p>
                         </Topic>
 
                         <IntroContainer onClick={() => location.href = `/articles/${first.article_id}`} >
@@ -239,7 +233,7 @@ class Knowledge extends Component {
             <Main>
                 <SectionOne>
                     <HotArticles
-                      onClickArticle={({ articleID }) => location.href = `/articles/${articleID}`}
+                      onClickArticle={({ articleID }) => history.push(`/articles/${articleID}`)}
                     />
                 </SectionOne>
 
@@ -271,4 +265,4 @@ class Knowledge extends Component {
     }
 }
 
-export default Knowledge
+export default MarkKnowledge

@@ -239,7 +239,12 @@ function Header ({ history }) {
                     >
                       營養小百科
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem
+                      onClick={evt => {
+                        evt.preventDefault()
+                        history.push('/mark-knowledge')
+                      }}
+                    >
                       飯飯標示大全
                     </MenuItem>
                     <MenuItem
