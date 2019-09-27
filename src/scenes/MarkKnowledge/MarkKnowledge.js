@@ -161,7 +161,10 @@ class MarkKnowledge extends Component {
                             <p>飯飯標示大全</p>
                         </Topic>
 
-                        <IntroContainer onClick={() => location.href = `/articles/${first.article_id}`} >
+                        <IntroContainer onClick={() => {
+                            if (!!first.article_id) location.href = `/articles/${first.article_id}`
+                        }} 
+                        >
                             <Img
                             src={ first.img || `https://via.placeholder.com/${600}x${420}`}
                             width={600}
@@ -177,7 +180,9 @@ class MarkKnowledge extends Component {
 
                 right={
                     <React.Fragment>
-                        <Title onClick={() => location.href = `/articles/${first.article_id}`}> 
+                        <Title onClick={() => {
+                            if (!!first.article_id) location.href = `/articles/${first.article_id}`
+                        }}> 
                             { first.title } 
                         </Title>
                         <ArticleStat>
@@ -204,7 +209,9 @@ class MarkKnowledge extends Component {
                             <IconLabel
                                 icon={ <MoreIcon width={16} height={16} /> }
                                 label='more'
-                                onClick={() => location.href = `/articles/${first.article_id}`}
+                                onClick={() => {
+                                    if (!!first.article_id) location.href = `/articles/${first.article_id}`
+                                }}
                             />
                             </More>
                         </SummaryContent>
@@ -224,7 +231,9 @@ class MarkKnowledge extends Component {
                     summary={article.descript}
                     timeAgo={article.updated_at}
                     numViewed={article.visit}
-                    onClickMore={() => location.href = `/articles/${article.article_id}` }
+                    onClickMore={() => {
+                        if (!!article.article_id) location.href = `/articles/${article.article_id}` 
+                    }}
                 />
             )
         })
@@ -233,7 +242,7 @@ class MarkKnowledge extends Component {
             <Main>
                 <SectionOne>
                     <HotArticles
-                      onClickArticle={({ articleID }) => history.push(`/articles/${articleID}`)}
+                      onClickArticle={({ articleID }) => location.href = `/articles/${articleID}`}
                     />
                 </SectionOne>
 

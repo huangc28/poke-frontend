@@ -167,7 +167,10 @@ class Knowledge extends Component {
                             <p>營養小百科</p>
                         </Topic>
 
-                        <IntroContainer onClick={() => location.href = `/articles/${first.article_id}`} >
+                        <IntroContainer onClick={() => {
+                            if (!!first.article_id) location.href = `/articles/${first.article_id}`
+                            }} 
+                        >
                             <Img
                             src={ first.img || `https://via.placeholder.com/${600}x${420}`}
                             width={600}
@@ -183,7 +186,10 @@ class Knowledge extends Component {
 
                 right={
                     <React.Fragment>
-                        <Title onClick={() => location.href = `/articles/${first.article_id}`}> 
+                        <Title onClick={() => {
+                            if (!!first.article_id) location.href = `/articles/${first.article_id}`
+                        }}
+                        > 
                             { first.title } 
                         </Title>
                         <ArticleStat>
@@ -210,7 +216,9 @@ class Knowledge extends Component {
                             <IconLabel
                                 icon={ <MoreIcon width={16} height={16} /> }
                                 label='more'
-                                onClick={() => location.href = `/articles/${first.article_id}`}
+                                onClick={() => {
+                                    if (!!first.article_id) location.href = `/articles/${first.article_id}`
+                                }}
                             />
                             </More>
                         </SummaryContent>
@@ -230,7 +238,9 @@ class Knowledge extends Component {
                     summary={article.descript}
                     timeAgo={article.updated_at}
                     numViewed={article.visit}
-                    onClickMore={() => location.href = `/articles/${article.article_id}` }
+                    onClickMore={() => {
+                        if (!!article.article_id) location.href = `/articles/${article.article_id}` 
+                    }}
                 />
             )
         })
