@@ -61,7 +61,7 @@ const SliderContainer = styled.div`
 
 function ArticleSlider ({ width, children, maxSlidesToShow }) {
   const slidesToShow = children.length >= maxSlidesToShow
-    ? MAX_SLIDES_TO_SHOW
+    ? DEFAULT_MAX_SLIDES_TO_SHOW
     : children.length
 
   const settings = {
