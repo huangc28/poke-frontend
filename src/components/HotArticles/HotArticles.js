@@ -58,7 +58,7 @@ const HotArticles = ({ articles, onClickArticle }) => {
                 <Img
                   fallbackImgWidth={600}
                   fallbackImgHeight={420}
-                  src={top.img}
+                  src={top.img || `https://via.placeholder.com/${600}x${420}`}
                   style={{ cursor: 'pointer', width: '600px', height: '420px' }}
                 />
               </LargeIntro>
@@ -78,8 +78,8 @@ const HotArticles = ({ articles, onClickArticle }) => {
                   <Img
                     fallbackImgWidth={300}
                     fallbackImgHeight={200}
-                    src={article.img}
-                    style={{ cursor: 'pointer', width: '600px', height: '420px' }}
+                    src={article.img || `https://via.placeholder.com/${300}x${200}`}
+                    style={{ cursor: 'pointer', width: '300px', height: '200px' }}
                   />
                 </NormalIntro>
               ))

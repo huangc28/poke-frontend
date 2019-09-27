@@ -18,7 +18,7 @@ const Content = styled.div`
 const BottomBanner = styled.div`
   ${size14Mixin}
   position: absolute;
-  width: 100%;
+  width: calc(100% - 10px);
   bottom: 0%;
   right: 0%;
   background-color: ${colors.pickledBluewood};
