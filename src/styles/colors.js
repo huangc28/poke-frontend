@@ -23,4 +23,5 @@ export default {
   softWhite:'#efeff0',
   prussianBlue: '#3c4e6b',
   gainsboro: '#959595',
+  pink: '#ff85b1',
 }
