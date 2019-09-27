@@ -1,1 +1,1 @@
-export const POKE_ENDPOINT = process.env.POKE_ENDPOINT || 'https://api.poke.love' 
+export const POKE_ENDPOINT = 'https://api.poke.love' //process.env.POKE_ENDPOINT || 

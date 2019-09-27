@@ -3,7 +3,7 @@ import queryString from 'querystring';
 import fetch from 'axios'
 
 import config from '@poke/config'
-
+ 
 export const buildApiUrl = (apiPath, queries = {}) => {
   const apiUrl = url.parse(`${config.POKE_ENDPOINT}/${apiPath}`);
 
@@ -26,6 +26,7 @@ export const fetchApi = (path, method = 'GET', { headers = {}, params = {} } = {
 
   return fetch({
     method,
+    mode: 'cors',
     url: apiUrl,
     headers: {
       'Content-Type': 'application/json',
@@ -33,8 +34,8 @@ export const fetchApi = (path, method = 'GET', { headers = {}, params = {} } = {
     },
     ...options,
   })
-    .then(res => res.data)
-    .catch(err => {
-      throw err
-    })
+  .then(res => res.data)
+  .catch(err => {
+    throw err
+  })
 }

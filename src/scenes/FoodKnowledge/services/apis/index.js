@@ -20,4 +20,4 @@ export const fetchDryFoodArticles = ({ limit, offset }) => (
       offset,
     }
   })
-)
+) 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
@@ -30,49 +30,44 @@ const ContactContainer = styled.div`
   ${({ hasReachedTop }) => hasReachedTop ? fixedToTop : ''}
   padding-top: 8.6rem;
   width: 18.125rem;
+  position: relative;
 `
-function offset(el) {
-    let rect = el.getBoundingClientRect()
-    let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop
 
-    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
-}
-
-function ContactLayout ({ children }) {
-  let domRef = React.createRef()
-  const [hasReached, setHasReached] = useState(false)
-
-  useEffect(() => {
-    let sticky = offset(domRef.current).top
-    function handleScrollWindow(offsetTop) {
-      const SCROLL_BOTTOM_OFFSET = 36
-      setHasReached((window.scrollY - SCROLL_BOTTOM_OFFSET) > offsetTop)
+class ContactLayout extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            top: '0px'
+        }
     }
 
-    handleScrollWindow(sticky)
-    window.addEventListener('scroll', handleScrollWindow.bind(null, sticky))
-    return () => {
-      window.removeEventListener('scroll', handleScrollWindow.bind(null, sticky))
+    componentDidMount() {
+        // window.addEventListener('scroll', function(){
+            
+        //     this.setState({
+        //         top: `${top-1130}px`
+        //     })
+        //     document.getElementById('test').
+        // })
     }
-  }, [])
 
-  return (
-    <Section>
-      <div>
-        { children }
-      </div>
+    render() {
+        return (
+            <Section>
+                <div>
+                    {this.props.children}
+                </div>
 
-      <Right>
-        <ContactContainer
-          ref={domRef}
-          hasReachedTop={hasReached}
-        >
-          <ContactColumn />
-        </ContactContainer>
-      </Right>
-    </Section>
-  )
+                <Right>
+                    <ContactContainer>
+                        <ContactColumn 
+
+                        />
+                    </ContactContainer>
+                </Right>
+            </Section>
+        )
+    }
 }
 
 ContactLayout.propTypes = {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import EmailIcon from '@material-ui/icons/Email'
 
@@ -12,6 +12,7 @@ import SearchBar from '@poke/components/SearchBar'
 const Content = styled.div`
   background-color: ${colors.gallery};
   width: 100%;
+  position: absolute;
 `
 
 const SubscribeContent = styled.div`
@@ -46,61 +47,60 @@ const Icons = styled.div`
   }
 `
 
-function ContactColumn() {
-  return (
-    <Content>
-      <TopicLayout
-        topic='訂閱我們'
-      >
-        <SubscribeContent>
-          {/* Icon */}
-          <EmailIcon
-            style={{
-              fontSize: 51,
-            }}
-          />
+class ContactColumn extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            top: '130px'
+        }
+        this.scroll = this.scroll.bind(this)
+    }
 
-          {/* Description */}
-          <p>
-            喜歡我們的文章麻?
-            請輸入信箱訂閱我們
-          </p>
+    componentDidMount() {
+        window.addEventListener('scroll', this.scroll, true);
+    }
+    componentWillUnmount() {
+    
+        window.removeEventListener('scroll', this.scroll)
+    }
 
+    scroll() {
+        let top = Math.min(1900,Math.max(1130, window.scrollY))
+        this.setState({
+            top: `${top-1000}px`
+        })
+    }
 
-        </SubscribeContent>
+    render() {
+        return (
+            <Content style={{ top: this.state.top }} >
+                <TopicLayout topic='訂閱我們' >
+                    <SubscribeContent>
+                        {/* Icon */}
+                        <EmailIcon style={{ fontSize: 51, }} />
+                        {/* Description */}
+                        <p>
+                            喜歡我們的文章麻?
+                            請輸入信箱訂閱我們
+                        </p>
+                    </SubscribeContent>
+                    {/* Email bar */}
+                    <SearchBar disabled placeholder='poke@poke.life' />
+                    {/* Subscribe */}
+                    <ButtonContainer>
+                        <Button text='立即訂閱' size='small' />
+                    </ButtonContainer>
+                </TopicLayout>
 
-        {/* Email bar */}
-        <SearchBar
-          disabled
-          placeholder='poke@poke.life'
-        />
-
-        {/* Subscribe */}
-        <ButtonContainer>
-          <Button
-            text='立即訂閱'
-            size='small'
-          />
-        </ButtonContainer>
-      </TopicLayout>
-
-      <TopicLayout
-        topic='追蹤我們'
-      >
-        <Icons>
-          <Facebook
-            width={55}
-            height={55}
-          />
-
-          <Instagram
-            width={55}
-            height={55}
-          />
-        </Icons>
-      </TopicLayout>
-    </Content>
-  )
+                <TopicLayout topic='追蹤我們' >
+                    <Icons>
+                        <Facebook width={55} height={55} />
+                        <Instagram width={55} height={55} />
+                    </Icons>
+                </TopicLayout>
+            </Content>
+        )
+    }
 }
 
 export default ContactColumn

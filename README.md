@@ -8,7 +8,7 @@ Before doing anything else. Create a `.env` file in the project root directory. 
 PORT=3000
 DEV_SERVER_PORT=3006
 DEBUG=express:application,isomorphic-webpack
-POKE_ENDPOINT=http://api.poke.love
+POKE_ENDPOINT=https://api.poke.love
 
 ```
 

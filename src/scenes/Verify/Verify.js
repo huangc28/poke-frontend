@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import Main from '@poke/layouts/Main'
-
+import HomeSecOne from '../Home/components/HomeSecOne'
+import HomeSecTwo from '../Home/components/HomeSecTwo'
+import HomeSecThree from '../Home/components/HomeSecThree'
+import HomeSecFour from '../Home/components/HomeSecFour'
+import HomeSecFive from '../Home/components/HomeSecFive'
+// import {flash_message} from '@poke/components/Message'
 import $ from 'jquery'
 
 
@@ -21,7 +26,7 @@ class Verify extends Component {
     })
     .done(function(response){
         localStorage.setItem('access_token', access_token)
-        location.href = '/'
+        // flash_message('驗證成功')
     })
     .fail(function(response){
         location.href = '/'
@@ -30,7 +35,13 @@ class Verify extends Component {
 
   render() {
     return (
-    <Main></Main>
+    <Main>
+        <HomeSecOne/>
+        <HomeSecTwo/>
+        <HomeSecThree/>
+        <HomeSecFour/>
+        <HomeSecFive/>
+    </Main>
     )
   }
 }
