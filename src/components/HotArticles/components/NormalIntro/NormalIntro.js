@@ -11,6 +11,8 @@ const Content = styled.div`
   overflow: hidden;
   position: relative;
   cursor: pointer;
+  width: 45%;
+  padding: 10px;
 `
 
 const BottomBanner = styled.div`
