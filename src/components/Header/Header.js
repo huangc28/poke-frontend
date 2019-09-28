@@ -274,29 +274,7 @@ function Header ({ history }) {
           </Navbar>
         </HeadCenter>
         <HeadRight>
-          <LoginContainer>
-            {/* Icon */}
-            {/* @ref how to disable react router link: https://github.com/ReactTraining/react-router/issues/1082 */}
-            {/*
-              <IconContainer>
-                <AccIcon
-                  fontSize='small'
-                />
-              </IconContainer>
-            
-            */}
-            <Link
-            //   to='/login'
-              onClick={evt => {
-                evt.preventDefault()
-                $('#LoginContainer').toggle()
-              }}
-            >
-            Login
-            </Link>
-          </LoginContainer>
-          <LoginForm>
-          </LoginForm>
+          <LoginForm/>
           <SearchBar
             placeholder='SEARCH'
             icon={<Magnifier

@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { Link } from 'react-router-dom'
 import colors from '@poke/styles/colors'
 import $ from 'jquery'
 import { FaSignInAlt, FaGoogle, FaFacebookF } from 'react-icons/fa'
 import { flash_message } from '../../../Message/Message';
+import Img from '@poke/components/Img'
 
 const LoginFormContainer = styled.div`
   @media all and (max-width: 576px), all and (max-height: 576px) {
@@ -81,6 +83,18 @@ const Input = styled.input`
     outline: 0px;
   }
 `
+
+const LoginContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 0.75rem;
+
+  & > a {
+    text-decoration: none;
+    color: ${colors.gray};
+  }
+`
+
 function toggleForms(id){
   $('#LoginContainer form').each(function(i,e){
       if (e.id == id) e.style.display = 'block'
@@ -96,6 +110,10 @@ class LoginForm extends React.Component{
         super(props)
         this.state = {
             login: typeof window != 'undefined' && localStorage.getItem('access_token'),
+            way: typeof window != 'undefined' && localStorage.getItem('login_way'),
+            user: {
+                name: typeof window != 'undefined' && localStorage.getItem('user_name')
+            },
         }
 
         this.logIn = this.logIn.bind(this)
@@ -104,26 +122,39 @@ class LoginForm extends React.Component{
         this.verifyMail = this.verifyMail.bind(this)
         this.findPassword = this.findPassword.bind(this)
         this.findAcct = this.findAcct.bind(this)
+        this.getUser = this.getUser.bind(this)
     }
 
-    logIn() {
+    logIn({way, acct, password}) {
         event.preventDefault()
-        let acct = $('#logIn').find('input[name=acct]').val()
-        let password = $('#logIn').find('input[name=password]').val()
         
         $.ajax({
           url: 'https://api.poke.love/user/login',
           method: 'post',
           data: { acct, password },
           success: function(data){
-            this.setState({login: true})
+            this.setState({
+                login: true,
+                user: data.user,
+                way,
+            })
             localStorage.setItem('access_token', data.access_token)
+            localStorage.setItem('login_way', way)
+            localStorage.setItem('user_name', data.user.name)
             flash_message('登入成功', true)
           }.bind(this),
           error: function(data){
-            this.setState({login: false})
+            this.setState({
+                login: false,
+                user: {}
+            })
             localStorage.removeItem('access_token')
+            localStorage.removeItem('login_way')
+            localStorage.removeItem('user_name')
             flash_message(`登入失敗 ${data.msg}`, false)
+          }.bind(this),
+          complete: function(){
+            // console.log(this.state)
           }.bind(this)
         })
     }
@@ -137,13 +168,24 @@ class LoginForm extends React.Component{
             method: 'post',
             headers: { Authorization },
             success: function(data){
-                this.setState({login: false})
+                this.setState({
+                    login: false,
+                    user: {}
+                })
                 localStorage.removeItem('access_token')
+                localStorage.removeItem('login_way')
+                localStorage.removeItem('user_name')
                 flash_message(`成功登出`, true)
             }.bind(this),
             error: function(data){
-                this.setState({login: false})
-                flash_message(`登出失敗, ${data.msg}`, false)
+                this.setState({
+                    login: false,
+                    user: {}
+                })
+                localStorage.removeItem('access_token')
+                localStorage.removeItem('login_way')
+                localStorage.removeItem('user_name')
+                flash_message(`登出成功`, true)
             }.bind(this)
         })
     }
@@ -218,9 +260,38 @@ class LoginForm extends React.Component{
         })
     }
 
+    getUser(){
+        if (this.state.way == 'google') {
+            return {
+                name: this.state.google_name,
+            }
+        }
+        else if (this.state.way == 'facebook') {
+            return {
+                name: this.state.facebook_name
+            }
+        }
+        else {
+            return {
+                name: this.state.user.name
+            }
+        }
+    }
+
     render () {
         if (this.state.login) {
+            let user = this.getUser()
+
             return (
+                <LoginContainer>
+                <Link
+                onClick={evt => {
+                    evt.preventDefault()
+                    $('#LoginContainer').toggle()
+                  }}
+                >
+                { user.name }
+                </Link>
                 <LoginFormContainer id="LoginContainer"
                 onClick={function(event){ if (event.target.id=='LoginContainer') $('#LoginContainer').toggle() }}
                 >
@@ -231,10 +302,20 @@ class LoginForm extends React.Component{
                     <Button style={{ textAlign: 'center' }} onClick={ this.logOut }>登出</Button>
                   </Forms>
                 </LoginFormContainer>
+                </LoginContainer>
             )
         }
         else {
             return (
+                <LoginContainer>
+                <Link
+                onClick={evt => {
+                    evt.preventDefault()
+                    $('#LoginContainer').toggle()
+                  }}
+                >
+                Login
+                </Link>
                 <LoginFormContainer id="LoginContainer" 
                 onClick={function(event){ if (event.target.id=='LoginContainer') $('#LoginContainer').toggle() }}
                 >
@@ -248,7 +329,12 @@ class LoginForm extends React.Component{
                       <Line border={true}><Input name="acct" placeholder="輸入帳號"/></Line>
                       <Line border={true}><Input name="password" type="password" placeholder="輸入密碼"/></Line>
                       <Button>
-                        <Input type="submit" value="登入" onClick={ this.logIn } style={{ cursor: 'pointer' }}/>
+                        <Input type="submit" value="登入" onClick={ evt => this.logIn({
+                            way:'poke',
+                            acct: $('#logIn input[name=acct]').val(),
+                            password: $('#logIn input[name=password]').val(),
+                            }) 
+                            } style={{ cursor: 'pointer' }}/>
                       </Button>
                     </form>
                     <form id="signUp" style={{ display: 'none' }}>
@@ -298,6 +384,7 @@ class LoginForm extends React.Component{
                     <Button style={{ textAlign: 'center' }} onClick={evt => toggleForms('verifyMail')}>重發認證信</Button>
                   </Forms>
                 </LoginFormContainer>
+            </LoginContainer>
             )
         }
     }
