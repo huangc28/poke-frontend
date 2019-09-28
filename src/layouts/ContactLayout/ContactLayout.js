@@ -33,42 +33,22 @@ const ContactContainer = styled.div`
   position: relative;
 `
 
-class ContactLayout extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            top: '0px'
-        }
-    }
+const ContactLayout = () => {
+    return (
+        <Section>
+            <div>
+                {this.props.children}
+            </div>
 
-    componentDidMount() {
-        // window.addEventListener('scroll', function(){
-            
-        //     this.setState({
-        //         top: `${top-1130}px`
-        //     })
-        //     document.getElementById('test').
-        // })
-    }
-
-    render() {
-        return (
-            <Section>
-                <div>
-                    {this.props.children}
-                </div>
-
-                <Right>
-                    <ContactContainer>
-                        <ContactColumn 
-
-                        />
-                    </ContactContainer>
-                </Right>
-            </Section>
-        )
-    }
+            <Right>
+                <ContactContainer>
+                    <ContactColumn min={this.props.min} />
+                </ContactContainer>
+            </Right>
+        </Section>
+    )
 }
+
 
 ContactLayout.propTypes = {
   children: PropTypes.node,

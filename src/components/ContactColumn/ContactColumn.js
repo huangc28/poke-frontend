@@ -51,13 +51,21 @@ class ContactColumn extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            top: '130px'
+            top: 130,
+            default: 130,
+            min: typeof props.min !== 'undefined' ? props.min : 1130,
+            max: typeof window !== 'undefined' ? document.body.scrollHeight - window.screen.height : 0,
         }
         this.scroll = this.scroll.bind(this)
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.scroll, true);
+        setInterval(function(){
+            this.setState({
+                max: typeof window !== 'undefined' ? document.body.scrollHeight - window.screen.height : 0,
+            })
+        }.bind(this), 1000)
     }
     componentWillUnmount() {
     
@@ -65,9 +73,10 @@ class ContactColumn extends Component {
     }
 
     scroll() {
-        let top = Math.min(1900,Math.max(1130, window.scrollY))
+        let top = Math.min(this.state.max ,Math.max(this.state.min, window.scrollY))
+
         this.setState({
-            top: `${top-1000}px`
+            top: top - this.state.min + this.state.default
         })
     }
 
