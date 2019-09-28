@@ -275,7 +275,7 @@ function HomeSecFour ({ history, articles }) {
                   onClick={() => history.push(`/articles/${article.article_id}`)}
                 >
                   <Img
-                    src={article.img}
+                    src={article.img || `https://via.placeholder.com/${181}x${123}`}
                     fallbackImgWidth={181}
                     fallbackImgHeight={123}
                     width={181}
