@@ -98,9 +98,6 @@ const More = styled.div`
   margin: 2.25rem 0 0 0;
 `
 
-const PrevArrow = styled.div`
-  
-`
 
 class Knowledge extends Component {
     constructor(props) {
@@ -113,12 +110,6 @@ class Knowledge extends Component {
         this.ajaxArticle = this.ajaxArticle.bind(this)
         this.countTotalPages = this.countTotalPages.bind(this)
     }
-
-    // componentDidMount() {
-        // this.ajaxArticle(
-        //     (this.state.page - 1) * this.state.PER_PAGE
-        // )
-    // }
 
     countTotalPages (perPage, totalCount) {
         const residual = totalCount % perPage
@@ -138,7 +129,7 @@ class Knowledge extends Component {
             limit: this.state.PER_PAGE,
             offset,
         }
-        let apiUrl = buildApiUrl('articles', params)
+        let apiUrl = buildApiUrl('articles/', params)
         
         $.ajax({
             url: apiUrl,

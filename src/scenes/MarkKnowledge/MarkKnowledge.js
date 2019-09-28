@@ -98,9 +98,6 @@ const More = styled.div`
   margin: 2.25rem 0 0 0;
 `
 
-const PrevArrow = styled.div`
-  
-`
 
 class MarkKnowledge extends Component {
     constructor(props) {
@@ -132,7 +129,7 @@ class MarkKnowledge extends Component {
             limit: this.state.PER_PAGE,
             offset,
         }
-        let apiUrl = buildApiUrl('articles', params)
+        let apiUrl = buildApiUrl('articles/', params)
         
         $.ajax({
             url: apiUrl,
