@@ -1,0 +1,6 @@
+{
+  "name": "FindPassword",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./FindPassword.js"
+}

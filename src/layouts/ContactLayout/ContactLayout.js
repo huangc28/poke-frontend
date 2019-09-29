@@ -29,26 +29,28 @@ const fixedToTop = css`
 const ContactContainer = styled.div`
   ${({ hasReachedTop }) => hasReachedTop ? fixedToTop : ''}
   padding-top: 8.6rem;
-  width: 18.125rem;
+  width: 100%;
   position: relative;
 `
 
-const ContactLayout = () => {
-    return (
-        <Section>
-            <div>
-                {this.props.children}
-            </div>
+class ContactLayout extends Component {
 
-            <Right>
-                <ContactContainer>
-                    <ContactColumn min={this.props.min} />
-                </ContactContainer>
-            </Right>
-        </Section>
-    )
+    render() {
+        return (
+            <Section>
+                <div>
+                    {this.props.children}
+                </div>
+
+                <Right>
+                    <ContactContainer>
+                        <ContactColumn min={this.props.min} />
+                    </ContactContainer>
+                </Right>
+            </Section>
+        )
+    }
 }
-
 
 ContactLayout.propTypes = {
   children: PropTypes.node,

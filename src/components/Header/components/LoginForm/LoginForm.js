@@ -102,9 +102,6 @@ function toggleForms(id){
   })
 }
 
-
-
-// const LoginForm = () => 
 class LoginForm extends React.Component{
     constructor(props){
         super(props)
@@ -116,6 +113,7 @@ class LoginForm extends React.Component{
             },
         }
 
+        this.logStateHandler = this.logStateHandler.bind(this)
         this.logIn = this.logIn.bind(this)
         this.logOut = this.logOut.bind(this)
         this.signUp = this.signUp.bind(this)
@@ -123,6 +121,42 @@ class LoginForm extends React.Component{
         this.findPassword = this.findPassword.bind(this)
         this.findAcct = this.findAcct.bind(this)
         this.getUser = this.getUser.bind(this)
+    }
+
+    componentDidMount() {
+        // 透過原生addEventListener讓其他物件也可以發送更新畫面的事件
+        if (typeof window !== 'undefined') {
+            document.addEventListener('logState', this.logStateHandler)
+        }
+    }
+
+    // localStorage的賦值, 並發送logState事件以更新畫面
+    emitSetLogState({ ...items }) {
+        Object.entries(items).map(
+            ([key, value]) => { localStorage.setItem(key, value) }
+        )
+        
+        event = new Event('logState');
+        document.dispatchEvent(event)
+    }
+    // localStorage的刪除, 並發送logState事件以更新畫面
+    emitRemoveLogState(list) {
+        list.forEach(function(key){
+            localStorage.removeItem(key)
+        })
+
+        event = new Event('logState');
+        document.dispatchEvent(event)
+    }
+    // 更新state, 同時會自動更新畫面
+    logStateHandler(event) {
+        this.setState({
+            login: typeof window != 'undefined' && localStorage.getItem('access_token'),
+            way: typeof window != 'undefined' && localStorage.getItem('login_way'),
+            user: {
+                name: typeof window != 'undefined' && localStorage.getItem('user_name')
+            },
+        })
     }
 
     logIn({way, acct, password}) {
@@ -133,24 +167,19 @@ class LoginForm extends React.Component{
           method: 'post',
           data: { acct, password },
           success: function(data){
-            this.setState({
-                login: true,
-                user: data.user,
-                way,
+            this.emitSetLogState({
+                access_token: data.access_token,
+                login_way: way,
+                user_name: data.user.name
             })
-            localStorage.setItem('access_token', data.access_token)
-            localStorage.setItem('login_way', way)
-            localStorage.setItem('user_name', data.user.name)
             flash_message('登入成功', true)
           }.bind(this),
           error: function(data){
-            this.setState({
-                login: false,
-                user: {}
-            })
-            localStorage.removeItem('access_token')
-            localStorage.removeItem('login_way')
-            localStorage.removeItem('user_name')
+            this.emitRemoveLogState([
+                'access_token',
+                'login_way',
+                'user_name'
+            ])
             flash_message(`登入失敗 ${data.msg}`, false)
           }.bind(this),
           complete: function(){
@@ -168,23 +197,19 @@ class LoginForm extends React.Component{
             method: 'post',
             headers: { Authorization },
             success: function(data){
-                this.setState({
-                    login: false,
-                    user: {}
-                })
-                localStorage.removeItem('access_token')
-                localStorage.removeItem('login_way')
-                localStorage.removeItem('user_name')
+                this.emitRemoveLogState([
+                    'access_token',
+                    'login_way',
+                    'user_name'
+                ])
                 flash_message(`成功登出`, true)
             }.bind(this),
             error: function(data){
-                this.setState({
-                    login: false,
-                    user: {}
-                })
-                localStorage.removeItem('access_token')
-                localStorage.removeItem('login_way')
-                localStorage.removeItem('user_name')
+                this.emitRemoveLogState([
+                    'access_token',
+                    'login_way',
+                    'user_name'
+                ])
                 flash_message(`登出成功`, true)
             }.bind(this)
         })
@@ -278,6 +303,15 @@ class LoginForm extends React.Component{
         }
     }
 
+    enterKeyPress(event, func) {
+        if ( (event.keyCode ? event.keyCode : event.which) == 13) {
+            event.preventDefault()
+            if (!!func) {
+                func()
+            }
+        }
+    }
+
     render () {
         if (this.state.login) {
             let user = this.getUser()
@@ -308,11 +342,10 @@ class LoginForm extends React.Component{
         else {
             return (
                 <LoginContainer>
-                <Link
-                onClick={evt => {
-                    evt.preventDefault()
-                    $('#LoginContainer').toggle()
-                  }}
+                <Link onClick={evt => {
+                          evt.preventDefault()
+                          $('#LoginContainer').toggle()
+                      }}
                 >
                 Login
                 </Link>
@@ -326,17 +359,20 @@ class LoginForm extends React.Component{
                       <Button><FaFacebookF></FaFacebookF><span>|</span><span>使用facebook登入</span></Button>
                       
                       <Line>使用POKE帳號密碼登入</Line>
-                      <Line border={true}><Input name="acct" placeholder="輸入帳號"/></Line>
-                      <Line border={true}><Input name="password" type="password" placeholder="輸入密碼"/></Line>
+                      <Line border={true}><Input name="acct" placeholder="輸入帳號" onKeyPress={evt => this.enterKeyPress(evt, false)}/></Line>
+                      <Line border={true}><Input name="password" type="password" placeholder="輸入密碼" onKeyPress={evt => this.enterKeyPress(evt, 
+                            function() { $('#logIn div[name=submit]').click() }
+                            )}/></Line>
                       <Button>
-                        <Input type="submit" value="登入" onClick={ evt => this.logIn({
+                        <div name="submit" onClick={ evt => this.logIn({
                             way:'poke',
                             acct: $('#logIn input[name=acct]').val(),
                             password: $('#logIn input[name=password]').val(),
                             }) 
-                            } style={{ cursor: 'pointer' }}/>
+                            } style={{ cursor: 'pointer', textAlign: 'center' }}>登入</div>
                       </Button>
                     </form>
+                    
                     <form id="signUp" style={{ display: 'none' }}>
                       <Line>快速註冊</Line>
                       <Line>註冊即同意<a>使用者條款</a>及<a>隱私權政策</a></Line>
@@ -352,30 +388,42 @@ class LoginForm extends React.Component{
                             }}>或者</span>
                           <hr/>
                       </div>
-                      <Line border={true}><Input name="acct" placeholder="帳號"/></Line>
-                      <Line border={true}><Input name="email" type="email" placeholder="信箱"/></Line>
-                      <Line border={true}><Input name="password" type="password" placeholder="密碼"/></Line>
-                      <Line border={true}><Input name="password2" type="password" placeholder="再次確認密碼"/></Line>
-                      <Button><Input type="submit" value="登入" onClick={ this.signUp }/></Button>
+                      <Line border={true}><Input name="acct" placeholder="帳號" onKeyPress={evt => this.enterKeyPress(evt, false)}/></Line>
+                      <Line border={true}><Input name="email" type="email" placeholder="信箱" onKeyPress={evt => this.enterKeyPress(evt, false)}/></Line>
+                      <Line border={true}><Input name="password" type="password" placeholder="密碼" onKeyPress={evt => this.enterKeyPress(evt, false)}/></Line>
+                      <Line border={true}><Input name="password2" type="password" placeholder="再次確認密碼" onKeyPress={evt => this.enterKeyPress(evt, 
+                            function() { $('#signUp div[name=submit]').click() }
+                            )}/></Line>
+                      <Button><div name="submit" onClick={ this.signUp } style={{cursor: 'pointer', textAlign: 'center'}}>快速註冊</div></Button>
                     </form>
+                    
                     <form id="findPassword" style={{ display: 'none' }}>
                       <Line>找回密碼</Line>
                       <Line>請輸入當時註冊之帳號</Line>
-                      <Line border={true}><Input name="acct" placeholder="輸入帳號"/></Line>
-                      <Button><Input type="submit" value="確定送出" onClick={ this.findPassword }/></Button>
+                      <Line border={true}><Input name="acct" placeholder="輸入帳號" onKeyPress={evt => this.enterKeyPress(evt, 
+                        function() { $('#findPassword div[name=submit]').click() }
+                        )}/></Line>
+                      <Button><div name="submit" onClick={ this.findPassword } style={{ cursor: 'pointer', textAlign: "center" }}>確定送出</div></Button>
                     </form>
+
                     <form id="findAcct" style={{ display: 'none' }}>
                       <Line>找回帳號</Line>
                       <Line>請輸入當時註冊之信箱</Line>
-                      <Line border={true}><Input name="email" placeholder="輸入信箱"/></Line>
-                      <Button><Input type="submit" value="確定送出" onClick={ this.findAcct }/></Button>
+                      <Line border={true}><Input name="email" placeholder="輸入信箱" onKeyPress={evt => this.enterKeyPress(evt, 
+                        function() { $('#findAcct div[name=submit]').click() }
+                        )}/></Line>
+                      <Button><div name="submit" onClick={ this.findAcct } style={{ cursor: 'pointer', textAlign: "center" }}>確定送出</div></Button>
                     </form>
+
                     <form id="verifyMail" style={{ display: 'none' }}>
                       <Line>重發認證信</Line>
                       <Line>請輸入當初註冊之信箱</Line>
-                      <Line border={true}><Input name="email" type="email" placeholder="輸入信箱"/></Line>
-                      <Button><Input type="submit" value="送出" onClick={ this.verifyMail } style={{ cursor: 'pointer' }}/></Button>
+                      <Line border={true}><Input name="email" type="email" placeholder="輸入信箱" onKeyPress={evt => this.enterKeyPress(evt, 
+                        function() { $('#verifyMail div[name=submit]').click() }
+                        )}/></Line>
+                      <Button><div name="submit" onClick={ this.verifyMail } style={{ cursor: 'pointer', textAlign: "center" }}>送出</div></Button>
                     </form>
+
                     <hr style={{ margin: '15px' }}/>
                     <Button style={{ textAlign: 'center' }} onClick={evt => toggleForms('logIn')}>快速登入</Button>
                     <Button style={{ textAlign: 'center' }} onClick={evt => toggleForms('signUp')}>快速註冊</Button>

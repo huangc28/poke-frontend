@@ -129,7 +129,7 @@ class MarkKnowledge extends Component {
             limit: this.state.PER_PAGE,
             offset,
         }
-        let apiUrl = buildApiUrl('articles/', params)
+        let apiUrl = buildApiUrl('articles', params)
         
         $.ajax({
             url: apiUrl,

@@ -7,6 +7,7 @@ import FoodKnowledge from './scenes/FoodKnowledge'
 import SingleArticle from './scenes/SingleArticle'
 import About from './scenes/About'
 import Verify from './scenes/Verify'
+import FindAcct from './scenes/Verify'
 
 const routes = [
   {
@@ -46,7 +47,12 @@ const routes = [
         path: '/verify',
         exect: true,
         component: Verify,
-      }
+      },
+      {
+        path: '/find-acct',
+        exect: true,
+        component: FindAcct,
+      },
     ],
   }
 ]

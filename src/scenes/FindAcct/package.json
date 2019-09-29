@@ -1,0 +1,6 @@
+{
+  "name": "FindAcct",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./FindAcct.js"
+}
