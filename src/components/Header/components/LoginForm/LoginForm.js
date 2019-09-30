@@ -126,7 +126,14 @@ class LoginForm extends React.Component{
     componentDidMount() {
         // 透過原生addEventListener讓其他物件也可以發送更新畫面的事件
         if (typeof window !== 'undefined') {
+            // 註冊監聽事件
             document.addEventListener('logState', this.logStateHandler)
+
+            // 每小時更新 access_token
+            this.refreshToken()
+            setInterval(function(){
+                this.refreshToken()
+            }.bind(this), 18000) 
         }
     }
 
@@ -148,6 +155,7 @@ class LoginForm extends React.Component{
         event = new Event('logState');
         document.dispatchEvent(event)
     }
+
     // 更新state, 同時會自動更新畫面
     logStateHandler(event) {
         this.setState({
@@ -157,6 +165,31 @@ class LoginForm extends React.Component{
                 name: typeof window != 'undefined' && localStorage.getItem('user_name')
             },
         })
+    }
+
+    refreshToken() {
+        if (!!localStorage.getItem('refresh_token')) {
+            $.ajax({
+                url: 'https://api.poke.love/user/refresh',
+                method: 'get',
+                headers: {
+                    Authorization: localStorage.getItem('refresh_token')
+                },
+                success: function(data){
+                    this.emitSetLogState({
+                        access_token: data.access_token,
+                    })
+                }.bind(this),
+                error: function(){
+                    this.emitRemoveLogState([
+                        access_token,
+                        refresh_token,
+                        user_name,
+                        way,
+                    ])
+                }.bind(this)
+            })
+        }
     }
 
     logIn({way, acct, password}) {
@@ -169,6 +202,7 @@ class LoginForm extends React.Component{
           success: function(data){
             this.emitSetLogState({
                 access_token: data.access_token,
+                refresh_token: data.refresh_token,
                 login_way: way,
                 user_name: data.user.name
             })
@@ -332,7 +366,11 @@ class LoginForm extends React.Component{
                   <Forms>
                     <Line></Line>
                     <Button style={{ textAlign: 'center' }}>我的最愛</Button>
-                    <Button style={{ textAlign: 'center' }}>資料變更</Button>
+                    <Button 
+                      style={{ textAlign: 'center' }}
+                      onClick={evt=>{location.href = 'user'}}
+                    >
+                    資料變更</Button>
                     <Button style={{ textAlign: 'center' }} onClick={ this.logOut }>登出</Button>
                   </Forms>
                 </LoginFormContainer>
