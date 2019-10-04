@@ -471,7 +471,7 @@ export class InfoContainer extends Component {
             <Container>
                 <UpContainer>
                     <UserInfo>
-                        <img src={this.img} style={{width: 190, height: 190, borderRadius: 9999, backgroundColor: 'gray'}}/>
+                        <img src={this.state.user.img} style={{width: 190, height: 190, borderRadius: 9999, backgroundColor: 'gray'}}/>
                         { userButton }
                         {/* <DarkRedButton style={{width: 120}}>建立個人資料</DarkRedButton> */}
                     </UserInfo>

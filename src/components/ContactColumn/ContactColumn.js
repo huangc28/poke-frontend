@@ -53,36 +53,30 @@ class ContactColumn extends Component {
         this.state = {
             top: 130,
             default: 130,
-            min: typeof props.min !== 'undefined' ? props.min : 1130,
-            max: typeof window !== 'undefined' ? document.body.scrollHeight - window.screen.height : 0,
         }
         this.scroll = this.scroll.bind(this)
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.scroll, true);
-        setInterval(function(){
-            this.setState({
-                max: typeof window !== 'undefined' ? document.body.scrollHeight - window.screen.height : 0,
-            })
-        }.bind(this), 1000)
     }
     componentWillUnmount() {
-    
         window.removeEventListener('scroll', this.scroll)
     }
 
     scroll() {
-        let top = Math.min(this.state.max ,Math.max(this.state.min, window.scrollY))
-
+        let target = document.getElementById('floatingContain')
+        let max = target.parentNode.clientHeight - target.clientHeight
+        let min = target.parentNode.offsetTop
+        
         this.setState({
-            top: top - this.state.min + this.state.default
+            top: Math.max(this.state.default, Math.min(max, window.scrollY - min + this.state.default))
         })
     }
 
     render() {
         return (
-            <Content style={{ top: this.state.top }} >
+            <Content id="floatingContain" style={{ top: this.state.top }} >
                 <TopicLayout topic='訂閱我們' >
                     <SubscribeContent>
                         {/* Icon */}
