@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import $ from 'jquery'
+import $, {jQuery} from 'jquery'
 
 import Main from '../../layouts/Main/Main'
 import Img from '@poke/components/Img'

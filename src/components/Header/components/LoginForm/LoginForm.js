@@ -6,8 +6,9 @@ import { Link } from 'react-router-dom'
 import colors from '@poke/styles/colors'
 import $ from 'jquery'
 import { FaSignInAlt, FaGoogle, FaFacebookF } from 'react-icons/fa'
-import { flash_message } from '../../../Message/Message';
+import { flash_message } from '@poke/components/Message';
 import Img from '@poke/components/Img'
+import { buildApiUrl } from '@poke/services/apis/util'
 
 const LoginFormContainer = styled.div`
   @media all and (max-width: 576px), all and (max-height: 576px) {
@@ -169,8 +170,10 @@ class LoginForm extends React.Component{
 
     refreshToken() {
         if (!!localStorage.getItem('refresh_token')) {
+            let apiUrl = buildApiUrl('user/refresh', {})
+
             $.ajax({
-                url: 'https://api.poke.love/user/refresh',
+                url: apiUrl,
                 method: 'get',
                 headers: {
                     Authorization: localStorage.getItem('refresh_token')
@@ -182,10 +185,10 @@ class LoginForm extends React.Component{
                 }.bind(this),
                 error: function(){
                     this.emitRemoveLogState([
-                        access_token,
-                        refresh_token,
-                        user_name,
-                        way,
+                        'access_token',
+                        'refresh_token',
+                        'user_name',
+                        'way',
                     ])
                 }.bind(this)
             })
@@ -194,9 +197,10 @@ class LoginForm extends React.Component{
 
     logIn({way, acct, password}) {
         event.preventDefault()
+        let apiUrl = buildApiUrl('user/login', {})
         
         $.ajax({
-          url: 'https://api.poke.love/user/login',
+          url: apiUrl,
           method: 'post',
           data: { acct, password },
           success: function(data){
@@ -206,7 +210,7 @@ class LoginForm extends React.Component{
                 login_way: way,
                 user_name: data.user.name
             })
-            flash_message('登入成功', true)
+            flash_message('登入成功', '#LoginContainer')
           }.bind(this),
           error: function(data){
             this.emitRemoveLogState([
@@ -224,19 +228,21 @@ class LoginForm extends React.Component{
 
     logOut(event){
         event.preventDefault()
+        let apiUrl = buildApiUrl('user/logout', {})
         let Authorization = localStorage.getItem('access_token')
         
         $.ajax({
-            url: 'https://api.poke.love/user/logout',
+            url: apiUrl,
             method: 'post',
             headers: { Authorization },
             success: function(data){
                 this.emitRemoveLogState([
                     'access_token',
+                    'refresh_token',
                     'login_way',
                     'user_name'
                 ])
-                flash_message(`成功登出`, true)
+                flash_message(`成功登出`, '#LoginContainer')
             }.bind(this),
             error: function(data){
                 this.emitRemoveLogState([
@@ -244,23 +250,24 @@ class LoginForm extends React.Component{
                     'login_way',
                     'user_name'
                 ])
-                flash_message(`登出成功`, true)
+                flash_message(`登出成功`, '#LoginContainer')
             }.bind(this)
         })
     }
     
     signUp(event){
         event.preventDefault()
+        let apiUrl = buildApiUrl('user', {})
         let acct = $('#signUp').find('input[name=acct]').val()
         let password = $('#signUp').find('input[name=password]').val()
         let email = $('#signUp').find('input[name=email]').val()
     
         $.ajax({
-            url: 'https://api.poke.love/user',
+            url: apiUrl,
             method: 'post',
             data: {acct, password, email},
             success: function(data){
-                flash_message(`註冊成功, 請查收驗證信`, true)
+                flash_message(`註冊成功, 請查收驗證信`, '#LoginContainer')
             }.bind(this),
             error: function(data){
                 flash_message(`註冊失敗, ${data.msg}`, false)
@@ -270,14 +277,15 @@ class LoginForm extends React.Component{
     
     verifyMail(event) {
         event.preventDefault()
+        let apiUrl = buildApiUrl('user/mail/verify', {})
         let email = $('#verifyMail').find('input[name=email]').val()
       
         $.ajax({
-          url: 'https://api.poke.love/user/mail/verify',
+          url: apiUrl,
           method: 'post',
           data: { email },
           success: function(data){
-            flash_message(`驗證信已發送至[${email}]`, true)
+            flash_message(`驗證信已發送至[${email}]`, '#LoginContainer')
           }.bind(this),
           error: function(data){
             flash_message(`驗證信發送失敗, ${data.msg}`, false)
@@ -287,14 +295,15 @@ class LoginForm extends React.Component{
     
     findPassword(event){
         event.preventDefault()
+        let apiUrl = buildApiUrl('user/mail/password', {})
         let acct = $('#findPassword').find('input[name=acct]').val()
     
         $.ajax({
-            url: 'https://api.poke.love/mail/password',
+            url: apiUrl,
             method: 'post', 
             data: { acct },
             success: function(data){
-                flash_message(`重設密碼信件已送至註冊信箱, 請查收`, true)
+                flash_message(`重設密碼信件已送至註冊信箱, 請查收`, '#LoginContainer')
             }.bind(this),
             error: function(data){
                 flash_message(`失敗, ${data.msg}`, false)
@@ -304,14 +313,15 @@ class LoginForm extends React.Component{
     
     findAcct(event){
         event.preventDefault()
+        let apiUrl = buildApiUrl('user/mail/acct', {})
         let email = $('#findAcct').find('input[name=email]').val()
     
         $.ajax({
-            url: 'https://api.poke.love/mail/acct',
+            url: apiUrl,
             method: 'post',
             data: { email },
             success: function(data){
-                flash_message(`登入帳號已發送至註冊信箱, 請查收`, true)
+                flash_message(`登入帳號已發送至註冊信箱, 請查收`, '#LoginContainer')
             }.bind(this),
             error: function(data){
                 flash_message(`失敗, ${data.msg}`, false)

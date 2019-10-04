@@ -6,6 +6,7 @@ import MarkKnowledge from './scenes/MarkKnowledge'
 import FoodKnowledge from './scenes/FoodKnowledge'
 import SingleArticle from './scenes/SingleArticle'
 import About from './scenes/About'
+import User from './scenes/User'
 import Verify from './scenes/Verify'
 import FindAcct from './scenes/Verify'
 
@@ -42,6 +43,11 @@ const routes = [
         path: '/about',
         exact: true,
         component: About,
+      },
+      {
+        path: '/user',
+        exact: true,
+        component: User,
       },
       {
         path: '/verify',

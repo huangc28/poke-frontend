@@ -13,7 +13,7 @@ export default bundleInfo => {
       console.log(err)
     }
 
-    console.log(`server now hosted on port ${PORT}`)
+    console.log(`POKE server now hosted on port ${PORT}`)
   })
 }
 

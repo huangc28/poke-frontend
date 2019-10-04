@@ -1,5 +1,5 @@
 dispatch:
-  # Send all api.poke.love traffic to backend
+  # Send all poke.love.api traffic to backend
   - url: "api.poke.love/*"
     service: api
 

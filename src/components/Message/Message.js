@@ -26,8 +26,8 @@ const Close = styled.span`
   float: right;
 `
 
-export function flash_message(msg, loginForm) {
-    if (!!loginForm) $('#LoginContainer').toggle()
+export function flash_message(msg, toggleForm) {
+    if (!!toggleForm) $(toggleForm).toggle()
     $('#flash_message > div').text(msg)
     $('#flash_message').toggle()
     setTimeout(function(){

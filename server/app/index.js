@@ -1,6 +1,7 @@
 import path from 'path'
 import React from 'react'
 import express from 'express'
+import proxy from 'express-http-proxy'
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
@@ -11,6 +12,7 @@ import ProviderWithRouter from '../../src/ProviderWithRouter'
 import configureStore from '../../src/store/configureStore'
 import rootReducer from '../../src/services/redux'
 import renderFullPage from '../util/render'
+import config from '@poke/config'
 
 const app = express()
 const sheet = new ServerStyleSheet()
@@ -59,6 +61,7 @@ const getApp = bundleInfo => {
   app
     .use('/', express.static(path.resolve(__dirname, '../../dist')))
     .use('/static', express.static(path.resolve(__dirname, '../../static')))
+    .use('/api/v1', proxy(config.POKE_ENDPOINT))
   
   app.get(/^((?!\.svg|\.png|\.jpe?g|\.json|\.ico).)*$/, handleRender);
 

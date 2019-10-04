@@ -21,11 +21,17 @@ app.use(webpackDevMiddleware(compiler, {
     // https://github.com/webpack/webpack-dev-middleware/releases
     'Access-Control-Allow-Origin': '*',
   },
+  proxy: {
+      '/api': 'https://api.poke.love'
+  }
 }))
 
 app.use(webpackHotMiddleware(compiler, { // eslint-disable-line global-require
   log: console.log, // eslint-disable-line no-console
   heartbeat: 10 * 1000,
+  proxy: {
+    '/api': 'https://api.poke.love'
+  }
 }))
 
 app.listen(DEV_SERVER_PORT, err => {

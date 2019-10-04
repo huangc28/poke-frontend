@@ -5,9 +5,9 @@ import HomeSecTwo from '../Home/components/HomeSecTwo'
 import HomeSecThree from '../Home/components/HomeSecThree'
 import HomeSecFour from '../Home/components/HomeSecFour'
 import HomeSecFive from '../Home/components/HomeSecFive'
+import { buildApiUrl } from '@poke/services/apis/util'
 // import {flash_message} from '@poke/components/Message'
 import $ from 'jquery'
-
 
 class Verify extends Component {
   componentDidMount() {
@@ -16,9 +16,10 @@ class Verify extends Component {
         const access_token = urlParams.get('token');
         const user_name = urlParams.get('user_name');
         const way = urlParams.get('way');
+        let apiUrl = buildApiUrl('user', {})
         
         $.ajax({
-            url: 'https://api.poke.love/user/',
+            url: apiUrl,
             method: 'patch',
             headers: {
                 Authorization: access_token,

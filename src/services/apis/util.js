@@ -2,11 +2,12 @@ import url from 'url'
 import queryString from 'querystring';
 import fetch from 'axios'
 
-import config from '@poke/config'
+
 import jQuery from 'jquery'
 
 export const buildApiUrl = (apiPath, queries = {}) => {
-    const apiUrl = `${config.POKE_ENDPOINT}/${apiPath}?${jQuery.param(queries)}`
+    const apiUrl = `/api/v1/${apiPath}?${jQuery.param(queries)}`
+    // console.log(apiUrl)
     return apiUrl
 }
 
