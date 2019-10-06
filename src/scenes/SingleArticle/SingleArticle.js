@@ -60,7 +60,7 @@ function SingleArticle ({ match, fetchArticle, article }) {
 
   return (
     <Main>
-      <ContactLayout min={0}>
+      <ContactLayout>
         <TopBanner img={article.img || defaultBanner} />
 
         <Content>
