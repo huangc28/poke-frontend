@@ -58,20 +58,22 @@ class ContactColumn extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.scroll, true);
+        window.addEventListener('scroll', this.scroll, true)
     }
     componentWillUnmount() {
         window.removeEventListener('scroll', this.scroll)
     }
 
     scroll() {
-        let target = document.getElementById('floatingContain')
-        let max = target.parentNode.clientHeight - target.clientHeight
-        let min = target.parentNode.offsetTop
-        
-        this.setState({
-            top: Math.max(this.state.default, Math.min(max, window.scrollY - min + this.state.default))
-        })
+        let target = document.getElementById('floatingContain') 
+        if (target) {
+            let max = target.parentNode.clientHeight - target.clientHeight 
+            let min = target.parentNode.offsetTop
+            
+            this.setState({
+                top: Math.max(this.state.default, Math.min(max, window.scrollY - min + this.state.default))
+            })
+        }
     }
 
     render() {

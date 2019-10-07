@@ -29,9 +29,9 @@ const Close = styled.span`
 export function flash_message(msg, toggleForm) {
     if (!!toggleForm) $(toggleForm).toggle()
     $('#flash_message > div').text(msg)
-    $('#flash_message').toggle()
+    $('#flash_message').toggle(true)
     setTimeout(function(){
-        $('#flash_message').toggle()
+        $('#flash_message').toggle(false)
     }, 3000)
 }
 
@@ -46,7 +46,7 @@ export const Message = ({ msg }) => {
             }}>{ msg }</div>
             <Close
               onClick = {evt => {
-                $('#flash_message').toggle()
+                $('#flash_message').toggle(false)
               }}
             ><FaTimes/></Close>
         </Container>

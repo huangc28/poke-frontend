@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Main from '@poke/layouts/Main'
+import { flash_message } from '@poke/components/Message';
 
 import HomeSecOne from './components/HomeSecOne'
 import HomeSecTwo from './components/HomeSecTwo'
@@ -9,22 +10,32 @@ import HomeSecFour from './components/HomeSecFour'
 import HomeSecFive from './components/HomeSecFive'
 import HomeSecSix from './components/HomeSecSix'
 
-const Home = () => {
-  return (
-    <Main>
-      <HomeSecOne />
-
-      <HomeSecTwo />
-
-      <HomeSecThree />
-
-      <HomeSecFour />
-
-      <HomeSecFive />
-
-      <HomeSecSix />
-    </Main>
-  )
+class Home extends Component {
+    componentDidMount() {
+        if (typeof window !== 'undefined') {
+            const urlParams = new URLSearchParams(location.search)
+            const message = urlParams.get('message')
+            if (!!message) flash_message(message, false)
+        }
+    }
+    render () {
+        return (
+            <Main>
+                <HomeSecOne />
+            
+                <HomeSecTwo />
+            
+                <HomeSecThree />
+            
+                <HomeSecFour />
+            
+                <HomeSecFive />
+            
+                <HomeSecSix />
+            </Main>
+        )
+    }
 }
+
 
 export default Home

@@ -6,24 +6,25 @@ import HomeSecThree from '../Home/components/HomeSecThree'
 import HomeSecFour from '../Home/components/HomeSecFour'
 import HomeSecFive from '../Home/components/HomeSecFive'
 import {flash_message} from '@poke/components/Message'
-import $ from 'jquery'
 
-
-class FindAcct extends Component {
+class FindPassword extends Component {
   componentDidMount() {
-    // if (typeof window !== 'undefined') {
-    //     const urlParams = new URLSearchParams(location.search);
-    //     const access_token = urlParams.get('token');
-    //     const way = urlParams.get('way');
+    if (typeof window !== 'undefined') {
+        const urlParams = new URLSearchParams(location.search);
+        const access_token = urlParams.get('access_token');
+        const refresh_token = urlParams.get('refresh_token');
+        const user_name = urlParams.get('user_name');
+        const way = urlParams.get('way');
         
-    //     localStorage.setItem('access_token', access_token)
-    //     localStorage.setItem('user_name', user_name)
-    //     localStorage.setItem('way', way)
+        localStorage.setItem('access_token', access_token)
+        localStorage.setItem('refresh_token', refresh_token)
+        localStorage.setItem('user_name', user_name)
+        localStorage.setItem('way', way)
 
-    //     event = new Event('logState')
-    //     document.dispatchEvent(event)
-    //     flash_message('登入成功', true)
-    // }
+        event = new Event('logState')
+        document.dispatchEvent(event)
+        flash_message('登入成功，請盡快修改密碼', false)
+    }
   }
 
   render() {
@@ -39,4 +40,4 @@ class FindAcct extends Component {
   }
 }
 
-export default FindAcct
+export default FindPassword

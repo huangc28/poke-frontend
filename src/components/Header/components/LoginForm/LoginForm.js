@@ -188,6 +188,7 @@ class LoginForm extends React.Component{
                         'access_token',
                         'refresh_token',
                         'user_name',
+                        'user_img',
                         'way',
                     ])
                 }.bind(this)
@@ -208,15 +209,18 @@ class LoginForm extends React.Component{
                 access_token: data.access_token,
                 refresh_token: data.refresh_token,
                 login_way: way,
-                user_name: data.user.name
+                user_name: data.user.name,
+                user_img: data.user.img,
             })
             flash_message('登入成功', '#LoginContainer')
           }.bind(this),
           error: function(data){
             this.emitRemoveLogState([
                 'access_token',
+                'refresh_token',
+                'user_name',
+                'user_img',
                 'login_way',
-                'user_name'
             ])
             flash_message(`登入失敗 ${data.msg}`, false)
           }.bind(this),
@@ -240,17 +244,22 @@ class LoginForm extends React.Component{
                     'access_token',
                     'refresh_token',
                     'login_way',
-                    'user_name'
+                    'user_name',
+                    'user_img'
                 ])
-                flash_message(`成功登出`, '#LoginContainer')
+                if (location.origin != location.href) location.href = '/?message=登出成功'
+                else flash_message(`登出成功`, '#LoginContainer')
             }.bind(this),
             error: function(data){
                 this.emitRemoveLogState([
                     'access_token',
+                    'refresh_token',
                     'login_way',
-                    'user_name'
+                    'user_name',
+                    'user_img',
                 ])
-                flash_message(`登出成功`, '#LoginContainer')
+                if (location.origin != location.href) location.href = '/?message=登出成功'
+                else flash_message(`登出成功`, '#LoginContainer')
             }.bind(this)
         })
     }
@@ -378,7 +387,7 @@ class LoginForm extends React.Component{
                     <Button style={{ textAlign: 'center' }}>我的最愛</Button>
                     <Button 
                       style={{ textAlign: 'center' }}
-                      onClick={evt=>{location.href = 'user'}}
+                      onClick={evt=>{location.href = '/user'}}
                     >
                     資料變更</Button>
                     <Button style={{ textAlign: 'center' }} onClick={ this.logOut }>登出</Button>

@@ -8,7 +8,8 @@ import SingleArticle from './scenes/SingleArticle'
 import About from './scenes/About'
 import User from './scenes/User'
 import Verify from './scenes/Verify'
-import FindAcct from './scenes/Verify'
+import FindAcct from './scenes/FindAcct'
+import FindPassword from './scenes/FindPassword'
 
 const routes = [
   {
@@ -58,6 +59,11 @@ const routes = [
         path: '/find-acct',
         exect: true,
         component: FindAcct,
+      },
+      {
+        path: '/find-password',
+        exect: true,
+        component: FindPassword,
       },
     ],
   }
