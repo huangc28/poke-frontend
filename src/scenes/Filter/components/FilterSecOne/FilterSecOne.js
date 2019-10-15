@@ -61,7 +61,6 @@ export default class FilterSecOne extends Component {
 
     componentDidMount() {
         if (typeof window !== 'undefined') {
-            // 註冊監聽事件
             document.addEventListener('logState', this.logStateHandler)
         }
     }
