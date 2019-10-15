@@ -183,7 +183,7 @@ class LoginForm extends React.Component{
                         access_token: data.access_token,
                     })
                 }.bind(this),
-                error: function(){
+                error: function(err){
                     this.emitRemoveLogState([
                         'access_token',
                         'refresh_token',
@@ -191,6 +191,7 @@ class LoginForm extends React.Component{
                         'user_img',
                         'way',
                     ])
+                    console.log(err)
                 }.bind(this)
             })
         }

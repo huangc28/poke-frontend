@@ -6,6 +6,7 @@ import { size26Mixin } from '@poke/styles/font'
 import colors from '@poke/styles/colors'
 
 const Layout = styled.div`
+  width: calc(100% - 40px);
   display: flex;
   flex-direction: column;
 `

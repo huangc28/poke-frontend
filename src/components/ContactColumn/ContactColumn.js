@@ -78,8 +78,8 @@ class ContactColumn extends Component {
 
     render() {
         return (
-            <Content id="floatingContain" style={{ top: this.state.top }} >
-                <TopicLayout topic='訂閱我們' >
+            <Content id="floatingContain" style={{ top: this.state.top, padding: 20 }} >
+                <TopicLayout topic='訂閱我們'>
                     <SubscribeContent>
                         {/* Icon */}
                         <EmailIcon style={{ fontSize: 51, }} />
@@ -97,7 +97,7 @@ class ContactColumn extends Component {
                     </ButtonContainer>
                 </TopicLayout>
 
-                <TopicLayout topic='追蹤我們' >
+                <TopicLayout topic='追蹤我們'>
                     <Icons>
                         <Facebook width={55} height={55} />
                         <Instagram width={55} height={55} />
