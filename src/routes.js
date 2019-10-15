@@ -7,6 +7,7 @@ import FoodKnowledge from './scenes/FoodKnowledge'
 import SingleArticle from './scenes/SingleArticle'
 import About from './scenes/About'
 import User from './scenes/User'
+import Filter from './scenes/Filter'
 import Verify from './scenes/Verify'
 import FindAcct from './scenes/FindAcct'
 import FindPassword from './scenes/FindPassword'
@@ -39,6 +40,11 @@ const routes = [
         path: '/articles/:articleID',
         exect: true,
         component: SingleArticle,
+      },
+      {
+        path: '/filter',
+        exact: true,
+        component: Filter,
       },
       {
         path: '/about',

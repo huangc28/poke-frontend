@@ -261,7 +261,7 @@ function Header ({ history }) {
             </NavElem>
                     
             <NavElem>
-              <Link to=''>
+              <Link to='/filter'>
                 篩選器
               </Link>
             </NavElem>
