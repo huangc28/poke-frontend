@@ -8,6 +8,7 @@ import SingleArticle from './scenes/SingleArticle'
 import About from './scenes/About'
 import User from './scenes/User'
 import Filter from './scenes/Filter'
+import Products from './scenes/Products'
 import Verify from './scenes/Verify'
 import FindAcct from './scenes/FindAcct'
 import FindPassword from './scenes/FindPassword'
@@ -45,6 +46,11 @@ const routes = [
         path: '/filter',
         exact: true,
         component: Filter,
+      },
+      {
+        path: '/products',
+        exact: true,
+        component: Products,
       },
       {
         path: '/about',

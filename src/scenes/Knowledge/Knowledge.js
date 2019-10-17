@@ -253,18 +253,18 @@ class Knowledge extends Component {
                         {restArticle}
                     </ArticlesContainer>
                     <PaginatorContainer>
-                    <Paginator
-                      breakLabel={'...'}
-                      pageCount={this.state.total_page}
-                      marginPagesDisplayed={2}
-                      pageRangeDisplayed={5}
-                      initialPage={0}
-                      onPageChange={({ selected }) => {
-                        this.ajaxArticle({
-                          offset: selected * this.state.PER_PAGE
-                        })
-                      }}
-                    />
+                        <Paginator
+                        breakLabel={'...'}
+                        pageCount={this.state.total_page}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        initialPage={0}
+                        onPageChange={({ selected }) => {
+                            this.ajaxArticle({
+                            offset: selected * this.state.PER_PAGE
+                            })
+                        }}
+                        />
                     </PaginatorContainer>
                 </ContactLayout>
             </Main>

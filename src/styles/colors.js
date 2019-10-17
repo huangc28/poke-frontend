@@ -24,5 +24,6 @@ export default {
   prussianBlue: '#3c4e6b',
   gainsboro: '#959595',
   pink: '#ff85b1',
-  grey: '#dcdcdc'
+  grey: '#dcdcdc',
+  orange: '#ffc56f'
 }
