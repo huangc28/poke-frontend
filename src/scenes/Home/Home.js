@@ -13,6 +13,7 @@ import HomeSecSix from './components/HomeSecSix'
 class Home extends Component {
     componentDidMount() {
         if (typeof window !== 'undefined') {
+            document.title = 'POKE'
             const urlParams = new URLSearchParams(location.search)
             const message = urlParams.get('message')
             if (!!message) flash_message(message, false)

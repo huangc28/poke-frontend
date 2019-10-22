@@ -115,6 +115,11 @@ class FoodKnowledge extends Component {
         this.ajaxArticle = this.ajaxArticle.bind(this)
         this.countTotalPages = this.countTotalPages.bind(this)
     }
+    componentDidMount() {
+        if (typeof window !== 'undefined') {
+            document.title = 'POKE | 小百科'
+        }
+    }
 
     countTotalPages (perPage, totalCount) {
         const residual = totalCount % perPage

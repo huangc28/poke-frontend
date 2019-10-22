@@ -14,7 +14,9 @@ class User extends Component {
   }
 
   componentDidMount() {
-      
+      if (typeof window !== 'undefined') {
+          document.title = 'POKE | 個人資料'
+      }
   }
 
   render() {

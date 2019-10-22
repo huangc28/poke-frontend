@@ -9,6 +9,9 @@ import FilterSecTwo from './components/FilterSecTwo';
 class Filter extends Component {
 
   componentDidMount() {
+    if (typeof window !== 'undefined') {
+        document.title = 'POKE | 篩選器'
+    }
   }
 
   render() {

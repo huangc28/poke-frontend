@@ -133,6 +133,9 @@ export default class AboutSecFour extends Component {
     }
 
     componentDidMount() {
+        if (typeof window !== 'undefined') {
+            document.title = 'POKE | 關於我們'
+        }
         this.getMilestone({ year: this.state.year })
     }
 

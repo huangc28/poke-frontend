@@ -64,6 +64,12 @@ export default class Products extends Component {
         this.countTotalPages = this.countTotalPages.bind(this)
     }
 
+    componentDidMount() {
+        if (typeof window !== 'undefined') {
+            document.title = 'POKE | 篩選器'
+        }
+    }
+
     getProducts(param) {
         let apiUrl = buildApiUrl(`products`, param)
             

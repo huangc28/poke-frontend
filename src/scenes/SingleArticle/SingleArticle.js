@@ -122,9 +122,15 @@ class SingleArticle extends Component {
         this.postReply = this.postReply.bind(this)
         this.scroll = this.scroll.bind(this)
     }
+    componentDidUpdate() {
+        if (typeof window !== 'undefined') {
+            document.title = `POKE | 小百科${' | ' + this.state.title || ''}`
+        }
+    }
 
     componentDidMount(){
         if (typeof window !== 'undefined') {
+            document.title = 'POKE | 小百科'
             document.addEventListener('logState', this.logState)
             window.addEventListener('scroll', this.scroll, true)
         }

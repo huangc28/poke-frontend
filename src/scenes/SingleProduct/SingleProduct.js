@@ -190,11 +190,16 @@ export default class SingleProduct extends Component {
         this.starMouseIn = this.starMouseIn.bind(this)
         this.starMouseOut = this.starMouseOut.bind(this)
     }
-
-    componentDidMount(){
+    componentDidUpdate() {
+        if (typeof window !== 'undefined') {
+            document.title = `POKE | 篩選器${' | ' + this.state.product.product || ''}`
+        }
+    }
+    componentDidMount() {
         this.getProduct(this.state.product_id)
         this.getReplies(this.state.product_id, {offset:this.state.offset, rank:this.state.rank})
         if (typeof window !== 'undefined') {
+            document.title = 'POKE | 篩選器'
             document.addEventListener('logState', this.logState)
             document.addEventListener('scroll', this.scroll)
         }
