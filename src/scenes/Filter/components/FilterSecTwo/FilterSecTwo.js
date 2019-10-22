@@ -192,7 +192,6 @@ export default class FilterSecTwo extends Component {
                     <Clicker onClick={evt => this.clickerChange(evt, '口味')} choosen={this.state.口味 && this.state.口味.indexOf('火雞肉') != -1 }>火雞肉</Clicker>
                 </Line>,
                 <Line>
-                    <Clicker onClick={evt => this.clickerChange(evt, '口味')} choosen={this.state.口味 && this.state.口味.indexOf('羊肉') != -1 }>羊肉</Clicker>
                     <Clicker onClick={evt => this.clickerChange(evt, '口味')} choosen={this.state.口味 && this.state.口味.indexOf('牛肉') != -1 }>牛肉</Clicker>
                     <Clicker onClick={evt => this.clickerChange(evt, '口味')} choosen={this.state.口味 && this.state.口味.indexOf('豬肉') != -1 }>豬肉</Clicker>
                     <Clicker onClick={evt => this.clickerChange(evt, '口味')} choosen={this.state.口味 && this.state.口味.indexOf('鹿肉') != -1 }>鹿肉</Clicker>
@@ -391,7 +390,7 @@ export default class FilterSecTwo extends Component {
                     <Line>
                         <Clicker onClick={evt => this.clickerChange(evt, '商品需求')} choosen={this.state.商品需求 && this.state.商品需求.indexOf('無穀') != -1 }>無穀</Clicker>
                         <Clicker onClick={evt => this.clickerChange(evt, '商品需求')} choosen={this.state.商品需求 && this.state.商品需求.indexOf('非基改') != -1 }>非基改</Clicker>
-                        <Clicker onClick={evt => this.clickerChange(evt, '商品需求')} choosen={this.state.商品需求 && this.state.商品需求.indexOf('抗老化') != -1 }>抗老化</Clicker>
+                        <Clicker onClick={evt => this.clickerChange(evt, '商品需求')} choosen={this.state.商品需求 && this.state.商品需求.indexOf('抗氧化') != -1 }>抗氧化</Clicker>
                         <Clicker onClick={evt => this.clickerChange(evt, '商品需求')} choosen={this.state.商品需求 && this.state.商品需求.indexOf('不含抗生素') != -1 }>不含抗生素</Clicker>
                         <Clicker onClick={evt => this.clickerChange(evt, '商品需求')} choosen={this.state.商品需求 && this.state.商品需求.indexOf('不含副產品') != -1 }>不含副產品</Clicker>
                         <FaPlus 

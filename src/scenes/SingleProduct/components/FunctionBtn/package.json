@@ -1,0 +1,6 @@
+{
+  "name": "FunctionBtn",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./FunctionBtn.js"
+}

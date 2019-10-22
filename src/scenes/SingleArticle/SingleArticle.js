@@ -108,8 +108,9 @@ class SingleArticle extends Component {
     constructor(props){
         super(props)
         this.state = {
+            scrollTimeOut: 0,
             article_id: parseInt(this.props.match.params.articleID),
-            user_img: '',
+            user_img: typeof window !== 'undefined' && localStorage.getItem('user_img'),
             replies_total_count: 0,
             replies: [],
             replyText: ''
@@ -128,7 +129,6 @@ class SingleArticle extends Component {
             window.addEventListener('scroll', this.scroll, true)
         }
         this.getArticle(this.state.article_id)
-        this.logState()
     }
     componentWillUnmount() {
         window.removeEventListener('scroll', this.scroll)
@@ -136,16 +136,21 @@ class SingleArticle extends Component {
 
     logState() {
         this.setState({
-            user_img: localStorage.getItem('user_img')
+            user_img: typeof window !== 'undefined' && localStorage.getItem('user_img')
         })
     }
     scroll() {
         let DownContent = document.getElementById('DownContent')
-        let article_id = this.state.article_id
-        
-        window.scrollY >= DownContent.offsetTop && 
-        this.state.replies.length <= this.state.replies_total_count  &&
-        this.getReplies(article_id, {offset: this.state.replies.length, limit: 5, sort: 'created_at', desc: true})
+        if (this.state.scrollTimeOut != 0) return false
+        if (window.scrollY < DownContent.offsetTop) return false
+        if (this.state.replies.length > this.state.replies_total_count) return false
+
+        this.setState({scrollTimeOut: 1000}, function(){
+            setTimeout(function(){
+                this.setState({scrollTimeOut: 0})
+            }.bind(this), this.state.scrollTimeOut)
+        }.bind(this))
+        this.getReplies(this.state.article_id, {offset: this.state.replies.length, limit: 5, sort: 'created_at', desc: true})
     }
 
     getArticle(article_id){
@@ -230,7 +235,7 @@ class SingleArticle extends Component {
             return (
                 <div style={{ display: 'flex', flexDirection: 'row'}}>
                     <img src={reply.user_img || `https://via.placeholder.com/${60}x${60}`} style={{ backgroundColor: '#eeee', width: 60, height: 60, borderRadius: 9999, margin: 10 }}/>
-                    <div>
+                    <div style={{ width: '100%' }}>
                         <div>
                             <span style={{fontSize: 14, lineHeight: 1.29, letterSpacing: 2.8, marginRight: 10}}>{reply.user_name}</span>
                             <span style={{fontSize: 8}}>{reply.created_at}</span>

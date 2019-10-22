@@ -25,5 +25,6 @@ export default {
   gainsboro: '#959595',
   pink: '#ff85b1',
   grey: '#dcdcdc',
-  orange: '#ffc56f'
+  orange: '#ffc56f',
+  revell: '#eeeeee',
 }

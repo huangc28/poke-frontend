@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import colors from '@poke/styles/colors'
-
+import { buildApiUrl } from '@poke/services/apis/util'
 import LeftImg from './images/07.png'
 import RightImg from './images/08.png'
+import $ from 'jquery'
 
 const Section = styled.div`
   margin: 0px;
@@ -94,21 +95,97 @@ const RightImage = styled.img`
   }
 `
 
-function AboutSecFour () {
-    return (
-        <Section>
-          <Title>
-            <h3>剝殼POKE 里程碑</h3>
-            <hr/>
-          </Title>
-          <Content>
-            <LeftImage src={LeftImg}/>
-            <Stuff>This is None Visible stuff</Stuff>
-            <Line></Line>
-            <RightImage src={RightImg}/>
-          </Content>
-        </Section>
-    )
-}
+const Milestones = styled.div`
+  position: absolute;
+  left: ${props => props.left};
+  top: -50px;
+`
 
-export default AboutSecFour
+const MilesMonth = styled.div`
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+  color: ${colors.prussianBlue};
+`
+
+const MilesCircle = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: ${colors.grey};
+  border-radius: 99999px;
+`
+
+const MilesContent = styled.div`
+  font-size: 16px;
+  line-height: 1.38;
+  letter-spacing: 3.2px;
+  color: ${colors.prussianBlue};
+`
+
+export default class AboutSecFour extends Component {
+    constructor() {
+        super()
+        this.state = {
+            year: new Date().getFullYear(),
+            milestones: []
+        }
+        this.getMilestone = this.getMilestone.bind(this)
+    }
+
+    componentDidMount() {
+        this.getMilestone({ year: this.state.year })
+    }
+
+    getMilestone({ year }) {
+        let apiUrl = buildApiUrl('milestones', { year })
+        $.ajax({
+            url: apiUrl,
+            method: 'get',
+            success: function(data) {
+                this.setState({
+                    milestones: data.milestones
+                })
+            }.bind(this),
+            error: function(err) {
+                throw err
+            }.bind(this)
+        })
+    }
+
+    render() {
+        let milestones = this.state.milestones.map(v => {
+            let month = new Date(v.created_at).getMonth()
+            return (
+                <Milestones
+                    left={`${100*(month/12)}%`}
+                >
+                    <MilesMonth>
+                        { month+1 }月
+                    </MilesMonth>
+                    <MilesCircle/>
+                    <MilesContent>
+                        {v.content}
+                    </MilesContent>
+                </Milestones>
+            )
+        })
+        return (
+            <Section>
+              <Title>
+                <h3>剝殼POKE 里程碑</h3>
+                <hr/>
+              </Title>
+              <Content>
+                <LeftImage src={LeftImg}/>
+                <Stuff>This is None Visible stuff</Stuff>
+                <Line>
+                    <div style={{ position: 'relative' }}>
+                        {milestones}
+                    </div>
+                </Line>
+                <RightImage src={RightImg}/>
+              </Content>
+            </Section>
+        )
+    }
+}

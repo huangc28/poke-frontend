@@ -9,7 +9,7 @@ import Paginator from '@poke/components/Paginator'
 import colors from '@poke/styles/colors'
 import $ from 'jquery'
 
-const Cantainer = styled.div`
+const Container = styled.div`
   width: 60vw;
   margin: 5rem auto;
 `
@@ -115,9 +115,11 @@ export default class Products extends Component {
 
             return (
                 <ProductCard
+                    href={`/products/${product.product_id}`}
+
                     branch={product.branch}
                     product={product.product}
-                    stars="3"
+                    stars={product.rank}
                     
                     portein={product.nutrition_portein}
                     porteinLevel={porteinLevel}
@@ -205,7 +207,7 @@ export default class Products extends Component {
 
         return (
             <Main>
-                <Cantainer>
+                <Container>
                     <div style={{ display: 'flex', position: 'relative' }}>
                         <MainTitle>篩選結果</MainTitle>
                         <SubTitle>{ typeof window !== 'undefined' && this.searchStr() }</SubTitle>
@@ -237,7 +239,7 @@ export default class Products extends Component {
                     
                     <hr style={{ border: `1px solid ${colors.prussianBlue}`, marginBottom: 40 }} />
                     { products }
-                </Cantainer>
+                </Container>
 
                 <PaginatorContainer>
                     <Paginator

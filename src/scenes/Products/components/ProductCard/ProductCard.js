@@ -95,11 +95,11 @@ export default class ProductCard extends Component {
             <Container>
                 <Heart like={this.props.like} ><FaHeart /></Heart>
 
-                <img style={{ width: 320, height: 380 }}/>
+                <a href={this.props.href}><img style={{ width: 320, height: 380, cursor: 'pointer' }}/></a>
                 
                 <ContentContainer>
-                    <ContentTitle>{this.props.branch}</ContentTitle>
-                    <ContentTitle>{this.props.product}</ContentTitle>
+                    <a href={this.props.href} style={{textDecoration: 'none'}}><ContentTitle style={{ cursor: 'pointer' }}>{this.props.branch}</ContentTitle></a>
+                    <a href={this.props.href} style={{textDecoration: 'none'}}><ContentTitle style={{ cursor: 'pointer' }}>{this.props.product}</ContentTitle></a>
                     <div style={{ display: 'flex', marginTop: 10 }}>
                         {stars}
                     </div>

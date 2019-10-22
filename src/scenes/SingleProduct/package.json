@@ -1,0 +1,6 @@
+{
+  "name": "SingleProduct",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./SingleProduct.js"
+}

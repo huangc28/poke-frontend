@@ -5,6 +5,7 @@ import Knowledge from './scenes/Knowledge'
 import MarkKnowledge from './scenes/MarkKnowledge'
 import FoodKnowledge from './scenes/FoodKnowledge'
 import SingleArticle from './scenes/SingleArticle'
+import SingleProduct from './scenes/SingleProduct'
 import About from './scenes/About'
 import User from './scenes/User'
 import Filter from './scenes/Filter'
@@ -51,6 +52,11 @@ const routes = [
         path: '/products',
         exact: true,
         component: Products,
+      },
+      {
+        path: '/products/:productID',
+        exact: true,
+        component: SingleProduct,
       },
       {
         path: '/about',
