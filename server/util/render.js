@@ -20,7 +20,8 @@ const render = ({
         <meta name="author" content="">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="google-site-verification" content="7-cdMGyckfR8LtHSDUMhNhh7_x6tbgPJBH81u8inAeM" />
+        
         <link
           rel="stylesheet"
           type="text/css"
